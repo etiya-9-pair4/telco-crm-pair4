@@ -1,5 +1,6 @@
 package com.etiya.productservice.service;
 
+import com.etiya.productservice.dto.customer.CustomerResponseDto;
 import com.etiya.productservice.dto.request.CreateProductRequestDto;
 import com.etiya.productservice.dto.request.DeleteProductRequestDto;
 import com.etiya.productservice.dto.request.UpdateProductRequestDto;
@@ -27,4 +28,5 @@ public interface ProductService {
     UpdateProductResponseDto update(UpdateProductRequestDto updateProductRequestDto);
 
     List<Product> search(List<Integer> ids);
+    CustomerResponseDto getCustomerInfo(Integer customerId);
 }

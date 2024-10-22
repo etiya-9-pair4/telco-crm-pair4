@@ -1,5 +1,7 @@
 package com.etiya.productservice.service;
 
+import com.etiya.productservice.client.CustomerServiceClient;
+import com.etiya.productservice.dto.customer.CustomerResponseDto;
 import com.etiya.productservice.dto.request.CreateProductRequestDto;
 import com.etiya.productservice.dto.request.DeleteProductRequestDto;
 import com.etiya.productservice.dto.request.UpdateProductRequestDto;
@@ -18,6 +20,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
+    private final CustomerServiceClient customerServiceClient;
 
 
     //TODO: MapStruct
@@ -44,5 +47,10 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> search(List<Integer> ids) {
         return productRepository.findByIdIn(ids);
+    }
+
+    @Override
+    public CustomerResponseDto getCustomerInfo(Integer customerId) {
+        return customerServiceClient.getCustomerById(customerId);
     }
 }

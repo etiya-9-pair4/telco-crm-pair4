@@ -6,7 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
+import java.util.List;
 
 
 @Getter
@@ -14,12 +14,21 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Charecteristic_Values")
+@Table(name = "Charecteristic_Values")
 public class CharacteristicValue {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    private Integer characteristicId;
+
+    @Column(name = "value")
     private String value;
+
+    @OneToMany(mappedBy = "characteristicValue")
+    private List<ProductCharacteristicValue> characteristicValues;
+
+    @ManyToOne
+    @JoinColumn(name = "characteristic_id", nullable = false)
+    private Characteristic characteristic;
 }

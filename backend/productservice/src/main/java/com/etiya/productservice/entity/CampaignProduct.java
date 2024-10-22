@@ -12,16 +12,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "CampaignsProduct")
+@Table(name = "Campaigns_Product")
 public class CampaignProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-//    @ManyToOne
-//    @JoinColumn(name = "campaign_id")
-//    private Campaign campaign;
-//    @ManyToOne
-//    @JoinColumn(name = "product_id")
-//    private Product product;
+
+    @ManyToOne
+    @JoinColumn(name = "campaign_id",nullable = false)
+    private Campaign campaign;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id",nullable = false)
+    private Product product;
+
 }

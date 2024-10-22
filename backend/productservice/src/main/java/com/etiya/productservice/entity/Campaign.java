@@ -12,19 +12,26 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Campaigns")
+@Table(name = "Campaigns")
 public class Campaign extends BaseEntity {
-    @Column(name="status")
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "status")
     private boolean status;
-    @Column(name="start_date")
+
+    @Column(name = "start_date")
     private LocalDateTime startDate;
-    @Column(name="end_date")
+
+    @Column(name = "end_date")
     private LocalDateTime endDate;
-    @Column(name="campaign_code")
+
+    @Column(name = "campaign_code")
     private String campaignCode;
-    @Column(name="discount_rate")
+
+    @Column(name = "discount_rate")
     private short discountRate;
-//
-//    @OneToMany(mappedBy = "campaign")
-//    private List<CampaignProduct> campaignProducts;
+
+    @OneToMany(mappedBy = "campaign")
+    private List<CampaignProduct> campaignProducts;
 }

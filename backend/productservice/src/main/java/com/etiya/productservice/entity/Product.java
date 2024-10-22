@@ -15,17 +15,27 @@ import java.util.List;
 @Table(name = "Products")
 //TODO: characteristic_value relations
 public class Product extends BaseEntity {
+
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "price")
     private BigDecimal price;
+
     @Column(name = "stock")
     private Integer stock;
 
-//    @ManyToOne
-//    @JoinColumn(name = "product_id")
-//    private Catalog catalog;
+    @ManyToOne
+    @JoinColumn(name = "product_id", nullable = false)
+    private Catalog catalog;
 
-//    @OneToMany(mappedBy = "product")
-//    private List<CampaignProduct> campaignProducts;
-//    @OneToMany(mappedBy = "product")
-//    private List<ProductCharacteristicValue> productCharacteristicValues;
+    @OneToMany(mappedBy = "product")
+    private List<CampaignProduct> campaignProducts;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductCharacteristicValue> productCharacteristicValues;
+
+    @OneToMany(mappedBy = "product")
+    private List<ProductOffer> productOffers;
+
 }

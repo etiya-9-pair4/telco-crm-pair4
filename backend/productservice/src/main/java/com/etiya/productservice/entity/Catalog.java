@@ -15,18 +15,24 @@ import java.util.List;
 @Table(name = "Catalogs")
 public class Catalog extends BaseEntity {
 
+    @Column(name = "name")
+    private String name;
+
     @Column(name = "parent_id")
     private Integer parentId;
 
-//    @OneToMany(mappedBy = "catalog")
-//    private List<Product> products;
-//
-//    @OneToMany(mappedBy = "catalog")
-//    private List<CatalogProductOffer> catalogProductOffers;
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Catalog parent;
 
-//    @PrePersist
-//    @PreUpdate
-//    private void setParentId() {
-//        this.parentId = this.getId();
-//    }
+    @OneToMany(mappedBy = "parent")
+    private List<Catalog> children;
+
+    @OneToMany(mappedBy = "catalog")
+    private List<Product> products;
+
+    @OneToMany(mappedBy = "catalog")
+    private List<CatalogProductOffer> catalogProductOffers;
+
+
 }

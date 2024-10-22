@@ -18,10 +18,12 @@ public class CatalogProductOffer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-//    @ManyToOne
-//    @JoinColumn(name = "productoffer_id")
-//    private ProductOffer productOffer;
-//    @ManyToOne
-//    @JoinColumn(name = "catalog_id")
-//    private Catalog catalog;
+
+    @ManyToOne
+    @JoinColumn(name = "product_offer_id")
+    private ProductOffer productOffer;
+
+    @ManyToOne
+    @JoinColumn(name = "catalog_id")
+    private Catalog catalog;
 }

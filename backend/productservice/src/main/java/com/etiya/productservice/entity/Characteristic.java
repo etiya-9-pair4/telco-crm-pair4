@@ -16,8 +16,12 @@ import java.util.List;
 @Entity
 @Table(name="Charecteristics")
 public class Characteristic extends BaseEntity {
+    @Column(name = "name")
+    private String name;
+
     @Column(name="description")
     private String description;
-//    @OneToMany(mappedBy = "characteristic")
-//    private List<ProductCharacteristicValue> productCharacteristicValues;
+
+    @OneToMany(mappedBy = "characteristic")
+    private List<CharacteristicValue> characteristicValues;
 }
