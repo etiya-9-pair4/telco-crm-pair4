@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -23,11 +25,16 @@ public class CustomerAccount extends BaseEntity {
     private String accountNumber;
     @Column(name = "account_name")
     private String accountName;
-    //TODO: enum?
-    @Column(name = "type")
-    private String type;
 
-//    private Customer customer;
-//    private Address adress;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
+    @OneToMany(mappedBy = "customerAccount")
+    private List<Address> address;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id", nullable = false)
+    private Type type;
 
 }
