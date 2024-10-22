@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b5970806-8418-4429-9b1c-aaf925125fa1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/macidko/security/BaseJwtService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/macidko/security/BaseJwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/io/github/macidko/security/BaseSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/io/github/macidko/security/BaseSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/allclasses-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/allclasses-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/allpackages-index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/allpackages-index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/element-list" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/element-list" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/help-doc.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/help-doc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/index-all.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/index-all.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/io/github/macidko/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/io/github/macidko/App.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/io/github/macidko/class-use/App.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/io/github/macidko/class-use/App.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-summary.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-summary.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-use.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/io/github/macidko/package-use.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/ADDITIONAL_LICENSE_INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/ASSEMBLY_EXCEPTION" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/ASSEMBLY_EXCEPTION" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/LICENSE" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/dejavufonts.md" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/dejavufonts.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/jquery.md" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/jquery.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/legal/jqueryUI.md" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/legal/jqueryUI.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/member-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/member-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/overview-tree.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/overview-tree.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/package-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/package-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/resource-files/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/resource-files/jquery-ui.min.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/script-files/jquery-3.7.1.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/script-files/jquery-3.7.1.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/script-files/jquery-ui.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/script-files/jquery-ui.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/search.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/search.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/apidocs/type-search-index.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/apidocs/type-search-index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-publishing/central-bundle.zip" beforeDir="false" afterPath="$PROJECT_DIR$/target/central-publishing/central-bundle.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar.sha256" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-javadoc.jar.sha512" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar.sha256" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0-sources.jar.sha512" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar.sha256" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.jar.sha512" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom.md5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom.sha1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom.sha256" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/central-staging/io/github/macidko/core2/1.0/core2-1.0.pom.sha512" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/io/github/macidko/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/io/github/macidko/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0-javadoc.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0-javadoc.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0-sources.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0-sources.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0.jar.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0.pom" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/core2-1.0.pom.asc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/javadoc-bundle-options/javadoc-options-javadoc-resources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-javadoc-plugin-stale-data.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-javadoc-plugin-stale-data.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-io.github.macidko.AppTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-io.github.macidko.AppTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/surefire-reports/io.github.macidko.AppTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/io.github.macidko.AppTest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/io/github/macidko/AppTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/io/github/macidko/AppTest.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2nA0keFgE8vXYoqL8LHOtIpvbOg" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Maven.core [clean,deploy].executor": "Run",
+    "Maven.core [clean,install].executor": "Run",
+    "Maven.core2 [clean,deploy].executor": "Run",
+    "Maven.core2 [clean].executor": "Run",
+    "Maven.core2 [deploy].executor": "Run",
+    "Maven.core2 [javadoc:javadoc].executor": "Run",
+    "Maven.core2 [verify].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/eren.macit/IdeaProjects/telco-crm/telco.crm/core",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="mvn javadoc:javadoc" />
+      <command value="mvn clean install" />
+      <command value="mvn clean deploy" />
+    </option>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-corretto-21.0.2-4caba194b151-51586f01" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b5970806-8418-4429-9b1c-aaf925125fa1" name="Changes" comment="" />
+      <created>1728400718126</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1728400718126</updated>
+      <workItem from="1728400719219" duration="1299000" />
+      <workItem from="1729251069105" duration="681000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
