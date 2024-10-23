@@ -6,13 +6,16 @@ import com.etiya.identityservice.dto.auth.request.RegisterRequestDto;
 import com.etiya.identityservice.dto.auth.response.LoginResponseDto;
 import com.etiya.identityservice.dto.auth.response.RegisterResponseDto;
 import com.etiya.identityservice.service.auth.AuthService;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/auth")
 @RequiredArgsConstructor
+
 public class AuthsController {
     private final AuthService authService;
 
