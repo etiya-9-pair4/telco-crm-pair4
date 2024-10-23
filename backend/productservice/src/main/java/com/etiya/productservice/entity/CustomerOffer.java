@@ -18,7 +18,7 @@ public class CustomerOffer {
 
     @ManyToOne
     @JoinColumn(name = "offer_id", nullable = false)
-    private Offer offer;
+    private ProductOffer productOffer;
 
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;

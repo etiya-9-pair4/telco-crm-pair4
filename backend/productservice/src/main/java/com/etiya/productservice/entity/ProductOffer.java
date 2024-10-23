@@ -2,7 +2,10 @@ package com.etiya.productservice.entity;
 
 import com.etiya.productservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,19 +15,35 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Product_Offer")
-public class ProductOffer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
+@Table(name = "ProductOffer")
+public class ProductOffer extends BaseEntity {
 
-    @ManyToOne
-    @JoinColumn(name = "offer_id", nullable = false)
-    private Offer offer;
+    @Column(name = "name")
+    private String name;
 
-    @ManyToOne
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "start_date")
+    private LocalDateTime startDate;
+
+    @Column(name = "end_date")
+    private LocalDateTime endDate;
+
+    @Column(name = "status")
+    private boolean status;
+
+    @Column(name = "discount_rate")
+    private short discountRate;
+
+    @ManyToOne()
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
+
+    @OneToMany(mappedBy = "productOffer")
+    private List<CatalogProductOffer> catalogProductOffers;
+
+//    @OneToMany(mappedBy = "")
+//    private List<CustomerProductOffer> customerProductOffers;
 }
