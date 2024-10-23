@@ -13,8 +13,8 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateOrderResponseDto {
+public class DeleteOrderResponseDto {
     private List<ProductDto> products;
     private Integer customerId;
-    private float totalPrice;
+
 }

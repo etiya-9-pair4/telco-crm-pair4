@@ -13,8 +13,10 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateOrderResponseDto {
+public class ListOrderResponseDto {
     private List<ProductDto> products;
     private Integer customerId;
     private float totalPrice;
+    private LocalDate createdDate;
+
 }

@@ -1,20 +1,24 @@
-package com.etiya.orderservice.dto.response;
+package com.etiya.orderservice.dto.request;
 
 import com.etiya.orderservice.dto.product.ProductDto;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateOrderResponseDto {
-    private List<ProductDto> products;
+public class UpdateOrderRequestDto {
+    @NotBlank
+    @NotNull
     private Integer customerId;
-    private float totalPrice;
+    @NotBlank
+    @NotNull
+    private List<ProductDto> products;
 }

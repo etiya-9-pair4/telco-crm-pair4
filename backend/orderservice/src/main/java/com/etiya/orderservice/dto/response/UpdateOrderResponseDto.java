@@ -13,8 +13,9 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateOrderResponseDto {
+public class UpdateOrderResponseDto {
     private List<ProductDto> products;
     private Integer customerId;
     private float totalPrice;
+
 }
