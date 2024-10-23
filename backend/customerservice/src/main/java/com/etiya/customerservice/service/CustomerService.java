@@ -1,30 +1,30 @@
 package com.etiya.customerservice.service;
 
-import com.etiya.customerservice.dto.request.CreateCustomerRequestDto;
-import com.etiya.customerservice.dto.request.DeleteCustomerRequestDto;
-import com.etiya.customerservice.dto.request.UpdateCustomerRequestDto;
-import com.etiya.customerservice.dto.response.CreateCustomerResponseDto;
-import com.etiya.customerservice.dto.response.DeleteCustomerResponseDto;
-import com.etiya.customerservice.dto.response.ListCustomerResponseDto;
-import com.etiya.customerservice.dto.response.UpdateCustomerResponseDto;
+import com.etiya.customerservice.dto.request.CreateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.response.CreateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.DeleteIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.ListIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
-    //ListCustomerResponseDto getById(Integer id);
-    Optional<Customer> getCustomerById(Integer id); //productservice -> CustomerServiceClient için yapılmıştır. ListCustomerResponseDto belirlendiğinde değiştirilebilir.
+    //ListIndCustomerResponseDto getById(Integer id);
+    Optional<Customer> getCustomerById(Integer id); //productservice -> CustomerServiceClient için yapılmıştır. ListIndCustomerResponseDto belirlendiğinde değiştirilebilir.
 
-    List<ListCustomerResponseDto> getAll();
+    List<ListIndCustomerResponseDto> getAll();
 
-    //List<ListCustomerResponseDto> getByName(String name);
+    //List<ListIndCustomerResponseDto> getByName(String name);
 
-    DeleteCustomerResponseDto delete(DeleteCustomerRequestDto deleteCustomerRequestDto);
+    DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto);
 
-    CreateCustomerResponseDto add(CreateCustomerRequestDto createCustomerRequestDto);
+    CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto);
 
-    UpdateCustomerResponseDto update(UpdateCustomerRequestDto updateCustomerRequestDto);
+    UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto);
 
 
 }

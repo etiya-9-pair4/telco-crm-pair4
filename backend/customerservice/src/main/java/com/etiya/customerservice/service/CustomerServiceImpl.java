@@ -1,12 +1,12 @@
 package com.etiya.customerservice.service;
 
-import com.etiya.customerservice.dto.request.CreateCustomerRequestDto;
-import com.etiya.customerservice.dto.request.DeleteCustomerRequestDto;
-import com.etiya.customerservice.dto.request.UpdateCustomerRequestDto;
-import com.etiya.customerservice.dto.response.CreateCustomerResponseDto;
-import com.etiya.customerservice.dto.response.DeleteCustomerResponseDto;
-import com.etiya.customerservice.dto.response.ListCustomerResponseDto;
-import com.etiya.customerservice.dto.response.UpdateCustomerResponseDto;
+import com.etiya.customerservice.dto.request.CreateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.response.CreateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.DeleteIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.ListIndCustomerResponseDto;
+import com.etiya.customerservice.dto.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,25 +27,25 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<ListCustomerResponseDto> getAll() {
+    public List<ListIndCustomerResponseDto> getAll() {
         return null;
     }
 
     @Transactional
     @Override
-    public DeleteCustomerResponseDto delete(DeleteCustomerRequestDto deleteCustomerRequestDto) {
+    public DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto) {
         return null;
     }
 
     @Transactional
     @Override
-    public CreateCustomerResponseDto add(CreateCustomerRequestDto createCustomerRequestDto) {
+    public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {
         return null;
     }
 
     @Transactional
     @Override
-    public UpdateCustomerResponseDto update(UpdateCustomerRequestDto updateCustomerRequestDto) {
+    public UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
         return null;
     }
 }
