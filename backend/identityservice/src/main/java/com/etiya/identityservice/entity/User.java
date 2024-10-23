@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 @Setter
 @Getter
@@ -26,8 +27,6 @@ public class User implements UserDetails {
     private String firstName;
     @Column(name = "last_name")
     private String lastName;
-    @Column(name = "title")
-    private String title; //role?
     @Column(name = "username")
     private String username;
     @Column(name = "password")
@@ -45,6 +44,13 @@ public class User implements UserDetails {
     @Column(name = "is_locked")
     private boolean isLocked;
 
+
+    @ManyToOne
+    @JoinColumn(name = "title_id")
+    private Title title;
+
+    @OneToMany(mappedBy = "user")
+    private List<UserRole> userRoles;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
