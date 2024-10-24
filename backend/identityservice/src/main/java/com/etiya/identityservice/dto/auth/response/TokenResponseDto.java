@@ -7,7 +7,9 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class TokenResponseDto {
     private String token;
     private boolean success;
+
 }

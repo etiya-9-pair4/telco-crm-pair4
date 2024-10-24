@@ -8,9 +8,10 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class RegisterResponseDto {
     private String firstName;
     private String lastName;
     private String email;
-    private TokenResponseDto tokenResponse;
+    //private TokenResponseDto tokenResponse;
 }

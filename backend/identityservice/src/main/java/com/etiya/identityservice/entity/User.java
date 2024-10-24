@@ -13,6 +13,7 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 @Entity
 @Table(name = "Users")
 public class User implements UserDetails {
@@ -54,10 +55,10 @@ public class User implements UserDetails {
         return email;
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+//    @Override
+//    public String getPassword() {
+//        return password;
+//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

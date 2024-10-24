@@ -6,7 +6,8 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Data
 public class LoginResponseDto {
     private String email;
-    private TokenResponseDto tokenResponse;
+    //private TokenResponseDto tokenResponse;
 }

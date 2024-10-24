@@ -2,18 +2,17 @@ package com.etiya.identityservice.dto.auth.request;
 
 
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class LoginRequestDto {
-    @NotBlank
+
+    //    @NotBlank
     private String email;
-    @NotBlank
+    //    @NotBlank
     private String password;
 }

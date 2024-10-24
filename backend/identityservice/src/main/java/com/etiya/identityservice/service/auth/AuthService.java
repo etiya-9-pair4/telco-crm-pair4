@@ -4,9 +4,10 @@ import com.etiya.identityservice.dto.auth.request.LoginRequestDto;
 import com.etiya.identityservice.dto.auth.request.RegisterRequestDto;
 import com.etiya.identityservice.dto.auth.response.LoginResponseDto;
 import com.etiya.identityservice.dto.auth.response.RegisterResponseDto;
+import com.etiya.identityservice.dto.auth.response.TokenResponseDto;
 
-public interface AuthService {
-    LoginResponseDto login(LoginRequestDto loginRequest);
+public interface AuthService  {
+    TokenResponseDto login(LoginRequestDto loginRequest);
 
-    RegisterResponseDto register(RegisterRequestDto registerRequest);
+    TokenResponseDto register(RegisterRequestDto registerRequest);
 }

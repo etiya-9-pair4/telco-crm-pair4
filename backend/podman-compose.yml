@@ -72,6 +72,7 @@ services:
 
   configserver:
     container_name: configserver
+    build: ./configserver
     image: "telcocrm-configserver"
     ports:
       - "8001:8001"
@@ -95,6 +96,7 @@ services:
 
   eureka:
     container_name: eureka
+    build: ./eureka
     image: "telcocrm-eureka"
     ports:
       - "8888:8888"
@@ -116,6 +118,7 @@ services:
 
   gateway:
     container_name: gateway
+    build: ./gateway
     image: "telcocrm-gateway"
     ports:
       - "8090:8090"
@@ -134,6 +137,7 @@ services:
 
   productservice:
     container_name: productservice
+    build: ./productservice
     image: "telcocrm-productservice"
     ports:
       - "8080:8080"
@@ -151,6 +155,7 @@ services:
 
   customerservice:
     container_name: customerservice
+    build: ./customerservice
     image: "telcocrm-customerservice"
     ports:
       - "8081:8081"
@@ -168,6 +173,7 @@ services:
 
   orderservice:
     container_name: orderservice
+    build: ./orderservice
     image: "telcocrm-orderservice"
     ports:
       - "8082:8082"
@@ -185,9 +191,10 @@ services:
 
   identityservice:
     container_name: identityservice
+    build: ./identityservice
     image: "telcocrm-identityservice"
     ports:
-      - "8001:8001"
+      - "8083:8083"
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
       - EUREKA_INSTANCE_HOSTNAME=identityservice
