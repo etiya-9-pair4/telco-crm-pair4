@@ -6,7 +6,6 @@ spring:
       server:
         git:
           uri: https://github.com/etiya-9-pair4/telco-crm-configurations
-
 server:
   port: 8001
 

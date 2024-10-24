@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"io.github.macidko"},{"l":"io.github.macidko.event"}];updateSearchResults();

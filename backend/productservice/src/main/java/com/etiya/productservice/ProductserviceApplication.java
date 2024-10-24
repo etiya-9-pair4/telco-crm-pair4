@@ -1,7 +1,7 @@
 package com.etiya.productservice;
 
-import com.etiya.event.OrderCreatedEvent;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.github.macidko.event.OrderCreatedEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;

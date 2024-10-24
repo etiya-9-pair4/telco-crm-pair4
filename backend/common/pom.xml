@@ -2,16 +2,61 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.etiya</groupId>
+  <groupId>io.github.macidko</groupId>
   <artifactId>common</artifactId>
-  <version>1.0</version>
+  <version>1.3</version>
   <packaging>jar</packaging>
 
   <name>common</name>
   <url>http://maven.apache.org</url>
+  <description>Etiya Akademi 9. dönem microservice projesi common katmanı</description>
+
+  <developers>
+    <developer>
+      <id>macidko</id>
+      <name>Eren Macit</name>
+      <email>ernmctt@gmail.com</email>
+    </developer>
+    <developer>
+      <id>huseyin20</id>
+      <name>Hüseyin Menteşe</name>
+      <email>huseyinmentese20@gmail.com</email>
+    </developer>
+    <developer>
+      <id>anilaygun</id>
+      <name>Anıl Aygün</name>
+      <email>anilaygun@yahoo.com</email>
+    </developer>
+    <developer>
+      <id>yavuzenes</id>
+      <name>Enes Yavuz</name>
+      <email>enesnyavuz@gmail.com</email>
+    </developer>
+  </developers>
+
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <distributionManagement>
+    <repository>
+      <id>central</id>
+      <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    </repository>
+  </distributionManagement>
+
+  <scm>
+    <url>https://github.com/etiya-9-pair4/telco-crm-pair4/tree/main/backend</url>
+    <connection>scm:git:git://github.com/etiya-9-pair4/telco-crm-pair4/tree/main/backend</connection>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <java.version>19</java.version>
     <maven.compiler.source>19</maven.compiler.source>
     <maven.compiler.target>19</maven.compiler.target>
   </properties>
@@ -24,4 +69,57 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <version>3.3.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-source-plugin</artifactId>
+        <version>3.2.1</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>jar</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.sonatype.central</groupId>
+        <artifactId>central-publishing-maven-plugin</artifactId>
+        <version>0.6.0</version>
+        <extensions>true</extensions>
+        <configuration>
+          <publishingServerId>central</publishingServerId>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-gpg-plugin</artifactId>
+        <version>1.6</version>
+        <executions>
+          <execution>
+            <id>sign-artifacts</id>
+            <phase>verify</phase>
+            <goals>
+              <goal>sign</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>

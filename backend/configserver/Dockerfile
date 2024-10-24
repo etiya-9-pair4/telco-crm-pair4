@@ -5,3 +5,4 @@ RUN mvn clean package -DskipTests
 FROM openjdk:23-jdk
 COPY --from=build /app/target/configserver-0.0.1.jar /app/configserver.jar
 CMD ["java", "-jar", "/app/configserver.jar"]
+#CMD ["java", "-jar", "/app/configserver.jar","-Dspring-boot.run.arguments=--spring.config.location=classpath:/application-podman.properties"]

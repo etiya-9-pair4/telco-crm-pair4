@@ -1,15 +1,14 @@
 package com.etiya.orderservice.service;
 
-import com.etiya.event.OrderCreatedEvent;
 import com.etiya.orderservice.client.ProductServiceClient;
 import com.etiya.orderservice.dto.product.ProductDto;
 import com.etiya.orderservice.dto.request.CreateOrderRequestDto;
 import com.etiya.orderservice.entity.Order;
 import com.etiya.orderservice.repository.OrderRepository;
+import io.github.macidko.event.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDate;
 import java.util.List;
 

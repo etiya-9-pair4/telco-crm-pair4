@@ -4,4 +4,5 @@ COPY . /app/
 RUN mvn clean package -DskipTests
 FROM openjdk:23-jdk
 COPY --from=build /app/target/customerservice-0.0.1.jar /app/customerservice.jar
-CMD ["java", "-jar", "/app/customerservice.jar"]
+#CMD ["java", "-jar", "/app/customerservice.jar"]
+CMD ["java", "-jar", "/app/customerservice.jar","-Dspring-boot.run.arguments=--spring.config.location=classpath:/application-podman.properties"]
