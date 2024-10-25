@@ -25,5 +25,4 @@ public class CreateIndCustomerResponseDto {
     private String motherName;
     private String fatherName;
     private Integer genderId;
-
 }

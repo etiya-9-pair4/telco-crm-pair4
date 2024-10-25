@@ -12,7 +12,6 @@ import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

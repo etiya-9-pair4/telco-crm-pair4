@@ -39,12 +39,16 @@ public class CreateIndCustomerRequestDto {
     @NotBlank
     @Positive
     private Integer genderId;
-//    @NotBlank
-//    @Positive
-//    private Integer addressId;
-//    @NotBlank
-//    @Positive
-//    private Integer contactId;
+    @NotBlank
+    @Positive
+    private Integer addressId;
+    //int
+    @NotBlank
+    @Positive
+    private Integer contactId;
+    @NotBlank
+    @Positive
+    private Integer customerAccountsId;
 
     // FR'a göre!
 

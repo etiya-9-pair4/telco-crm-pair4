@@ -12,14 +12,16 @@ import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
-public abstract class CustomerMapper {
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
+public abstract class   CustomerMapper {
 
     //create
-    @Mapping(target="gender.id", source = "genderId")
+    @Mapping(target = "gender.id", source = "genderId")
+    @Mapping(target = "gender.id", source = "genderId")
     public abstract IndividualCustomer IndCustomerFromCreateRequest(CreateIndCustomerRequestDto createIndCustomerRequestDto);
     @Mapping(target="genderId", source = "gender.id")
     public abstract CreateIndCustomerResponseDto IndCustomerCreateResponseFromCustomer(IndividualCustomer individualCustomer);
@@ -29,7 +31,6 @@ public abstract class CustomerMapper {
     @Mapping(target="id", source = "customerId")
     public abstract IndividualCustomer IndCustomerFromUpdateRequest(UpdateIndCustomerRequestDto updateIndCustomerRequestDto);
     @Mapping(target="genderId", source = "gender.id")
-    @Mapping(target="customerId", source = "id")
     public abstract UpdateIndCustomerResponseDto IndCustomerUpdateResponseFromCustomer(IndividualCustomer individualCustomer);
 
     //delete
