@@ -1,14 +1,13 @@
 package com.etiya.customerservice.mapper;
 
-import com.etiya.customerservice.dto.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.UpdateIndCustomerResponseDto;
-import com.etiya.customerservice.entity.Customer;
+import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -21,7 +20,7 @@ public abstract class   CustomerMapper {
 
     //create
     @Mapping(target = "gender.id", source = "genderId")
-    @Mapping(target = "gender.id", source = "genderId")
+//    @Mapping(target = "addresses", source = "addressIds", qualifiedByName = "mapAddressIdsToCustomer")
     public abstract IndividualCustomer IndCustomerFromCreateRequest(CreateIndCustomerRequestDto createIndCustomerRequestDto);
     @Mapping(target="genderId", source = "gender.id")
     public abstract CreateIndCustomerResponseDto IndCustomerCreateResponseFromCustomer(IndividualCustomer individualCustomer);
@@ -42,6 +41,7 @@ public abstract class   CustomerMapper {
     //GetById
     @Mapping(target="id", source = "customerId")
     public abstract IndividualCustomer IndCustomerFromListRequest(ListIndCustomerRequestDto listIndCustomerRequestDto);
+    @Mapping(target="customerId", source = "id")
     public abstract ListIndCustomerResponseDto IndCustomerResponseFromListCustomer(IndividualCustomer individualCustomer);
 
 
@@ -49,5 +49,14 @@ public abstract class   CustomerMapper {
     @Mapping(target="id", source = "customerId")
     public abstract List<IndividualCustomer> IndCustomerFromListRequest(List<ListIndCustomerRequestDto> listIndCustomerRequestDto);
     public abstract List<ListIndCustomerResponseDto> IndCustomerResponseFromListCustomer(List<IndividualCustomer> individualCustomer);
+
+
+//    @Named("mapAddressIdsToCustomer")
+//    protected List<Address> mapAddressIdsToEntities(List<Integer> addressIds) {
+//        // Burada addressIds listesinden Address entity’lerini döndürecek kod
+//        return addressIds.stream()
+//                .map(id -> new Address(id)) // ID ile Address yarat
+//                .collect(Collectors.toList());
+//    }
 
 }

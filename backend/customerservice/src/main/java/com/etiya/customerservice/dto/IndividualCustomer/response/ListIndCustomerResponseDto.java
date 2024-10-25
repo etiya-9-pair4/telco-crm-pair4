@@ -1,4 +1,4 @@
-package com.etiya.customerservice.dto.response;
+package com.etiya.customerservice.dto.IndividualCustomer.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListIndCustomerResponseDto {
+    private Integer customerId;
     private String firstName;
     private String middleName;
     private String lastName;

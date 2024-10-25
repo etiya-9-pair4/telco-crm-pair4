@@ -1,4 +1,4 @@
-package com.etiya.customerservice.dto.request;
+package com.etiya.customerservice.dto.Contact.request;
 
 
 import jakarta.validation.constraints.NotBlank;
@@ -15,33 +15,23 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateIndCustomerRequestDto {
+public class UpdateContactRequestDto {
+    @NotNull
+    @NotBlank
+    private Integer contactId;
     @NotNull
     @NotBlank
     private Integer customerId;
-    @NotBlank
     @NotNull
-    private String firstName;
-    private String middleName;
     @NotBlank
+    private String email;
     @NotNull
-    private String lastName;
     @NotBlank
+    private String mobilePhone;
     @NotNull
-    private LocalDateTime dateOfBirth;
     @NotBlank
+    private String homePhone;
     @NotNull
-    private String motherName;
     @NotBlank
-    @NotNull
-    private String fatherName;
-    @NotBlank
-    @Positive
-    private Integer genderId;
-//    @NotBlank
-//    @Positive
-//    private Integer addressId;
-//    @NotBlank
-//    @Positive
-//    private Integer contactId;
+    private String faxNumber;
 }

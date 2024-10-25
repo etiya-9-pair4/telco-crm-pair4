@@ -17,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "Addresses")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Address extends BaseEntity {
 
     @Column(name = "street")
@@ -36,8 +37,8 @@ public class Address extends BaseEntity {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-    @ManyToOne
-    @JoinColumn(name = "customer_account_id", nullable = false)
-    private CustomerAccount customerAccount;
+//    @ManyToOne
+//    @JoinColumn(name = "customer_account_id", nullable = false)
+//    private CustomerAccount customerAccount;
 }
 
