@@ -13,18 +13,18 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
+    CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto);
+
+    UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto);
+
+    DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto);
+
     //ListIndCustomerResponseDto getById(Integer id);
     Optional<Customer> getCustomerById(Integer id); //productservice -> CustomerServiceClient için yapılmıştır. ListIndCustomerResponseDto belirlendiğinde değiştirilebilir.
 
     List<ListIndCustomerResponseDto> getAll();
 
     //List<ListIndCustomerResponseDto> getByName(String name);
-
-    DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto);
-
-    CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto);
-
-    UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto);
 
 
 }

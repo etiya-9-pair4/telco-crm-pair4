@@ -16,9 +16,10 @@ public class ListIndCustomerResponseDto {
     private String firstName;
     private String middleName;
     private String lastName;
-    private LocalDateTime dateOfBirth;
-    private String motherName;
-    private String fatherName;
-    private Integer genderId;
+    private int nationalityId;
+//    private LocalDateTime dateOfBirth;
+//    private String motherName;
+//    private String fatherName;
+//    private Integer genderId;
 
 }
