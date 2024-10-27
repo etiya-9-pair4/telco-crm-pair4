@@ -1,4 +1,4 @@
-package com.etiya.customerservice.service;
+package com.etiya.customerservice.service.ContactService;
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
@@ -10,7 +10,7 @@ import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustom
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.CustomerMapper;
-import com.etiya.customerservice.repository.CustomerRepository;
+import com.etiya.customerservice.repository.CustomerRepository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerServiceImpl implements CustomerService {
+public class ContactServiceImpl implements ContactService {
     private final CustomerRepository<IndividualCustomer> IndividualCustomerRepository;
     private final CustomerRepository<Customer> customerRepository;
     private final CustomerMapper customerMapper;

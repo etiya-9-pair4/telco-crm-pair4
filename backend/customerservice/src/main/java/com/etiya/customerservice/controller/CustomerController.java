@@ -8,7 +8,7 @@ import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustom
 import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
-import com.etiya.customerservice.service.CustomerService;
+import com.etiya.customerservice.service.CustomerService.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
