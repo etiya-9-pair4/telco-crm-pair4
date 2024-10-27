@@ -23,7 +23,4 @@ public class CustomerOffer {
     @Column(name = "customer_id", nullable = false)
     private Integer customerId;
 
-//    @ManyToOne
-//    @JoinColumn(name = "productoffer_id")
-//    private ProductOffer productOffer;
 }

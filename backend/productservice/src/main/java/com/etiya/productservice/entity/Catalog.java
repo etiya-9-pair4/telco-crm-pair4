@@ -22,7 +22,7 @@ public class Catalog extends BaseEntity {
     private Integer parentId;
 
     @ManyToOne
-    @JoinColumn(name = "parent_id", insertable = false, updatable = false) // İncelenecek !!!
+    @JoinColumn(name = "parent_id", insertable = false, updatable = false) // İncelenecek !!! (kaldırılabilir)
     private Catalog parent;
 
     @OneToMany(mappedBy = "parent")

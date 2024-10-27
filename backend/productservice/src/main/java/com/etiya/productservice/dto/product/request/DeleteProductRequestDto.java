@@ -1,4 +1,4 @@
-package com.etiya.productservice.dto.request;
+package com.etiya.productservice.dto.product.request;
 
 import com.etiya.productservice.entity.CampaignProduct;
 import com.etiya.productservice.entity.Catalog;
@@ -24,7 +24,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteProductRequestDto {
-    @NotBlank
-    @NotNull
+    @NotNull(message = "Product ID cannot be null.")
     private Integer id;
 }

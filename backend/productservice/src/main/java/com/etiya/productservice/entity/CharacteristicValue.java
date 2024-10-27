@@ -14,8 +14,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Charecteristic_Values")
+@Table(name = "Characteristic_Values")
 public class CharacteristicValue {
+    public CharacteristicValue(Integer id) { // For ProductMapper.
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

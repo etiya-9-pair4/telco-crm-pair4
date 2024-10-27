@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Product_Charecteristic_Values")
+@Table(name = "Product_Characteristic_Values")
 public class ProductCharacteristicValue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
