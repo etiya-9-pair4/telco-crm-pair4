@@ -1,12 +1,11 @@
 package com.etiya.customerservice.repository.ContactRepository;
 
-import com.etiya.customerservice.entity.Customer;
+import com.etiya.customerservice.entity.Contact;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.Optional;
+import java.util.List;
 
 
-public interface ContactRepository<T extends Customer> extends JpaRepository<T, Integer> {
-    Optional<Customer> getCustomerById(Integer customerId);
+public interface ContactRepository extends JpaRepository<Contact, Integer> {
+    List<Contact> findByCustomer_Id(Integer customerId); // Belirli bir müşteri ID'sine göre iletişim bilgilerini alır.
 }
-

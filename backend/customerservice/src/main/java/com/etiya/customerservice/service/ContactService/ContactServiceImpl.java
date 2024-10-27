@@ -1,16 +1,12 @@
 package com.etiya.customerservice.service.ContactService;
 
-import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
-import com.etiya.customerservice.entity.Customer;
-import com.etiya.customerservice.entity.IndividualCustomer;
-import com.etiya.customerservice.mapper.CustomerMapper;
-import com.etiya.customerservice.repository.CustomerRepository.CustomerRepository;
+import com.etiya.customerservice.dto.Contact.request.CreateContactRequestDto;
+import com.etiya.customerservice.dto.Contact.request.DeleteContactRequestDto;
+import com.etiya.customerservice.dto.Contact.request.UpdateContactRequestDto;
+import com.etiya.customerservice.dto.Contact.response.*;
+import com.etiya.customerservice.entity.Contact;
+import com.etiya.customerservice.mapper.ContactMapper;
+import com.etiya.customerservice.repository.ContactRepository.ContactRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,57 +18,57 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class ContactServiceImpl implements ContactService {
-    private final CustomerRepository<IndividualCustomer> IndividualCustomerRepository;
-    private final CustomerRepository<Customer> customerRepository;
-    private final CustomerMapper customerMapper;
-
-
-    //TODO: Business Exception EKLE!!!!!!!
-    @Transactional
-    @Override
-    public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {
-//        individualCustomerBusinessRules.indCustomerWithSameDetailsShouldNotExist(createIndCustomerRequestDto);
-
-        IndividualCustomer individualCustomer = customerMapper.IndCustomerFromCreateRequest(createIndCustomerRequestDto);
-        IndividualCustomerRepository.save(individualCustomer);
-        return customerMapper.IndCustomerCreateResponseFromCustomer(individualCustomer);
-    }
-    @Transactional
-    @Override
-    public UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
-        IndividualCustomer existingCustomer = IndividualCustomerRepository.findById(updateIndCustomerRequestDto.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
-
-        IndividualCustomer updatedCustomer = customerMapper.IndCustomerFromUpdateRequest(updateIndCustomerRequestDto);
-        updatedCustomer.setId(existingCustomer.getId());
-        IndividualCustomerRepository.save(updatedCustomer);
-
-        return customerMapper.IndCustomerUpdateResponseFromCustomer(updatedCustomer);
-    }
-
+    private final ContactRepository contactRepository;
+    private final ContactMapper contactMapper;
 
     @Transactional
     @Override
-    public DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto) {
-        IndividualCustomer individualCustomer = IndividualCustomerRepository.findById(deleteIndCustomerRequestDto.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+    public CreateContactResponseDto add(CreateContactRequestDto createContactRequestDto) {
+        Contact contact = contactMapper.contactFromCreateRequest(createContactRequestDto);
+        contactRepository.save(contact);
+        return contactMapper.contactCreateResponseFromContact(contact);
+    }
 
-        IndividualCustomerRepository.delete(individualCustomer);
+    @Transactional
+    @Override
+    public UpdateContactResponseDto update(UpdateContactRequestDto updateContactRequestDto) {
+        Contact existingContact = contactRepository.findById(updateContactRequestDto.getContactId())
+                .orElseThrow(() -> new RuntimeException("Contact not found"));
+        Contact updatedContact = contactMapper.contactFromUpdateRequest(updateContactRequestDto);
+        updatedContact.setId(existingContact.getId());
+        contactRepository.save(updatedContact);
+        return contactMapper.contactUpdateResponseFromContact(updatedContact);
+    }
 
-        return customerMapper.IndCustomerDeleteResponseFromCustomer(individualCustomer);
+    @Transactional
+    @Override
+    public DeleteContactResponseDto delete(DeleteContactRequestDto deleteContactRequestDto) {
+        Contact contact = contactRepository.findById(deleteContactRequestDto.getContactId())
+                .orElseThrow(() -> new RuntimeException("Contact not found"));
+        contactRepository.delete(contact);
+        return contactMapper.contactDeleteResponseFromContact(contact);
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Integer id) {
-        return customerRepository.findById(id);
+    public Optional<ListContactResponseDto> getContactById(Integer id) {
+        return contactRepository.findById(id)
+                .map(contactMapper::contactResponseFromListContact);
+    }
+
+
+    @Override
+    public List<ListContactByCustomerIdResponseDto> getAllContactsByCustomerId(Integer customerId) {
+        List<Contact> contacts = contactRepository.findByCustomer_Id(customerId);
+        return contacts.stream()
+                .map(contactMapper::contactResponseFromListContactByCustomerId)
+                .collect(Collectors.toList());
     }
 
     @Override
-    public List<ListIndCustomerResponseDto> getAll() {
-        List<IndividualCustomer> individualCustomers = IndividualCustomerRepository.findAll();
-
-        return individualCustomers.stream()
-                .map(customerMapper::IndCustomerResponseFromListCustomer)
+    public List<ListContactResponseDto> getAll() {
+        List<Contact> contacts = contactRepository.findAll();
+        return contacts.stream()
+                .map(contactMapper::contactResponseFromListContact)
                 .collect(Collectors.toList());
     }
 }

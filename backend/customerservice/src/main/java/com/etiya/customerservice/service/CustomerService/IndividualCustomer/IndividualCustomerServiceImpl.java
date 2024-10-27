@@ -1,4 +1,4 @@
-package com.etiya.customerservice.service.CustomerService;
+package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CustomerServiceImpl implements CustomerService {
+public class IndividualCustomerServiceImpl implements IndividualCustomerService {
     private final CustomerRepository<IndividualCustomer> IndividualCustomerRepository;
     private final CustomerRepository<Customer> customerRepository;
     private final CustomerMapper customerMapper;
