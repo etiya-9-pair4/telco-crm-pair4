@@ -2,18 +2,16 @@ package com.etiya.productservice.service;
 
 import com.etiya.productservice.client.CustomerServiceClient;
 import com.etiya.productservice.dto.customer.CustomerResponseDto;
-import com.etiya.productservice.dto.product.request.CreateProductRequestDto;
-import com.etiya.productservice.dto.product.request.DeleteProductRequestDto;
-import com.etiya.productservice.dto.product.request.UpdateProductRequestDto;
-import com.etiya.productservice.dto.product.response.CreateProductResponseDto;
-import com.etiya.productservice.dto.product.response.DeleteProductResponseDto;
-import com.etiya.productservice.dto.product.response.ListProductResponseDto;
-import com.etiya.productservice.dto.product.response.UpdateProductResponseDto;
+import com.etiya.productservice.dto.product.request.*;
+import com.etiya.productservice.dto.product.response.*;
 import com.etiya.productservice.entity.Product;
+import com.etiya.productservice.mapper.ProductMapper;
 import com.etiya.productservice.repository.ProductRepository;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,27 +19,55 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     private final CustomerServiceClient customerServiceClient;
+    private final ProductMapper productMapper;
 
 
-    //TODO: MapStruct
+    @Override
+    public CreateProductResponseDto add(CreateProductRequestDto requestDto) {
+        Product product = productMapper.toEntity(requestDto);
+        Product savedProduct = productRepository.save(product);
+
+        return productMapper.toCreateProductResponseDto(savedProduct);
+    }
+
+    @Override
+    public UpdateProductResponseDto update(UpdateProductRequestDto requestDto) {
+        Product isExist = productRepository.findById(requestDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getId()));
+
+        Product product = productMapper.toEntity(requestDto);
+        Product updatedProduct = productRepository.save(product);
+        return productMapper.toUpdateProductResponseDto(updatedProduct);
+    }
+
+    @Override
+    public DeleteProductResponseDto delete(DeleteProductRequestDto requestDto) {
+        Product product = productRepository.findById(requestDto.getId())
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getId()));
+
+        productRepository.delete(product);
+        return productMapper.toDeleteProductResponseDto(product);
+    }
+
+    @Override
+    public ListProductResponseDto getById(ListProductRequestDto requestDto) {
+        Product product = productRepository.findById(requestDto.getProductId())
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getProductId()));
+
+        ListProductResponseDto responseDto = productMapper.toListProductResponseDto(product);
+        return responseDto;
+    }
+
+    @Override
+    public FilterProductResponseDto filterProducts(FilterProductRequestDto requestDto) {
+        return null;
+    }
+
     @Override
     public List<ListProductResponseDto> getAll() {
-        return null;
-    }
-
-    @Override
-    public DeleteProductResponseDto delete(DeleteProductRequestDto deleteProductRequestDto) {
-        return null;
-    }
-
-    @Override
-    public CreateProductResponseDto add(CreateProductRequestDto createProductRequestDto) {
-        return null;
-    }
-
-    @Override
-    public UpdateProductResponseDto update(UpdateProductRequestDto updateProductRequestDto) {
-        return null;
+        List<Product> products = productRepository.findAll();
+        List<ListProductResponseDto> responseDtos = productMapper.toListProductResponseDtoList(products);
+        return responseDtos;
     }
 
     @Override

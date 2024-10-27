@@ -49,6 +49,12 @@ public interface ProductMapper {
 
     List<ProductResponseDto> toProductResponseDtoList(List<Product> products);
 
+
+    ListProductResponseDto toListProductResponseDto(Product product);
+
+    List<ListProductResponseDto> toListProductResponseDtoList(List<Product> products);
+
+
     // Default methods for transforming characteristics and campaigns
     default List<Integer> mapCharacteristicValueIds(Product product) {
         return product.getProductCharacteristicValues().stream()
