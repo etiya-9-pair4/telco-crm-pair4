@@ -2,10 +2,7 @@ package com.etiya.customerservice.entity;
 
 import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 
@@ -17,8 +14,6 @@ import java.util.List;
 @Entity
 @Table(name = "Billing_Accounts")
 public class CustomerAccount extends BaseEntity {
-
-
     @Column(name = "status")
     private boolean status;
     @Column(name = "account_number")

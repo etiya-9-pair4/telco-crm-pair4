@@ -1,12 +1,12 @@
 package com.etiya.customerservice.service;
 
-import com.etiya.customerservice.dto.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.response.UpdateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 
 import java.util.List;

@@ -12,7 +12,6 @@ import java.util.List;
 @Entity
 @Table(name = "Corporate_Customers")
 public class CorporateCustomer extends Customer {
-
     @Column(name = "corporate_name")
     private String corporateName;
     @Column(name = "tax_no")

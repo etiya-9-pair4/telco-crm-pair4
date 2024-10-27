@@ -72,7 +72,6 @@ services:
 
   configserver:
     container_name: configserver
-    build: ./configserver
     image: "telcocrm-configserver"
     ports:
       - "8001:8001"
@@ -96,12 +95,10 @@ services:
 
   eureka:
     container_name: eureka
-    build: ./eureka
     image: "telcocrm-eureka"
     ports:
       - "8888:8888"
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
       - EUREKA_INSTANCE_HOSTNAME=eureka
       - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
       - SPRING_CLOUD_CONFIG_PROFILE=prod
@@ -119,26 +116,33 @@ services:
 
   gateway:
     container_name: gateway
-    build: ./gateway
     image: "telcocrm-gateway"
     ports:
       - "8090:8090"
     networks:
       - common
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
+      - EUREKA_URL=http://eureka:8888
+      - EUREKA_INSTANCE_HOSTNAME=gateway
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CLOUD_CONFIG_LABEL=main
     depends_on:
       eureka:
         condition: service_healthy
 
   productservice:
     container_name: productservice
-    build: ./productservice
     image: "telcocrm-productservice"
     ports:
       - "8080:8080"
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - EUREKA_INSTANCE_HOSTNAME=productservice
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CLOUD_CONFIG_LABEL=main
     networks:
       - common
     depends_on:
@@ -147,12 +151,15 @@ services:
 
   customerservice:
     container_name: customerservice
-    build: ./customerservice
     image: "telcocrm-customerservice"
     ports:
       - "8081:8081"
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - EUREKA_INSTANCE_HOSTNAME=customerservice
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CLOUD_CONFIG_LABEL=main
     networks:
       - common
     depends_on:
@@ -161,12 +168,15 @@ services:
 
   orderservice:
     container_name: orderservice
-    build: ./orderservice
     image: "telcocrm-orderservice"
     ports:
       - "8082:8082"
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - EUREKA_INSTANCE_HOSTNAME=orderservice
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CLOUD_CONFIG_LABEL=main
     networks:
       - common
     depends_on:
@@ -175,12 +185,15 @@ services:
 
   identityservice:
     container_name: identityservice
-    build: ./identityservice
     image: "telcocrm-identityservice"
     ports:
-      - "8083:8083"
+      - "8001:8001"
     environment:
-      - SPRING_PROFILES_ACTIVE=podman
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8888/eureka/
+      - EUREKA_INSTANCE_HOSTNAME=identityservice
+      - SPRING_CLOUD_CONFIG_URI=http://configserver:8001
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
+      - SPRING_CLOUD_CONFIG_LABEL=main
     networks:
       - common
     depends_on:

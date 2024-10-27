@@ -1,4 +1,4 @@
-package com.etiya.customerservice.dto.request;
+package com.etiya.customerservice.dto.Contact.request;
 
 
 import jakarta.validation.constraints.NotBlank;
@@ -8,14 +8,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeleteIndCustomerRequestDto {
+public class ListContactRequestDto {
     @NotNull
     @NotBlank
-    private Integer customerId;
-
+    private Integer contactId;
 }

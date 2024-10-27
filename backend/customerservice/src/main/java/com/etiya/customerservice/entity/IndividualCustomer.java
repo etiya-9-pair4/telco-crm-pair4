@@ -1,21 +1,18 @@
 package com.etiya.customerservice.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "Individual_Customers")
+@Table(name = "individual_customers")
 public class IndividualCustomer extends Customer {
-    @Column(name = "NAT_id")
+    @Column(name = "NAT_id", unique = true)
     private int nationalityId;
     @Column(name = "first_name")
     private String firstName;
