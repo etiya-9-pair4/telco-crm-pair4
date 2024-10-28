@@ -10,6 +10,7 @@
         <module name="configserver" />
         <module name="eureka" />
         <module name="gateway" />
+        <module name="cartservice" />
       </profile>
       <profile name="Annotation profile for OrderService" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -21,7 +22,7 @@
         <module name="orderservice" />
         <module name="identityservice" />
       </profile>
-      <profile name="Annotation profile for customerservice" enabled="true">
+      <profile name="Annotation profile for productservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -43,6 +44,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cartservice" options="-parameters" />
       <module name="configserver" options="-parameters" />
       <module name="core" options="-parameters" />
       <module name="core (1) (io.github.macidko)" options="-parameters" />

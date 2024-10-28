@@ -24,7 +24,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteProductRequestDto {
-    @NotBlank
     @NotNull
     private Integer id;
 }
