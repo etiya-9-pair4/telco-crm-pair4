@@ -34,4 +34,5 @@ public class CharacteristicValue {
     @ManyToOne
     @JoinColumn(name = "characteristic_id", nullable = false)
     private Characteristic characteristic;
+
 }
