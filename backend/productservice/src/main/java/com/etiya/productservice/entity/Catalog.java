@@ -4,6 +4,7 @@ import com.etiya.productservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,15 +19,12 @@ public class Catalog extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "parent_id")
-    private Integer parentId;
-
     @ManyToOne
-    @JoinColumn(name = "parent_id", insertable = false, updatable = false) // İncelenecek !!! (kaldırılabilir)
+    @JoinColumn(name = "parent_id")
     private Catalog parent;
 
-    @OneToMany(mappedBy = "parent")
-    private List<Catalog> children;
+    @OneToMany(mappedBy = "parent", cascade = CascadeType.ALL)
+    private List<Catalog> children = new ArrayList<>();
 
     @OneToMany(mappedBy = "catalog")
     private List<Product> products;
