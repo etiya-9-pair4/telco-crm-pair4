@@ -27,10 +27,8 @@ public class CreateProductRequestDto {
     @NotBlank
     @NotNull
     private String name;
-    @NotBlank
     @PositiveOrZero
     private BigDecimal price;
-    @NotBlank
     @PositiveOrZero
     private Integer stock;
     @NotNull

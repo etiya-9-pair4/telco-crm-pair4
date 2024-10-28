@@ -1,4 +1,4 @@
-package com.etiya.customerservice.service;
+package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
@@ -12,7 +12,7 @@ import com.etiya.customerservice.entity.Customer;
 import java.util.List;
 import java.util.Optional;
 
-public interface CustomerService {
+public interface IndividualCustomerService {
     CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto);
 
     UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto);

@@ -17,10 +17,8 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UpdateContactRequestDto {
     @NotNull
-    @NotBlank
     private Integer contactId;
     @NotNull
-    @NotBlank
     private Integer customerId;
     @NotNull
     @NotBlank

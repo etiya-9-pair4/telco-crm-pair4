@@ -2,12 +2,6 @@ package com.etiya.customerservice.mapper;
 
 import com.etiya.customerservice.dto.Contact.request.*;
 import com.etiya.customerservice.dto.Contact.response.*;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Contact;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -17,40 +11,46 @@ import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public abstract class ContactMapper {
-
-    //create
-    @Mapping(target = "customer.id", source = "customerId")
+    // Create
+    @Mapping(target = "customer.id", source = "customerId") // CreateContactRequestDto'dan customerId alıyoruz
     public abstract Contact contactFromCreateRequest(CreateContactRequestDto createContactRequestDto);
-    @Mapping(target="customerId", source = "customer.id")
+
+    @Mapping(target = "contactId", source = "id") // Contact'tan id'yi contactId'ye eşliyoruz
+    @Mapping(target = "customerId", source = "customer.id") // Contact'tan customer.id'yi customerId'ye eşliyoruz
     public abstract CreateContactResponseDto contactCreateResponseFromContact(Contact contact);
 
-    //update
-    @Mapping(target="customer.id", source = "customerId")
-    @Mapping(target="id", source = "contactId")
+    // Update
+    @Mapping(target = "customer.id", source = "customerId") // UpdateContactRequestDto'dan customerId alıyoruz
+    @Mapping(target = "id", source = "contactId") // UpdateContactRequestDto'dan contactId alıyoruz
     public abstract Contact contactFromUpdateRequest(UpdateContactRequestDto updateContactRequestDto);
-    @Mapping(target="customerId", source = "customer.id")
+
+    @Mapping(target = "contactId", source = "id") // Contact'tan id'yi contactId'ye eşliyoruz
+    @Mapping(target = "customerId", source = "customer.id") // Contact'tan customer.id'yi customerId'ye eşliyoruz
     public abstract UpdateContactResponseDto contactUpdateResponseFromContact(Contact contact);
 
-    //delete
-    @Mapping(target="id", source = "contactId")
+    // Delete
+    @Mapping(target = "id", source = "contactId") // DeleteContactRequestDto'dan contactId alıyoruz
     public abstract Contact contactFromDeleteRequest(DeleteContactRequestDto deleteContactRequestDto);
-    @Mapping(target="contactId", source = "id")
-    public abstract DeleteContactResponseDto contactDeleteResponseFromCustomer(Contact contact);
 
-    //GetById
-    @Mapping(target="id", source = "contactId")
-    public abstract Contact ContactFromListRequest(ListContactRequestDto listContactRequestDto);
-    @Mapping(target="contactId", source = "id")
+    @Mapping(target = "contactId", source = "id") // Contact'tan id'yi contactId'ye eşliyoruz
+    public abstract DeleteContactResponseDto contactDeleteResponseFromContact(Contact contact);
+
+    // Get By Id
+    @Mapping(target = "id", source = "contactId") // ListContactRequestDto'dan contactId alıyoruz
+    public abstract Contact contactFromListRequest(ListContactRequestDto listContactRequestDto);
+
+    @Mapping(target = "contactId", source = "id") // Contact'tan id'yi contactId'ye eşliyoruz
     public abstract ListContactResponseDto contactResponseFromListContact(Contact contact);
-    //GetByIdCustomerId
-    @Mapping(target="customer.id", source = "customerId")
+
+    // Get By Customer Id
+    @Mapping(target = "customer.id", source = "customerId") // ListContactByCustomerIdRequestDto'dan customerId alıyoruz
     public abstract Contact contactFromListRequestByCustomerId(ListContactByCustomerIdRequestDto listContactByCustomerIdRequestDto);
-    @Mapping(target="customerId", source = "customer.id")
+
+    @Mapping(target = "customerId", source = "customer.id") // Contact'tan customer.id'yi customerId'ye eşliyoruz
     public abstract ListContactByCustomerIdResponseDto contactResponseFromListContactByCustomerId(Contact contact);
 
-    //Get(List)
-    @Mapping(target="id", source = "contactId")
+    // Get List
     public abstract List<Contact> contactFromListRequest(List<ListContactRequestDto> listContactRequestDtos);
-    @Mapping(target="contactId", source = "id")
-    public abstract List<ListContactRequestDto> contactResponseFromListContact(List<Contact> contacts);
+
+    public abstract List<ListContactResponseDto> contactResponseFromListContact(List<Contact> contacts);
 }

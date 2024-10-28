@@ -21,7 +21,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CreateContactRequestDto {
     @NotNull
-    @NotBlank
     private Integer customerId;
     @NotNull
     @NotBlank

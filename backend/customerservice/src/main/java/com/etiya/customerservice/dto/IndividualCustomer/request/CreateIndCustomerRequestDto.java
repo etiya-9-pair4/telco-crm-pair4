@@ -16,8 +16,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateIndCustomerRequestDto {
-
-    @NotBlank
     @NotNull
     private int nationalityId;
     @NotBlank
@@ -27,7 +25,6 @@ public class CreateIndCustomerRequestDto {
     @NotBlank
     @NotNull
     private String lastName;
-    @NotBlank
     @NotNull
     private LocalDateTime dateOfBirth;
     @NotBlank
@@ -36,7 +33,6 @@ public class CreateIndCustomerRequestDto {
     @NotBlank
     @NotNull
     private String fatherName;
-    @NotBlank
     @Positive
     private Integer genderId;
     // FR'a göre!

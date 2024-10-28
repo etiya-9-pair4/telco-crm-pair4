@@ -1,4 +1,4 @@
-package com.etiya.customerservice.controller;
+package com.etiya.customerservice.controller.CustomerController.CorporateCustomer;
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
@@ -8,7 +8,7 @@ import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustom
 import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
-import com.etiya.customerservice.service.CustomerService;
+import com.etiya.customerservice.service.CustomerService.IndividualCustomer.IndividualCustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -18,10 +18,10 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/customers")
+@RequestMapping("/api/corporatecustomers")
 @RequiredArgsConstructor
-public class CustomerController {
-    private final CustomerService customerService;
+public class CorporateCustomerController {
+    private final IndividualCustomerService customerService;
 
     @PostMapping
     public ResponseEntity<CreateIndCustomerResponseDto> addCustomer(@RequestBody @Valid CreateIndCustomerRequestDto createIndCustomerRequestDto) {

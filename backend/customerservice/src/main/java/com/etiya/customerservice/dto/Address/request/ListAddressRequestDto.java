@@ -14,6 +14,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ListAddressRequestDto {
     @NotNull
-    @NotBlank
     private Integer addressId;
 }
