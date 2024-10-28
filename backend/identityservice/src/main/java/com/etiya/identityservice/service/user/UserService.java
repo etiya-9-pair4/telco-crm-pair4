@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface UserService extends UserDetailsService {
     //TODO: user dtos!
-    User create(User user);
+    User create(User createUserResponseDto);
 
     User update(User user);
 
@@ -16,5 +16,7 @@ public interface UserService extends UserDetailsService {
     User getById(User user);
 
     List<User> getAll();
+
+
 
 }
