@@ -47,6 +47,13 @@ public class IndividualCustomerController {
         Optional<Customer> customer = individualCustomerService.getCustomerById(customerId);
         return ResponseEntity.ok(customer);
     }
+//TODO: IndividualCustomerController getCustomerById geri dönüş tipini düzelt.
+//    @GetMapping("/{customerId}")
+//    public ResponseEntity<ListIndCustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
+//        Optional<ListIndCustomerResponseDto> customer = individualCustomerService.getCustomerById(customerId);
+//        return customer.map(ResponseEntity::ok)
+//                .orElseGet(() -> ResponseEntity.notFound().build());
+//    }
 
     @GetMapping
     public ResponseEntity<List<ListIndCustomerResponseDto>> getAllCustomers() {

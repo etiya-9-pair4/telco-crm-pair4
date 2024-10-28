@@ -15,6 +15,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DeleteContactRequestDto {
     @NotNull
-    @NotBlank
     private Integer contactId;
 }

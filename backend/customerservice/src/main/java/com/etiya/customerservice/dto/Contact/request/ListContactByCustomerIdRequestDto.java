@@ -14,6 +14,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ListContactByCustomerIdRequestDto {
     @NotNull
-    @NotBlank
     private Integer customerId;
 }

@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
-    private final CustomerRepository<Customer> customerRepository;
+    private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
 

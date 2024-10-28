@@ -1,14 +1,13 @@
 package com.etiya.customerservice.controller.CustomerController.Customer;
 
-import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
-import com.etiya.customerservice.entity.Customer;
-import com.etiya.customerservice.service.CustomerService.IndividualCustomer.IndividualCustomerService;
+import com.etiya.customerservice.dto.Customer.request.CreateCustomerRequestDto;
+import com.etiya.customerservice.dto.Customer.request.DeleteCustomerRequestDto;
+import com.etiya.customerservice.dto.Customer.request.UpdateCustomerRequestDto;
+import com.etiya.customerservice.dto.Customer.response.CreateCustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.CustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.DeleteCustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.UpdateCustomerResponseDto;
+import com.etiya.customerservice.service.CustomerService.Customer.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,36 +20,39 @@ import java.util.Optional;
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
 public class CustomerController {
-    private final IndividualCustomerService customerService;
+    private final CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<CreateIndCustomerResponseDto> addCustomer(@RequestBody @Valid CreateIndCustomerRequestDto createIndCustomerRequestDto) {
-        CreateIndCustomerResponseDto responseDto = customerService.add(createIndCustomerRequestDto);
-        return ResponseEntity.ok(responseDto);
+    public ResponseEntity<CreateCustomerResponseDto> createCustomer(@RequestBody @Valid CreateCustomerRequestDto request) {
+        CreateCustomerResponseDto response = customerService.add(request);
+        return ResponseEntity.ok(response);
     }
 
     @PutMapping("/{customerId}")
-    public ResponseEntity<UpdateIndCustomerResponseDto> updateCustomer(@RequestBody @Valid UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
-        updateIndCustomerRequestDto.setCustomerId(updateIndCustomerRequestDto.getCustomerId()); // ID'yi ayarlayın
-        UpdateIndCustomerResponseDto responseDto = customerService.update(updateIndCustomerRequestDto);
-        return ResponseEntity.ok(responseDto);
+    public ResponseEntity<UpdateCustomerResponseDto> updateCustomer(
+            @PathVariable Integer customerId,
+            @RequestBody @Valid UpdateCustomerRequestDto request) {
+        request.setCustomerId(customerId); // URL'den alınan customerId'yi ayarlayın
+        UpdateCustomerResponseDto response = customerService.update(request);
+        return ResponseEntity.ok(response);
     }
 
-    @DeleteMapping
-    public ResponseEntity<DeleteIndCustomerResponseDto> deleteCustomer(@RequestBody @Valid DeleteIndCustomerRequestDto deleteRequestDto) {
-        // Silme işlemini gerçekleştir
-        DeleteIndCustomerResponseDto responseDto = customerService.delete(deleteRequestDto);
-        return ResponseEntity.ok(responseDto);
+    @DeleteMapping("/{customerId}")
+    public ResponseEntity<DeleteCustomerResponseDto> deleteCustomer(@PathVariable Integer customerId) {
+        DeleteCustomerRequestDto request = new DeleteCustomerRequestDto(customerId);
+        DeleteCustomerResponseDto response = customerService.delete(request);
+        return ResponseEntity.ok(response);
     }
+
     @GetMapping("/{customerId}")
-    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable Integer customerId) {
-        Optional<Customer> customer = customerService.getCustomerById(customerId);
-        return ResponseEntity.ok(customer);
+    public ResponseEntity<CustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
+        Optional<CustomerResponseDto> customer = customerService.getById(customerId);
+        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @GetMapping
-    public ResponseEntity<List<ListIndCustomerResponseDto>> getAllCustomers() {
-        List<ListIndCustomerResponseDto> customers = customerService.getAll();
+    public ResponseEntity<List<CustomerResponseDto>> getAllCustomers() {
+        List<CustomerResponseDto> customers = customerService.getAll();
         return ResponseEntity.ok(customers);
     }
 }

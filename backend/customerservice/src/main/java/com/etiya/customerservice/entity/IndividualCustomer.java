@@ -27,7 +27,7 @@ public class IndividualCustomer extends Customer {
     @Column(name = "father_name")
     private String fatherName;
 
-    @ManyToOne
-    @JoinColumn(name = "gender_id", nullable = false)
-    private Gender gender;
+    //TODO: noluyo hocam
+    @Column(name = "gender_id")
+    private Integer genderId;
 }

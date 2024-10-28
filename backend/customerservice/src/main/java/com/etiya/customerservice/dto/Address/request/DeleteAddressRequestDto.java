@@ -15,6 +15,5 @@ import lombok.Setter;
 @AllArgsConstructor
 public class DeleteAddressRequestDto {
     @NotNull
-    @NotBlank
     private Integer addressId;
 }
