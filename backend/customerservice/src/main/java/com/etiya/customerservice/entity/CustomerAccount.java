@@ -12,14 +12,14 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Billing_Accounts")
+@Table(name = "Customer_Accounts")
 public class CustomerAccount extends BaseEntity {
-    @Column(name = "status")
-    private boolean status;
     @Column(name = "account_number")
     private String accountNumber;
     @Column(name = "account_name")
     private String accountName;
+    @Column(name = "status")
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
