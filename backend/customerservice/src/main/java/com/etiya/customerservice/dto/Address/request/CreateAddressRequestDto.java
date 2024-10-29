@@ -23,7 +23,12 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CreateAddressRequestDto {
     @NotNull
+    @NotBlank
+    private String description;
+    @NotNull
     private Integer customerId;
+    @NotNull
+    private Integer districtId;
     @NotNull
     @NotBlank
     private String street;
@@ -31,10 +36,5 @@ public class CreateAddressRequestDto {
     @NotBlank
     private String houseNumber;
     @NotNull
-    @NotBlank
-    private String description;
-    @NotNull
     private boolean isDefault;
-    @NotNull
-    private Integer districtId;
 }

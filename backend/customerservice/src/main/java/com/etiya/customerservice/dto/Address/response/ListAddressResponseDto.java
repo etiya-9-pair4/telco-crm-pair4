@@ -12,9 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ListAddressResponseDto {
     private Integer addressId;
+    private Integer customerId;
+    private String description;
     private Integer districtId;
     private String street;
     private String houseNumber;
-    private String description;
     private boolean isDefault;
 }

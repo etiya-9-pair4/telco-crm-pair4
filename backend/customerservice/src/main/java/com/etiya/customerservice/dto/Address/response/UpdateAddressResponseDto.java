@@ -19,8 +19,8 @@ public class UpdateAddressResponseDto {
     private Integer addressId;
     private Integer customerId;
     private Integer districtId;
+    private String description;
     private String street;
     private String houseNumber;
-    private String description;
     private boolean isDefault;
 }

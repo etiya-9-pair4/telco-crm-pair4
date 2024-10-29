@@ -12,11 +12,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DeleteAddressResponseDto {
-    private Integer addressId;
     private Integer customerId;
-    private String street;
-    private String houseNumber;
+    private Integer addressId;
     private String description;
-    private boolean isDefault;
-    private Integer districtId;
+
+
+
 }

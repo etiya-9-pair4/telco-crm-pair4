@@ -6,6 +6,7 @@ import com.etiya.customerservice.dto.Address.request.UpdateAddressRequestDto;
 import com.etiya.customerservice.dto.Address.response.*;
 import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Address;
+import com.etiya.customerservice.entity.Contact;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.mapper.AddressMapper;
 import com.etiya.customerservice.repository.AddressRepository.AddressRepository;
@@ -21,7 +22,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class AddressServiceImpl implements AddressService {
-    private final CustomerRepository customerRepository;
     private final AddressRepository addressRepository;
     private final AddressMapper addressMapper;
 
@@ -40,10 +40,11 @@ public class AddressServiceImpl implements AddressService {
     public UpdateAddressResponseDto update(UpdateAddressRequestDto updateAddressRequestDto) {
         Address existingAddress = addressRepository.findById(updateAddressRequestDto.getAddressId())
                 .orElseThrow(() -> new RuntimeException("Address not found"));
-        Address updatedAddress = addressMapper.addressFromUpdateRequest(updateAddressRequestDto);
-        updatedAddress.setId(existingAddress.getId());
+
+        Address updatedAddress = addressMapper.updateAddressFromRequest(updateAddressRequestDto, existingAddress);
         addressRepository.save(updatedAddress);
         return addressMapper.addressUpdateResponseFromAddress(updatedAddress);
+
     }
 
     @Transactional
@@ -56,7 +57,7 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public Optional<ListAddressResponseDto> getAddressById(Integer id) {
+    public Optional<ListAddressResponseDto> getById(Integer id) {
         Address address = addressRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Address not found"));
         ListAddressResponseDto addressResponseDto = addressMapper.addressResponseFromListAddress(address);
@@ -64,7 +65,14 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<ListAddressByCustomerIdResponseDto> getAllAddressesByCustomerId(Integer customerId) {
+    public List<ListAddressResponseDto> getAll() {
+        List<Address> addresses = addressRepository.findAll();
+        List<ListAddressResponseDto> responseDtos = addressMapper.addressResponseFromListAddress(addresses);
+        return responseDtos;
+    }
+
+    @Override
+    public List<ListAddressByCustomerIdResponseDto> findByCustomerId(Integer customerId) {
         List<Address> addresses = addressRepository.findByCustomer_Id(customerId);
         return addresses.stream()
                 .map(addressMapper::addressResponseFromListAddressByCustomerId)
@@ -72,13 +80,9 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public List<ListAddressResponseDto> findByCustomerId(Integer customerId) {
-        return null;
-    }
-
-    @Override
-    public Optional<ListAddressResponseDto> findByCustomerIdAndIsDefaultTrue(Integer customerId) {
-        return Optional.empty();
+    public Optional<ListAddressByCustomerIdResponseDto> findByCustomerIdAndIsDefaultTrue(Integer customerId) {
+        Optional<Address> addressOptional = addressRepository.findByCustomer_IdAndIsDefaultTrue(customerId);
+        return addressOptional.map(addressMapper::addressResponseFromListAddressByCustomerId);
     }
 
 }

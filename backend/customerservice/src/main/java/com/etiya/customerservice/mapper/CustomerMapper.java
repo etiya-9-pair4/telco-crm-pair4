@@ -25,5 +25,6 @@ public interface CustomerMapper {
     @Mapping(target = "customerId", source = "id")
     UpdateCustomerResponseDto toUpdateCustomerResponseDto(Customer customer);
 
+    @Mapping(target = "customerId", source = "id")
     CustomerResponseDto toCustomerResponseDto(Customer customer);
 }

@@ -19,12 +19,18 @@ import java.util.Optional;
 
 public interface AddressService {
     CreateAddressResponseDto add(CreateAddressRequestDto createAddressRequestDto);
+
     UpdateAddressResponseDto update(UpdateAddressRequestDto updateAddressRequestDto);
+
     DeleteAddressResponseDto delete(DeleteAddressRequestDto deleteAddressRequestDto);
 
-    Optional<ListAddressResponseDto> getAddressById(Integer id);
-    List<ListAddressByCustomerIdResponseDto> getAllAddressesByCustomerId(Integer customerId);
-    List<ListAddressResponseDto> findByCustomerId(Integer customerId);
-    Optional<ListAddressResponseDto> findByCustomerIdAndIsDefaultTrue(Integer customerId);
+    Optional<ListAddressResponseDto> getById(Integer id);
+
+    List<ListAddressResponseDto> getAll();
+
+
+    List<ListAddressByCustomerIdResponseDto> findByCustomerId(Integer customerId);
+
+    Optional<ListAddressByCustomerIdResponseDto> findByCustomerIdAndIsDefaultTrue(Integer customerId);
 }
 

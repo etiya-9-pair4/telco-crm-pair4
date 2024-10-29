@@ -18,21 +18,14 @@ import java.time.LocalDateTime;
 public class UpdateAddressRequestDto {
     @NotNull
     private Integer addressId;
+    private String description;
     @NotNull
     private Integer customerId;
     @NotNull
     private Integer districtId;
-    @NotNull
-    @NotBlank
     private String street;
-    @NotNull
-    @NotBlank
     private String houseNumber;
     @NotNull
-    @NotBlank
-    private String description;
-    @NotNull
-    @NotBlank
     private boolean isDefault;
 
 }

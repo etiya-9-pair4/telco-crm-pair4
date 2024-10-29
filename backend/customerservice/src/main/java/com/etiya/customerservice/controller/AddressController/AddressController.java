@@ -25,9 +25,8 @@ public class AddressController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PutMapping("/{addressId}")
-    public ResponseEntity<UpdateAddressResponseDto> updateAddress(@PathVariable Integer addressId, @RequestBody @Valid UpdateAddressRequestDto updateAddressRequestDto) {
-        updateAddressRequestDto.setAddressId(addressId); // ID'yi ayarlayın
+    @PutMapping()
+    public ResponseEntity<UpdateAddressResponseDto> updateAddress(@RequestBody @Valid UpdateAddressRequestDto updateAddressRequestDto) {
         UpdateAddressResponseDto responseDto = addressService.update(updateAddressRequestDto);
         return ResponseEntity.ok(responseDto);
     }
@@ -38,15 +37,29 @@ public class AddressController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/{addressId}")
-    public ResponseEntity<Optional<ListAddressResponseDto>> getAddressById(@PathVariable Integer addressId) {
-        Optional<ListAddressResponseDto> address = addressService.getAddressById(addressId);
+    @GetMapping()
+    public ResponseEntity<Optional<ListAddressResponseDto>> getById(@RequestParam Integer addressId) {
+        Optional<ListAddressResponseDto> address = addressService.getById(addressId);
         return ResponseEntity.ok(address);
     }
 
-    @GetMapping("/customer/{customerId}")
-    public ResponseEntity<List<ListAddressByCustomerIdResponseDto>> getAllAddressesByCustomerId(@PathVariable Integer customerId) {
-        List<ListAddressByCustomerIdResponseDto> addresses = addressService.getAllAddressesByCustomerId(customerId);
+    @GetMapping("/getAll")
+    public ResponseEntity<List<ListAddressResponseDto>> getAll() {
+        List<ListAddressResponseDto> addresses = addressService.getAll();
         return ResponseEntity.ok(addresses);
     }
+
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<ListAddressByCustomerIdResponseDto>> getAddressesByCustomerId(@PathVariable Integer customerId) {
+        List<ListAddressByCustomerIdResponseDto> addresses = addressService.findByCustomerId(customerId);
+        return ResponseEntity.ok(addresses);
+    }
+
+    @GetMapping("/{customerId}/default")
+    public ResponseEntity<ListAddressByCustomerIdResponseDto> getDefaultAddressByCustomerId(@PathVariable Integer customerId) {
+        Optional<ListAddressByCustomerIdResponseDto> addressOptional = addressService.findByCustomerIdAndIsDefaultTrue(customerId);
+        return addressOptional.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 }
