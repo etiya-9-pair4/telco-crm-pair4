@@ -7,6 +7,11 @@ export const routes: Routes = [
       import('../app/shared/shared.module').then((m) => m.SharedModule),
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('../app/shared/shared.module').then((m) => m.SharedModule),
+  },
+  {
     path: 'customer',
     loadChildren: () =>
       import('../app/features/customer/customer.module').then(
