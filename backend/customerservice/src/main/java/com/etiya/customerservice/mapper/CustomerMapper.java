@@ -4,6 +4,7 @@ import com.etiya.customerservice.dto.Customer.request.CreateCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.request.UpdateCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.response.CreateCustomerResponseDto;
 import com.etiya.customerservice.dto.Customer.response.CustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.ListCustomerResponseDto;
 import com.etiya.customerservice.dto.Customer.response.UpdateCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 import org.mapstruct.Mapper;
@@ -27,4 +28,11 @@ public interface CustomerMapper {
 
     @Mapping(target = "customerId", source = "id")
     CustomerResponseDto toCustomerResponseDto(Customer customer);
+
+    @Mapping(source = "customer.id", target = "customerId")
+    @Mapping(source = "individualCustomer.firstName", target = "firstName")
+    @Mapping(source = "individualCustomer.middleName", target = "middleName")
+    @Mapping(source = "individualCustomer.lastName", target = "lastName")
+    @Mapping(source = "individualCustomer.nationalityId", target = "nationalityId")
+    ListCustomerResponseDto toDto(Customer customer);
 }

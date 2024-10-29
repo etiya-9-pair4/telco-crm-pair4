@@ -1,5 +1,6 @@
 package com.etiya.customerservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +13,11 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "individual_customers")
 public class IndividualCustomer extends Customer {
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "id")
+    private Customer customer;
+
     @Column(name = "NAT_id", unique = true)
     private int nationalityId;
     @Column(name = "first_name")

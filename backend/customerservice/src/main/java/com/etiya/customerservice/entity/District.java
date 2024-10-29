@@ -1,5 +1,8 @@
 package com.etiya.customerservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,8 +27,10 @@ public class District {
 
     @ManyToOne
     @JoinColumn(name = "city_id", nullable = false)
+    @JsonBackReference
     private City city;
 
     @OneToMany(mappedBy = "district")
+    @JsonIgnore
     private List<Address> addresses;
 }

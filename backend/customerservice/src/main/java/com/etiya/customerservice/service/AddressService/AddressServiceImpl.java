@@ -73,7 +73,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public List<ListAddressByCustomerIdResponseDto> findByCustomerId(Integer customerId) {
-        List<Address> addresses = addressRepository.findByCustomer_Id(customerId);
+        List<Address> addresses = addressRepository.findByCustomerId(customerId);
         return addresses.stream()
                 .map(addressMapper::addressResponseFromListAddressByCustomerId)
                 .collect(Collectors.toList());
@@ -81,7 +81,7 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public Optional<ListAddressByCustomerIdResponseDto> findByCustomerIdAndIsDefaultTrue(Integer customerId) {
-        Optional<Address> addressOptional = addressRepository.findByCustomer_IdAndIsDefaultTrue(customerId);
+        Optional<Address> addressOptional = addressRepository.findByCustomerIdAndIsDefaultTrue(customerId);
         return addressOptional.map(addressMapper::addressResponseFromListAddressByCustomerId);
     }
 

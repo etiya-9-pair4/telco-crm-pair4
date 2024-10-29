@@ -3,13 +3,11 @@ package com.etiya.customerservice.controller.CustomerController.Customer;
 import com.etiya.customerservice.dto.Customer.request.CreateCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.request.DeleteCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.request.UpdateCustomerRequestDto;
-import com.etiya.customerservice.dto.Customer.response.CreateCustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.CustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.DeleteCustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.UpdateCustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.*;
 import com.etiya.customerservice.service.CustomerService.Customer.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +18,7 @@ import java.util.Optional;
 @RequestMapping("/api/customers")
 @RequiredArgsConstructor
 public class CustomerController {
+
     private final CustomerService customerService;
 
     @PostMapping
@@ -44,15 +43,22 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/{customerId}")
-    public ResponseEntity<CustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
-        Optional<CustomerResponseDto> customer = customerService.getById(customerId);
-        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+//    @GetMapping("/{customerId}")
+//    public ResponseEntity<CustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
+//        Optional<CustomerResponseDto> customer = customerService.getById(customerId);
+//        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+//    }
 
     @GetMapping
     public ResponseEntity<List<CustomerResponseDto>> getAllCustomers() {
         List<CustomerResponseDto> customers = customerService.getAll();
         return ResponseEntity.ok(customers);
     }
+
+
+    @GetMapping("/{customerId}")
+    public ListCustomerResponseDto getCustomerDetails( @PathVariable Integer customerId) {
+        return customerService.getCustomerDetails(customerId);
+    }
+
 }

@@ -60,7 +60,7 @@ public class ContactServiceImpl implements ContactService {
 
     @Override
     public List<ListContactByCustomerIdResponseDto> getAllContactsByCustomerId(Integer customerId) {
-        List<Contact> contacts = contactRepository.findByCustomer_Id(customerId);
+        List<Contact> contacts = contactRepository.findByCustomerId(customerId);
         return contacts.stream()
                 .map(contactMapper::contactResponseFromListContactByCustomerId)
                 .collect(Collectors.toList());

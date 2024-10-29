@@ -1,6 +1,8 @@
 package com.etiya.customerservice.entity;
 
 import com.etiya.customerservice.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,6 +31,7 @@ public class Contact extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "customer_id",nullable = false)
+    @JsonIgnore
     private Customer customer;
 
 

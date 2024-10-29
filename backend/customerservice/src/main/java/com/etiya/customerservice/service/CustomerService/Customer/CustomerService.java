@@ -3,10 +3,7 @@ package com.etiya.customerservice.service.CustomerService.Customer;
 import com.etiya.customerservice.dto.Customer.request.CreateCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.request.DeleteCustomerRequestDto;
 import com.etiya.customerservice.dto.Customer.request.UpdateCustomerRequestDto;
-import com.etiya.customerservice.dto.Customer.response.CreateCustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.CustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.DeleteCustomerResponseDto;
-import com.etiya.customerservice.dto.Customer.response.UpdateCustomerResponseDto;
+import com.etiya.customerservice.dto.Customer.response.*;
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
@@ -25,4 +22,6 @@ public interface CustomerService {
     DeleteCustomerResponseDto delete(DeleteCustomerRequestDto deleteCustomerRequestDto);
     Optional<CustomerResponseDto> getById(Integer id);
     List<CustomerResponseDto> getAll();
+
+    ListCustomerResponseDto getCustomerDetails(Integer id);
 }

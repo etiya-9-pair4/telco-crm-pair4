@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface ContactRepository extends JpaRepository<Contact, Integer> {
-    List<Contact> findByCustomer_Id(Integer customerId); // Belirli bir müşteri ID'sine göre iletişim bilgilerini alır.
+    List<Contact> findByCustomerId(Integer customerId); // Belirli bir müşteri ID'sine göre iletişim bilgilerini alır.
 }
