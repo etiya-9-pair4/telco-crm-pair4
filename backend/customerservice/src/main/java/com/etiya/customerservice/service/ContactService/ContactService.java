@@ -11,9 +11,14 @@ import java.util.Optional;
 
 public interface ContactService {
     CreateContactResponseDto add(CreateContactRequestDto createContactRequestDto);
+
     UpdateContactResponseDto update(UpdateContactRequestDto updateContactRequestDto);
+
     DeleteContactResponseDto delete(DeleteContactRequestDto deleteContactRequestDto);
-    Optional<ListContactResponseDto> getContactById(Integer id);
+
+    Optional<ListContactResponseDto> getById(Integer id);
+
     List<ListContactByCustomerIdResponseDto> getAllContactsByCustomerId(Integer customerId);
+
     List<ListContactResponseDto> getAll();
 }

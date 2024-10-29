@@ -34,8 +34,7 @@ public class ContactServiceImpl implements ContactService {
     public UpdateContactResponseDto update(UpdateContactRequestDto updateContactRequestDto) {
         Contact existingContact = contactRepository.findById(updateContactRequestDto.getContactId())
                 .orElseThrow(() -> new RuntimeException("Contact not found"));
-        Contact updatedContact = contactMapper.contactFromUpdateRequest(updateContactRequestDto);
-        updatedContact.setId(existingContact.getId());
+        Contact updatedContact = contactMapper.contactFromUpdateRequest(updateContactRequestDto, existingContact);
         contactRepository.save(updatedContact);
         return contactMapper.contactUpdateResponseFromContact(updatedContact);
     }
@@ -50,9 +49,12 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
-    public Optional<ListContactResponseDto> getContactById(Integer id) {
-        return contactRepository.findById(id)
-                .map(contactMapper::contactResponseFromListContact);
+    public Optional<ListContactResponseDto> getById(Integer id) {
+        Contact contact = contactRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Contact not found"));
+
+        ListContactResponseDto contactResponseDto = contactMapper.contactResponseFromListContact(contact);
+        return Optional.of(contactResponseDto);
     }
 
 
@@ -67,8 +69,8 @@ public class ContactServiceImpl implements ContactService {
     @Override
     public List<ListContactResponseDto> getAll() {
         List<Contact> contacts = contactRepository.findAll();
-        return contacts.stream()
-                .map(contactMapper::contactResponseFromListContact)
-                .collect(Collectors.toList());
+
+        List<ListContactResponseDto> responseDtos = contactMapper.contactResponseFromListContact(contacts);
+        return responseDtos;
     }
 }

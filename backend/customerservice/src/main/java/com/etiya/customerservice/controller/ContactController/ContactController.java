@@ -28,9 +28,8 @@ public class ContactController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PutMapping("/{contactId}")
-    public ResponseEntity<UpdateContactResponseDto> updateContact(@PathVariable Integer contactId, @RequestBody @Valid UpdateContactRequestDto updateContactRequestDto) {
-        updateContactRequestDto.setContactId(contactId); // ID'yi ayarlayın
+    @PutMapping()
+    public ResponseEntity<UpdateContactResponseDto> updateContact(@RequestBody @Valid UpdateContactRequestDto updateContactRequestDto) {
         UpdateContactResponseDto responseDto = contactService.update(updateContactRequestDto);
         return ResponseEntity.ok(responseDto);
     }
@@ -42,13 +41,13 @@ public class ContactController {
     }
 
     @GetMapping("/{contactId}")
-    public ResponseEntity<Optional<ListContactResponseDto>> getContactById(@PathVariable Integer contactId) {
-        Optional<ListContactResponseDto> contact = contactService.getContactById(contactId);
+    public ResponseEntity<Optional<ListContactResponseDto>> getById(@PathVariable Integer contactId) {
+        Optional<ListContactResponseDto> contact = contactService.getById(contactId);
         return ResponseEntity.ok(contact);
     }
 
     @GetMapping
-    public ResponseEntity<List<ListContactResponseDto>> getAllContacts() {
+    public ResponseEntity<List<ListContactResponseDto>> getAll() {
         List<ListContactResponseDto> contacts = contactService.getAll();
         return ResponseEntity.ok(contacts);
     }

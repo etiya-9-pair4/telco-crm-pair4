@@ -11,8 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListContactByCustomerIdResponseDto {
-    private Integer contactId;
     private Integer customerId;
+    private Integer contactId;
     private String email;
     private String mobilePhone;
     private String homePhone;
