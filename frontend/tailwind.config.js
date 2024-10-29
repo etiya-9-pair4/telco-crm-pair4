@@ -5,6 +5,10 @@ module.exports = {
     extend: {
       colors: {
         nav: "#242441",
+        tab: "#F38020B2",
+      },
+      height: {
+        tab: "480px",
       },
     },
   },

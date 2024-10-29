@@ -10,7 +10,6 @@ export class NavbarComponent implements OnInit {
   collapseInstances: { [key: string]: CollapseInterface } = {};
 
   ngOnInit() {
-    // Dropdownları başlatıyoruz
     this.initializeCollapse('b2c-toggle', 'b2c-link');
     this.initializeCollapse('b2b-toggle', 'b2b-link');
   }
