@@ -2,7 +2,7 @@ spring:
   application:
     name: identityservice
   config:
-    import: "optional:configserver:"
+    import: "configserver:"
   cloud:
     config:
       uri: http://localhost:8001

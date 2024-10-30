@@ -2,12 +2,6 @@ package com.etiya.customerservice.mapper;
 
 import com.etiya.customerservice.dto.Contact.request.*;
 import com.etiya.customerservice.dto.Contact.response.*;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Contact;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
