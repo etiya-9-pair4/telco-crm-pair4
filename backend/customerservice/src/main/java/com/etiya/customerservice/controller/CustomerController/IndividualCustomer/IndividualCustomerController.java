@@ -8,6 +8,7 @@ import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustom
 import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
+import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.service.CustomerService.IndividualCustomer.IndividualCustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -60,4 +61,10 @@ public class IndividualCustomerController {
         List<ListIndCustomerResponseDto> customers = individualCustomerService.getAll();
         return ResponseEntity.ok(customers);
     }
+    @GetMapping("/search")
+    public List<IndividualCustomer> getByFirstNameOrLastNameOrMiddleNameOrderById
+            (@RequestParam String firstName ,@RequestParam String lastName){
+        return individualCustomerService.findByFirstNameAndLastName(firstName , lastName);
+    }
+
 }

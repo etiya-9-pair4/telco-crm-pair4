@@ -1,7 +1,5 @@
 package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
-import com.etiya.customerservice.dto.Customer.request.CreateCustomerRequestDto;
-import com.etiya.customerservice.dto.Customer.response.CreateCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
@@ -11,11 +9,8 @@ import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomer
 import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
-import com.etiya.customerservice.mapper.CustomerMapper;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
-import com.etiya.customerservice.repository.CustomerRepository.CustomerRepository;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
-import com.etiya.customerservice.service.CustomerService.Customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -83,4 +78,12 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
                 .map(individualCustomerMapper::IndCustomerResponseFromCustomer)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<IndividualCustomer> findByFirstNameAndLastName(String firstName, String lastName) {
+        return individualCustomerRepository.findByFirstNameAndLastName(firstName, lastName);
+    }
+
+
+
 }

@@ -1,6 +1,7 @@
 package com.etiya.customerservice.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +17,7 @@ public class IndividualCustomer extends Customer {
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
+    @JsonIgnore
     private Customer customer;
 
     @Column(name = "NAT_id", unique = true)
