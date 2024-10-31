@@ -1,7 +1,6 @@
 package com.etiya.customerservice.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,9 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "individual_customers")
 public class IndividualCustomer extends Customer {
     @OneToOne
-    @MapsId
     @JoinColumn(name = "id")
-    @JsonIgnore
     private Customer customer;
 
     @Column(name = "NAT_id", unique = true)
@@ -34,8 +31,6 @@ public class IndividualCustomer extends Customer {
     private String motherName;
     @Column(name = "father_name")
     private String fatherName;
-
-    //TODO: noluyo hocam
     @Column(name = "gender_id")
     private Integer genderId;
 }

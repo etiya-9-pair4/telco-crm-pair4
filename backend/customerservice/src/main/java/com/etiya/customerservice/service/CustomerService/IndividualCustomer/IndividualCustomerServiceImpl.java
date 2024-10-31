@@ -27,7 +27,6 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
 
 
 
-    //TODO: Business Exception EKLE!!!!!!!
     @Transactional
     @Override
     public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {

@@ -7,7 +7,6 @@ import com.etiya.customerservice.dto.Customer.response.*;
 import com.etiya.customerservice.service.CustomerService.Customer.CustomerService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,7 +30,7 @@ public class CustomerController {
     public ResponseEntity<UpdateCustomerResponseDto> updateCustomer(
             @PathVariable Integer customerId,
             @RequestBody @Valid UpdateCustomerRequestDto request) {
-        request.setCustomerId(customerId); // URL'den alınan customerId'yi ayarlayın
+        request.setCustomerId(customerId);
         UpdateCustomerResponseDto response = customerService.update(request);
         return ResponseEntity.ok(response);
     }
@@ -43,11 +42,11 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
 
-//    @GetMapping("/{customerId}")
-//    public ResponseEntity<CustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
-//        Optional<CustomerResponseDto> customer = customerService.getById(customerId);
-//        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-//    }
+    @GetMapping("/{customerId}")
+    public ResponseEntity<CustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
+        Optional<CustomerResponseDto> customer = customerService.getById(customerId);
+        return customer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
 
     @GetMapping
     public ResponseEntity<List<CustomerResponseDto>> getAllCustomers() {
@@ -55,10 +54,5 @@ public class CustomerController {
         return ResponseEntity.ok(customers);
     }
 
-
-    @GetMapping("/{customerId}")
-    public ListCustomerResponseDto getCustomerDetails( @PathVariable Integer customerId) {
-        return customerService.getCustomerDetails(customerId);
-    }
 
 }

@@ -25,8 +25,8 @@ public class CustomerAccount extends BaseEntity {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
-//    @OneToMany(mappedBy = "customerAccount")
-//    private List<Address> address;
+    @OneToMany(mappedBy = "customerAccount")
+    private List<Address> address;
 
     @ManyToOne
     @JoinColumn(name = "type_id", nullable = false)
