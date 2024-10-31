@@ -23,5 +23,4 @@ public interface CustomerService {
     Optional<CustomerResponseDto> getById(Integer id);
     List<CustomerResponseDto> getAll();
 
-    ListCustomerResponseDto getCustomerDetails(Integer id);
 }

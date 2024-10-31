@@ -38,8 +38,11 @@ public class Address extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
-    @JsonIgnore
     private Customer customer;
+
+    @ManyToOne
+    @JoinColumn(name = "customer_account_id")
+    private CustomerAccount customerAccount;
 
 }
 

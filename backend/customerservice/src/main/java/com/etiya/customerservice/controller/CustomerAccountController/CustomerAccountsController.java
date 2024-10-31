@@ -38,7 +38,7 @@ public class CustomerAccountsController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/getById")
+    @PostMapping("/getById")
     public ResponseEntity<Optional<ListCustomerAccountResponseDto>> getCustomerAccountById(@RequestBody @Valid ListCustomerAccountRequestDto requestDto) {
         Optional<ListCustomerAccountResponseDto> cusromerAccounts = customerAccountService.getById(requestDto);
         return ResponseEntity.ok(cusromerAccounts);
