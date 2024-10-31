@@ -22,12 +22,12 @@ public class Customer extends BaseEntity {
     @JsonIgnore
 //    @JsonManagedReference
     private IndividualCustomer individualCustomer;
-//    @OneToMany(mappedBy = "customer")
-//    private List<Address> addresses;
-//
-//    @OneToMany(mappedBy = "customer")
-//    private List<Contact> contacts;
-//
-//    @OneToMany(mappedBy = "customer")
-//    private List<CustomerAccount> customerAccounts;
+    @OneToMany(mappedBy = "customer")
+    private List<Address> addresses;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Contact> contacts;
+
+    @OneToMany(mappedBy = "customer")
+    private List<CustomerAccount> customerAccounts;
 }
