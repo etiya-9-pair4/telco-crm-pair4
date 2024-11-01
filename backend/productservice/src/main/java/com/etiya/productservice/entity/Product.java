@@ -30,10 +30,10 @@ public class Product extends BaseEntity {
     private Catalog catalog;
 
     @OneToMany(mappedBy = "product")
-    private List<CampaignProduct> campaignProducts;
+    private List<ProductCharacteristicValue> productCharacteristicValues;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductCharacteristicValue> productCharacteristicValues;
+    private List<CampaignProduct> campaignProducts;
 
     @OneToMany(mappedBy = "product")
     private List<ProductOffer> productOffers;

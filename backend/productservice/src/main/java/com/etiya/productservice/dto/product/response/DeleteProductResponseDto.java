@@ -1,4 +1,4 @@
-package com.etiya.productservice.dto.response;
+package com.etiya.productservice.dto.product.response;
 
 import com.etiya.productservice.entity.CampaignProduct;
 import com.etiya.productservice.entity.Catalog;
@@ -18,13 +18,5 @@ import java.util.List;
 @AllArgsConstructor
 public class DeleteProductResponseDto {
     private Integer id;
-    private String name;
-    private BigDecimal price;
-    private Integer stock;
-    private Catalog catalog;
-    private List<ProductCharacteristicValue> productCharacteristicValues;
-    private List<CampaignProduct> campaignProducts;
-    private LocalDateTime createdDate;
-    private LocalDateTime updatedDate;
     private LocalDateTime deletedDate;
 }

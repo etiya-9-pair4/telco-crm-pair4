@@ -1,9 +1,11 @@
-package com.etiya.productservice.dto.request;
+package com.etiya.productservice.dto.product.request;
 
 import com.etiya.productservice.entity.CampaignProduct;
 import com.etiya.productservice.entity.Catalog;
 import com.etiya.productservice.entity.ProductCharacteristicValue;
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
@@ -14,7 +16,6 @@ import lombok.Setter;
 
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -22,22 +23,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateProductRequestDto {
-
-    @NotBlank
-    @NotNull
-    private String name;
-    @PositiveOrZero
-    private BigDecimal price;
-    @PositiveOrZero
-    private Integer stock;
-    @NotNull
-    @NotBlank
-    private Catalog catalog;
-    @NotBlank
-    private List<CampaignProduct> campaignProducts;
-//    @NotNull
-//    @NotBlank
-//    private List<ProductCharacteristicValue> productCharacteristicValues;
-
+public class DeleteProductRequestDto {
+    @NotNull(message = "Product ID cannot be null.")
+    private Integer id;
 }
