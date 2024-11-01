@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Catalog_Product_Offers")
+@Table(name="catalog_product_offers")
 public class CatalogProductOffer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

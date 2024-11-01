@@ -1,17 +1,17 @@
-package com.etiya.productservice.dto.product.response;
+package com.etiya.productservice.dto.catalogProductOffer.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class DeleteProductResponseDto {
+public class UpdateCatalogProductOfferResponseDto {
     private Integer id;
-    private LocalDateTime deletedDate;
+    private Long productOfferId;
+    private Long catalogId;
 }

@@ -5,21 +5,15 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.util.List;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Characteristic_Values")
+@Table(name = "characteristics_values") // İsim doğru
 public class CharacteristicValue {
-    public CharacteristicValue(Integer id) { // For ProductMapper.
-        this.id = id;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,5 +28,4 @@ public class CharacteristicValue {
     @ManyToOne
     @JoinColumn(name = "characteristic_id", nullable = false)
     private Characteristic characteristic;
-
 }

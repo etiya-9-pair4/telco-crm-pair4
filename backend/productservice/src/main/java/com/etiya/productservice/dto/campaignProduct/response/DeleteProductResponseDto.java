@@ -1,11 +1,9 @@
-package com.etiya.productservice.dto.product.response;
+package com.etiya.productservice.dto.campaignProduct.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -13,5 +11,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class DeleteProductResponseDto {
     private Integer id;
-    private LocalDateTime deletedDate;
+    private Long campaignId;
+    private Long productId;
 }

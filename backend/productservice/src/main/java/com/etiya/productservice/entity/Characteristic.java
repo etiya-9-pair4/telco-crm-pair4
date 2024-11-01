@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name="Characteristics")
+@Table(name="characteristics")
 public class Characteristic extends BaseEntity {
     @Column(name = "name")
     private String name;

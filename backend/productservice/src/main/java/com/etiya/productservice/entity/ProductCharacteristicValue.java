@@ -3,15 +3,12 @@ package com.etiya.productservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Product_Characteristic_Values")
+@Table(name = "product_characteristic_values") // "charecteristic" yazımı düzeltildi
 public class ProductCharacteristicValue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,8 +20,6 @@ public class ProductCharacteristicValue {
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "characteristic_id", nullable = false)
+    @JoinColumn(name = "char_value_id", nullable = false)
     private CharacteristicValue characteristicValue;
-
-
 }

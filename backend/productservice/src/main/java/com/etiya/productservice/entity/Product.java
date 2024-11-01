@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Products")
+@Table(name = "products")
 //TODO: characteristic_value relations
 public class Product extends BaseEntity {
 
@@ -26,14 +26,14 @@ public class Product extends BaseEntity {
     private Integer stock;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "catalog_id", nullable = false)
     private Catalog catalog;
 
     @OneToMany(mappedBy = "product")
-    private List<ProductCharacteristicValue> productCharacteristicValues;
+    private List<CampaignProduct> campaignProducts;
 
     @OneToMany(mappedBy = "product")
-    private List<CampaignProduct> campaignProducts;
+    private List<ProductCharacteristicValue> productCharacteristicValues;
 
     @OneToMany(mappedBy = "product")
     private List<ProductOffer> productOffers;

@@ -12,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class FilterProductResponseDto {
-    private List<ProductResponseDto> products;
+    private List<CreateProductResponseDto> products;
 }
