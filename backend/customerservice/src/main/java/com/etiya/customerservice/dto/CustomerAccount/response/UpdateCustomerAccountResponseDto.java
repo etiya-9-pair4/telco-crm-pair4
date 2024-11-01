@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -13,7 +15,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class UpdateCustomerAccountResponseDto {
     private Integer id;
-    private Integer customerId;
+    private List<Integer> addressIds;
     private Integer addressId;
     private Integer typeId;
     private String accountNumber;

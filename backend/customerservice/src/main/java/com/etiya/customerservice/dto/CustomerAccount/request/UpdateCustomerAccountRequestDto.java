@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,8 +19,7 @@ public class UpdateCustomerAccountRequestDto {
     private Integer id;
     @NotNull
     private Integer customerId;
-    @NotNull
-    private Integer addressId;
+    private List<Integer> addressIds;
     @NotNull
     private Integer typeId;
     private String accountNumber; //?
