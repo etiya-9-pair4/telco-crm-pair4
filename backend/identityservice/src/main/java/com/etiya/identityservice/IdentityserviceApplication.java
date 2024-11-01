@@ -1,6 +1,7 @@
 package com.etiya.identityservice;
 
-import io.github.macidko.annotations.EnableCore;
+
+import io.github.anilaygun.annotation.EnableCore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
