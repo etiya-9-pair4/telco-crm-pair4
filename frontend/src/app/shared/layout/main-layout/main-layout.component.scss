@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  background-image: url("/assets/images/bg.png");
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.5); /* Beyaz arka plan %50 opak */
+  height: 100vh;
+}
+.flex {
+  min-height: calc(100vh - 80px); /* Navbar yüksekliği kadar boşluk bırakın */
+}

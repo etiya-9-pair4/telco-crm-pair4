@@ -17,25 +17,15 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UpdateAddressRequestDto {
     @NotNull
-    @NotBlank
     private Integer addressId;
-    @NotNull
-    @NotBlank
-    private Integer customerId;
-    @NotNull
-    @NotBlank
-    private Integer districtId;
-    @NotNull
-    @NotBlank
-    private String street;
-    @NotNull
-    @NotBlank
-    private String houseNumber;
-    @NotNull
-    @NotBlank
     private String description;
     @NotNull
-    @NotBlank
+    private Integer customerId;
+    @NotNull
+    private Integer districtId;
+    private String street;
+    private String houseNumber;
+    @NotNull
     private boolean isDefault;
 
 }

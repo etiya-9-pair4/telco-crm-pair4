@@ -1,1 +1,340 @@
-<p>create-customer works!</p>
+<div
+  class="max-w-5xl pb-6 bg-white border border-gray-200 rounded-3xl :shadow dark:bg-gray-800 dark:border-gray-700"
+>
+  <div class="mb-4">
+    <ul
+      class="flex flex-wrap justify-center bg-tab -mb-px rounded-3xl text-sm font-medium text-center text-white"
+      id="tabs-example"
+      role="tablist"
+    >
+      <li class="me-2" role="presentation">
+        <button
+          class="inline-block rounded-t-lg border-b-2 border-transparent p-4"
+          id="profile-tab-example"
+          type="button"
+          role="tab"
+          aria-controls="profile-example"
+          aria-selected="true"
+        >
+          Customer Info
+        </button>
+      </li>
+      <li class="me-2" role="presentation">
+        <button
+          class="inline-block rounded-t-lg border-b-2 border-transparent p-4"
+          id="dashboard-tab-example"
+          type="button"
+          role="tab"
+          aria-controls="dashboard-example"
+          aria-selected="false"
+        >
+          Address
+        </button>
+      </li>
+      <li class="me-2" role="presentation">
+        <button
+          class="inline-block rounded-t-lg border-b-2 border-transparent p-4"
+          id="settings-tab-example"
+          type="button"
+          role="tab"
+          aria-controls="settings-example"
+          aria-selected="false"
+        >
+          Contact Medium
+        </button>
+      </li>
+    </ul>
+  </div>
+  <form id="mainForm">
+    <div id="tabContentExample">
+      <div
+        class="block rounded-lg px-40"
+        id="profile-example"
+        role="tabpanel"
+        aria-labelledby="profile-tab-example"
+      >
+        <div class="grid gap-x-40 gap-y-3 mb-4 md:grid-cols-2">
+          <div>
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >First name (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="text"
+              id="first_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="John"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="nat_id"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Nat ID (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="number"
+              id="nat_id"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="12345678901"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="middle_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Middle Name</label
+            >
+            <input
+              type="text"
+              id="middle_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Flowbite"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="birthdate"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Birth Date (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="date"
+              id="birthdate"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="123-45-678"
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              required
+            />
+          </div>
+
+          <div>
+            <label
+              for="last_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Last Name (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="text"
+              id="last_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Doe"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="mother_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Mother Name</label
+            >
+            <input
+              type="text"
+              id="mother_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+            />
+          </div>
+          <div>
+            <label
+              for="genders"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Gender (<span class="text-red-500">*</span>)</label
+            >
+            <select
+              id="genders"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            >
+              <option selected disabled>Select Option</option>
+              <option>Kadın</option>
+              <option value="US">Erkek</option>
+              <option value="CA">Belirtmek istemiyorum</option>
+            </select>
+          </div>
+          <div>
+            <label
+              for="father_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Father Name</label
+            >
+            <input
+              type="text"
+              id="father_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="block rounded-lg px-40"
+        id="dashboard-example"
+        role="tabpanel"
+        aria-labelledby="dashboard-tab-example"
+      >
+        <div class="grid gap-x-40 gap-y-3 mb-4 md:grid-cols-5">
+          <div class="col-span-3 md:col-span-3">
+            <!-- Soldaki 3 sütun -->
+            <div>
+              <label
+                for="genders"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >City (<span class="text-red-500">*</span>)</label
+              >
+              <select
+                id="genders"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected disabled>Select Option</option>
+                <option>İstanbul</option>
+                <option value="US">İzmir</option>
+                <option value="CA">Ankara</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="districts"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >District (<span class="text-red-500">*</span>)</label
+              >
+              <select
+                id="districts"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected disabled>Select Option</option>
+                <option>X</option>
+                <option value="US">Y</option>
+                <option value="CA">Z</option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="last_name"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >House / Flat Number (<span class="text-red-500">*</span
+                >)</label
+              >
+              <input
+                type="text"
+                id="last_name"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Doe"
+                required
+              />
+            </div>
+          </div>
+          <div class="col-span-2 md:col-span-2">
+            <!-- Sağdaki 2 sütun -->
+            <div>
+              <label
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Street</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write your Street here..."
+              ></textarea>
+            </div>
+            <div>
+              <label
+                for="message"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Address Description</label
+              >
+              <textarea
+                id="message"
+                rows="4"
+                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Write your Address Description here..."
+              ></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="block rounded-lg px-40"
+        id="settings-example"
+        role="tabpanel"
+        aria-labelledby="settings-tab-example"
+      >
+        <div class="grid gap-x-40 gap-y-3 mb-4 md:grid-cols-2">
+          <div>
+            <label
+              for="first_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >E-mail (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="example@gmail.com"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="nat_id"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Home Phone
+            </label>
+            <input
+              type="tel"
+              id="house_phone"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="312 234 5678"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="middle_name"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >GSM Number (<span class="text-red-500">*</span>)</label
+            >
+            <input
+              type="tel"
+              id="middle_name"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="555 555 5555"
+              required
+            />
+          </div>
+          <div>
+            <label
+              for="fax"
+              class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+              >Fax
+            </label>
+            <input
+              type="text"
+              id="fax"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder=""
+              pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+              required
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-6">
+      <button
+        type="submit"
+        class="mt-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+#F38020B2

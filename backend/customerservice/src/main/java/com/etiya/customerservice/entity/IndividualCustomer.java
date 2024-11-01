@@ -1,5 +1,6 @@
 package com.etiya.customerservice.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,6 +13,10 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "individual_customers")
 public class IndividualCustomer extends Customer {
+    @OneToOne
+    @JoinColumn(name = "id")
+    private Customer customer;
+
     @Column(name = "NAT_id", unique = true)
     private int nationalityId;
     @Column(name = "first_name")
@@ -26,8 +31,6 @@ public class IndividualCustomer extends Customer {
     private String motherName;
     @Column(name = "father_name")
     private String fatherName;
-
-    @ManyToOne
-    @JoinColumn(name = "gender_id", nullable = false)
-    private Gender gender;
+    @Column(name = "gender_id")
+    private Integer genderId;
 }

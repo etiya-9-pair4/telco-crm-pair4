@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class UpdateIndCustomerRequestDto {
     @NotNull
-    @NotBlank
     private Integer customerId;
     @NotBlank
     @NotNull
@@ -26,7 +25,6 @@ public class UpdateIndCustomerRequestDto {
     @NotBlank
     @NotNull
     private String lastName;
-    @NotBlank
     @NotNull
     private LocalDateTime dateOfBirth;
     @NotBlank
@@ -35,7 +33,6 @@ public class UpdateIndCustomerRequestDto {
     @NotBlank
     @NotNull
     private String fatherName;
-    @NotBlank
     @Positive
     private Integer genderId;
 //    @NotBlank

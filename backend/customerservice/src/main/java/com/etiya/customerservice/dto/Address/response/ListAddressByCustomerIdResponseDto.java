@@ -11,10 +11,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ListAddressByCustomerIdResponseDto {
-    private Integer customerId;
+    private Integer addressId;
+    private String description;
+    private Integer districtId;
     private String street;
     private String houseNumber;
-    private String description;
     private boolean isDefault;
-    private Integer districtId;
 }

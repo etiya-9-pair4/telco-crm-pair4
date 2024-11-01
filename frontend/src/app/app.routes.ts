@@ -1,13 +1,18 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
+  // {
+  //   path: '',
+  //   loadChildren: () =>
+  //     import('../app/shared/shared.module').then((m) => m.SharedModule),
+  // },
   {
-    path: '',
+    path: 'login',
     loadChildren: () =>
       import('../app/shared/shared.module').then((m) => m.SharedModule),
   },
   {
-    path: 'customer',
+    path: '',
     loadChildren: () =>
       import('../app/features/customer/customer.module').then(
         (m) => m.CustomerModule

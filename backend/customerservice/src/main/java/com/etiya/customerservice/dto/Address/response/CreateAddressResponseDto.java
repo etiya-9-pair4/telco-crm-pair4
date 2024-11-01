@@ -17,10 +17,11 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CreateAddressResponseDto {
     private Integer addressId;
+    private String description;
     private Integer customerId;
+    private Integer districtId;
     private String street;
     private String houseNumber;
-    private String description;
     private boolean isDefault;
-    private Integer districtId;
+
 }

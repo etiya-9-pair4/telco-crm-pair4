@@ -8,3 +8,7 @@ spring:
       uri: http://localhost:8001
       profile: dev
       label: main
+  datasource:
+    hikari:
+      connection-timeout=30000
+      maximum-pool-size=10

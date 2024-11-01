@@ -15,7 +15,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateOrderRequestDto {
-    @NotBlank
     @NotNull
     private Integer customerId;
     @NotBlank
