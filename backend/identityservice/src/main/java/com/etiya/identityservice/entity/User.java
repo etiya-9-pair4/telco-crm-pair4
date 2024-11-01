@@ -29,7 +29,7 @@ public class User implements UserDetails {
     private String username;
     @Column(name = "password")
     private String password;  //TODO: passwordHah/Salt?
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
     @Column(name = "created_date")
     private LocalDateTime createdDate;
