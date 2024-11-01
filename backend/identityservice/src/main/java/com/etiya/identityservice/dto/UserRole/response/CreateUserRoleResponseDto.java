@@ -1,8 +1,6 @@
-package com.etiya.identityservice.dto.UserRole.response;
-
+package com.etiya.identityservice.dto.userRole.response;
 import jakarta.validation.constraints.Positive;
 import jdk.jfr.BooleanFlag;
-
 public class CreateUserRoleResponseDto {
     @Positive
     private Integer id;

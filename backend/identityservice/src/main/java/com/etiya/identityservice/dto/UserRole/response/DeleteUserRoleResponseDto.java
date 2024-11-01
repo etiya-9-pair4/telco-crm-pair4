@@ -1,4 +1,3 @@
-package com.etiya.identityservice.dto.UserRole.response;
-
+package com.etiya.identityservice.dto.userRole.response;
 public class DeleteUserRoleResponseDto {
 }

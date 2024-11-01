@@ -1,11 +1,8 @@
-package com.etiya.identityservice.dto.User.request;
-
-
+package com.etiya.identityservice.dto.user.request;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 @Getter
 @Setter
 @NoArgsConstructor
