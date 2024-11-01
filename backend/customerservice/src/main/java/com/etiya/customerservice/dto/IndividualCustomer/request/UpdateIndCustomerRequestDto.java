@@ -18,20 +18,12 @@ import java.time.LocalDateTime;
 public class UpdateIndCustomerRequestDto {
     @NotNull
     private Integer customerId;
-    @NotBlank
-    @NotNull
+    private int nationalityId;
     private String firstName;
     private String middleName;
-    @NotBlank
-    @NotNull
     private String lastName;
-    @NotNull
     private LocalDateTime dateOfBirth;
-    @NotBlank
-    @NotNull
     private String motherName;
-    @NotBlank
-    @NotNull
     private String fatherName;
     @Positive
     private Integer genderId;

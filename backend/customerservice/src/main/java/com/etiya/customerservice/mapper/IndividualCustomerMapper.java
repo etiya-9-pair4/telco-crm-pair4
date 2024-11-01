@@ -24,7 +24,7 @@ public interface IndividualCustomerMapper {
     CreateIndCustomerResponseDto IndCustomerCreateResponseFromCustomer(IndividualCustomer individualCustomer);
 
     // update
-    void IndCustomerFromUpdateRequest(UpdateIndCustomerRequestDto updateIndCustomerRequestDto,
+    IndividualCustomer IndCustomerFromUpdateRequest(UpdateIndCustomerRequestDto updateIndCustomerRequestDto,
                                       @MappingTarget IndividualCustomer individualCustomer);
     UpdateIndCustomerResponseDto IndCustomerUpdateResponseFromCustomer(IndividualCustomer individualCustomer);
 
