@@ -11,6 +11,7 @@ import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
+import com.etiya.customerservice.rule.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,19 +25,19 @@ import java.util.stream.Collectors;
 public class IndividualCustomerServiceImpl implements IndividualCustomerService {
     private final IndividualCustomerRepository individualCustomerRepository;
     private final IndividualCustomerMapper individualCustomerMapper;
-
+    private final CustomerBusinessRules customerBusinessRules;
 
 
     @Transactional
     @Override
     public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {
-//        businessRules.checkIfNationalityIdExists(createIndCustomerRequestDto.getNationalityId());
+        //Nationality ID check
+        customerBusinessRules.customerWithSameNationalityId(createIndCustomerRequestDto.getNationalityId());
 
         IndividualCustomer individualCustomer = individualCustomerMapper
                 .IndCustomerFromCreateRequest(createIndCustomerRequestDto);
 
         IndividualCustomer savedCustomer = individualCustomerRepository.save(individualCustomer);
-
         return individualCustomerMapper.IndCustomerCreateResponseFromCustomer(savedCustomer);
     }
 
@@ -45,6 +46,8 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
         IndividualCustomer existingCustomer = individualCustomerRepository.findById(updateIndCustomerRequestDto.getCustomerId())
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
+        //Nationality ID check
+        customerBusinessRules.customerWithSameNationalityId(updateIndCustomerRequestDto.getNationalityId());
         individualCustomerMapper.IndCustomerFromUpdateRequest(updateIndCustomerRequestDto, existingCustomer);
         IndividualCustomer updatedCustomer = individualCustomerRepository.save(existingCustomer);
 
@@ -56,8 +59,9 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto) {
         IndividualCustomer individualCustomer = individualCustomerRepository.findById(deleteIndCustomerRequestDto.getCustomerId())
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
-        individualCustomerRepository.delete(individualCustomer);
+        customerBusinessRules.checkIfCustomerIsActive(individualCustomer.getId());
 
+        individualCustomerRepository.delete(individualCustomer);
         return individualCustomerMapper.IndCustomerDeleteResponseFromCustomer(individualCustomer);
     }
 
@@ -82,7 +86,6 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public List<IndividualCustomer> findByFirstNameAndLastName(String firstName, String lastName) {
         return individualCustomerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
-
 
 
 }

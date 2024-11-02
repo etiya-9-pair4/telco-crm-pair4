@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"io.github.macidko","l":"App"},{"p":"io.github.macidko.security","l":"BaseJwtService"},{"p":"io.github.macidko.security","l":"BaseSecurityConfiguration"}];updateSearchResults();

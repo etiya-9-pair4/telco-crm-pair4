@@ -7,6 +7,7 @@ import com.etiya.customerservice.dto.Customer.response.*;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.mapper.CustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.CustomerRepository;
+import com.etiya.customerservice.rule.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

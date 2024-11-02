@@ -18,11 +18,12 @@
         <option value="$PROJECT_DIR$/core/pom.xml" />
         <option value="$PROJECT_DIR$/common/pom.xml" />
         <option value="$PROJECT_DIR$/cartservice/pom.xml" />
+        <option value="$PROJECT_DIR$/../../core/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/common/pom.xml" />
+        <option value="$PROJECT_DIR$/../../core/pom.xml" />
         <option value="$PROJECT_DIR$/core/pom.xml" />
         <option value="$PROJECT_DIR$/../core/pom.xml" />
         <option value="$PROJECT_DIR$/../etiya-9-microservices/core/pom.xml" />

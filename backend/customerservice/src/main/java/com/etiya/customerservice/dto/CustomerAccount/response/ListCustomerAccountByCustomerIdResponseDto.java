@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 
 @Getter
 @Setter
@@ -12,7 +14,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ListCustomerAccountByCustomerIdResponseDto {
     private Integer id;
-    private Integer addressId;
+    private List<Integer> addressIds;
     private Integer typeId;
     private String accountNumber;
     private String accountName;

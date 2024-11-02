@@ -8,9 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="configserver" />
+        <module name="common" />
         <module name="eureka" />
         <module name="gateway" />
         <module name="cartservice" />
+      </profile>
+      <profile name="Annotation profile for OrderService" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
+        </processorPath>
+        <module name="orderservice" />
+        <module name="identityservice" />
       </profile>
       <profile name="Annotation profile for productservice" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
@@ -25,19 +36,8 @@
         <module name="customerservice" />
         <module name="productservice" />
       </profile>
-      <profile name="Annotation profile for identityservice" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="false">
-          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
-        </processorPath>
-        <module name="identityservice" />
-        <module name="orderservice" />
-      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="common" target="19" />
       <module name="core" target="19" />
       <module name="core (1) (io.github.macidko)" target="19" />
     </bytecodeTargetLevel>
