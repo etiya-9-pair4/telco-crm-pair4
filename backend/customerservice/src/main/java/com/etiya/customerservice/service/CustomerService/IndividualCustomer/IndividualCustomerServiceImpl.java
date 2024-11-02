@@ -2,12 +2,12 @@ package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
 import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
-import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -27,16 +26,12 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     private final IndividualCustomerMapper individualCustomerMapper;
     private final CustomerBusinessRules customerBusinessRules;
 
-
     @Transactional
     @Override
     public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {
-        //Nationality ID check
         customerBusinessRules.customerWithSameNationalityId(createIndCustomerRequestDto.getNationalityId());
 
-        IndividualCustomer individualCustomer = individualCustomerMapper
-                .IndCustomerFromCreateRequest(createIndCustomerRequestDto);
-
+        IndividualCustomer individualCustomer = individualCustomerMapper.IndCustomerFromCreateRequest(createIndCustomerRequestDto);
         IndividualCustomer savedCustomer = individualCustomerRepository.save(individualCustomer);
         return individualCustomerMapper.IndCustomerCreateResponseFromCustomer(savedCustomer);
     }
@@ -44,39 +39,44 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     @Transactional
     @Override
     public UpdateIndCustomerResponseDto update(UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
-        IndividualCustomer existingCustomer = individualCustomerRepository.findById(updateIndCustomerRequestDto.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
-        //Nationality ID check
+        customerBusinessRules.checkIfCustomerExists(updateIndCustomerRequestDto.getCustomerId());
+        IndividualCustomer existingCustomer = individualCustomerRepository.getCustomerById(updateIndCustomerRequestDto.getCustomerId());
         customerBusinessRules.customerWithSameNationalityId(updateIndCustomerRequestDto.getNationalityId());
+
         individualCustomerMapper.IndCustomerFromUpdateRequest(updateIndCustomerRequestDto, existingCustomer);
         IndividualCustomer updatedCustomer = individualCustomerRepository.save(existingCustomer);
-
         return individualCustomerMapper.IndCustomerUpdateResponseFromCustomer(updatedCustomer);
     }
 
     @Transactional
     @Override
     public DeleteIndCustomerResponseDto delete(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto) {
-        IndividualCustomer individualCustomer = individualCustomerRepository.findById(deleteIndCustomerRequestDto.getCustomerId())
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
-        customerBusinessRules.checkIfCustomerIsActive(individualCustomer.getId());
+        customerBusinessRules.checkIfCustomerExists(deleteIndCustomerRequestDto.getCustomerId());
+        customerBusinessRules.checkIfCustomerIsActive(deleteIndCustomerRequestDto.getCustomerId());
+        customerBusinessRules.checkIfCustomerHasCustomerAccount(deleteIndCustomerRequestDto.getCustomerId());
 
+        IndividualCustomer individualCustomer = individualCustomerRepository.getCustomerById(deleteIndCustomerRequestDto.getCustomerId());
         individualCustomerRepository.delete(individualCustomer);
         return individualCustomerMapper.IndCustomerDeleteResponseFromCustomer(individualCustomer);
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Integer id) {
-        IndividualCustomer individualCustomer = individualCustomerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+    public ListIndCustomerResponseDto getById(ListIndCustomerRequestDto listIndCustomerRequestDto) {
+        customerBusinessRules.checkIfCustomerExists(listIndCustomerRequestDto.getCustomerId());
+        IndividualCustomer customer = individualCustomerMapper.IndCustomerFromListRequest(listIndCustomerRequestDto);
+        return individualCustomerMapper.IndCustomerResponseFromCustomer(customer);
+    }
 
-        return Optional.ofNullable(individualCustomer);
+    @Override
+    public IndividualCustomer getCustomerById(Integer id) {
+        customerBusinessRules.checkIfCustomerExists(id);
+        IndividualCustomer individualCustomer = individualCustomerRepository.getCustomerById(id);
+        return individualCustomer;
     }
 
     @Override
     public List<ListIndCustomerResponseDto> getAll() {
         List<IndividualCustomer> individualCustomers = individualCustomerRepository.findAll();
-
         return individualCustomers.stream()
                 .map(individualCustomerMapper::IndCustomerResponseFromCustomer)
                 .collect(Collectors.toList());
@@ -86,6 +86,4 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public List<IndividualCustomer> findByFirstNameAndLastName(String firstName, String lastName) {
         return individualCustomerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
-
-
 }

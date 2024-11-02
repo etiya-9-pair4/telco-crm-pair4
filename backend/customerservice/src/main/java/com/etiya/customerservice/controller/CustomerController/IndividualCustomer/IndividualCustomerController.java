@@ -44,8 +44,8 @@ public class IndividualCustomerController {
         return ResponseEntity.ok(responseDto);
     }
     @GetMapping("/{customerId}")
-    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable Integer customerId) {
-        Optional<Customer> customer = individualCustomerService.getCustomerById(customerId);
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer customerId) {
+        Customer customer = individualCustomerService.getCustomerById(customerId);
         return ResponseEntity.ok(customer);
     }
 //TODO: IndividualCustomerController getCustomerById geri dönüş tipini düzelt.

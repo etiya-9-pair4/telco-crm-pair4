@@ -7,5 +7,5 @@ import java.util.Optional;
 
 public interface IndividualCustomerRepository extends CustomerRepository<IndividualCustomer>{
     List<IndividualCustomer> findByFirstNameAndLastName(String firstName, String lastName);
-    Optional<IndividualCustomer> findByNationalityId(Integer nationalityId);
+    IndividualCustomer findByNationalityId(Integer nationalityId);
 }

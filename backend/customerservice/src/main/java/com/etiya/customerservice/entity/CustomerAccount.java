@@ -15,7 +15,7 @@ import java.util.List;
 @Table(name = "Customer_Accounts")
 public class CustomerAccount extends BaseEntity {
     @Column(name = "account_number")
-    private String accountNumber;
+    private Integer accountNumber;
     @Column(name = "account_name")
     private String accountName;
     @Column(name = "status")

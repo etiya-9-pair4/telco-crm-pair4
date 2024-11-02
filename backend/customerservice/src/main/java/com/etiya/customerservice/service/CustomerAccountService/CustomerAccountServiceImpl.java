@@ -5,6 +5,7 @@ import com.etiya.customerservice.dto.CustomerAccount.response.*;
 import com.etiya.customerservice.entity.CustomerAccount;
 import com.etiya.customerservice.mapper.CustomerAccountMapper;
 import com.etiya.customerservice.repository.CustomerAccountRepository.CustomerAccountRepository;
+import com.etiya.customerservice.rule.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,7 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
 
     private final CustomerAccountRepository customerAccountRepository;
     private final CustomerAccountMapper customerAccountMapper;
+    private final CustomerBusinessRules customerBusinessRules;
 
     @Transactional
     @Override
@@ -27,18 +29,19 @@ public class CustomerAccountServiceImpl implements CustomerAccountService {
 
         //Business codes. -> Gözden geçirilmeli!
         customerAccount.setStatus(true);
-        if (requestDto.getAccountNumber() == null || requestDto.getAccountNumber().isEmpty()) {
-            customerAccount.setAccountNumber("00000000");
-        } else {
-            customerAccount.setAccountNumber(requestDto.getAccountNumber());
-        }
+//        if (requestDto.getAccountNumber() == null || requestDto.getAccountNumber().isEmpty()) {
+//            int accNo=1000000000;
+//            customerAccount.setAccountNumber(accNo);
+//        } else {
+//            customerAccount.setAccountNumber(requestDto.getAccountNumber());
+//        }
 
         customerAccountRepository.save(customerAccount);
-
-        if ("00000000".equals(customerAccount.getAccountNumber())) {
-            customerAccount.setAccountNumber("00000000" + customerAccount.getId());
-            customerAccountRepository.save(customerAccount);
-        }
+//
+//        if ("00000000".equals(customerAccount.getAccountNumber())) {
+//            customerAccount.setAccountNumber("00000000" + customerAccount.getId());
+//            customerAccountRepository.save(customerAccount);
+//        }
         return customerAccountMapper.customerAccountCreateResponseFromEntity(customerAccount);
     }
 
