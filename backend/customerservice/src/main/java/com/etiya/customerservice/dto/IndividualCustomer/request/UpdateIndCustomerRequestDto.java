@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class UpdateIndCustomerRequestDto {
     @NotNull
     private Integer customerId;
-    private int nationalityId;
+    private long nationalityId;
     private String firstName;
     private String middleName;
     private String lastName;

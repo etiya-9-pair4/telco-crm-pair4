@@ -3,11 +3,7 @@ package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
-import com.etiya.customerservice.entity.Customer;
+import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
@@ -16,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -33,6 +30,8 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public CreateIndCustomerResponseDto add(CreateIndCustomerRequestDto createIndCustomerRequestDto) {
         //Nationality ID check
         customerBusinessRules.customerWithSameNationalityId(createIndCustomerRequestDto.getNationalityId());
+        customerBusinessRules.validateNationalityIdLength(createIndCustomerRequestDto.getNationalityId());
+        customerBusinessRules.customerAgeMustBeAbove18(createIndCustomerRequestDto.getDateOfBirth().toLocalDate());
 
         IndividualCustomer individualCustomer = individualCustomerMapper
                 .IndCustomerFromCreateRequest(createIndCustomerRequestDto);
@@ -61,14 +60,20 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
         customerBusinessRules.checkIfCustomerIsActive(individualCustomer.getId());
 
-        individualCustomerRepository.delete(individualCustomer);
+        IndividualCustomer individualCustomer = individualCustomerRepository.getCustomerById(deleteIndCustomerRequestDto.getCustomerId());
+        // individualCustomerRepository.delete(individualCustomer);
+        individualCustomer.setDeletedDate(LocalDateTime.now());
+        individualCustomerRepository.save(individualCustomer);
         return individualCustomerMapper.IndCustomerDeleteResponseFromCustomer(individualCustomer);
     }
 
     @Override
-    public Optional<Customer> getCustomerById(Integer id) {
-        IndividualCustomer individualCustomer = individualCustomerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Customer not found"));
+    public CustomerResponseDto getById(ListIndCustomerRequestDto listIndCustomerRequestDto) {
+        customerBusinessRules.checkIfCustomerExists(listIndCustomerRequestDto.getCustomerId());
+        IndividualCustomer customer = individualCustomerMapper.IndCustomerFromListRequest(listIndCustomerRequestDto);
+        IndividualCustomer individualCustomers = individualCustomerRepository.getReferenceById(customer.getId());
+        return individualCustomerMapper.IndCustomerResponseFromCustomerId(individualCustomers);
+    }
 
         return Optional.ofNullable(individualCustomer);
     }
@@ -87,5 +92,11 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
         return individualCustomerRepository.findByFirstNameAndLastName(firstName, lastName);
     }
 
-
+    @Override
+    public List<ListIndCustomerResponseDto> findAllByDeletedDateIsNull() {
+        List<IndividualCustomer> individualCustomers = individualCustomerRepository.findAllByDeletedDateIsNull();
+        return individualCustomers.stream()
+                .map(individualCustomerMapper::IndCustomerResponseFromCustomer)
+                .collect(Collectors.toList());
+    }
 }
