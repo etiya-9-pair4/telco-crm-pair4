@@ -22,6 +22,4 @@ public class Type extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "type")
-    private List<CustomerAccount> customerAccounts;
 }

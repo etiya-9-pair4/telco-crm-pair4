@@ -2,11 +2,9 @@ package com.etiya.customerservice.controller.CustomerController.IndividualCustom
 
 import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.service.CustomerService.IndividualCustomer.IndividualCustomerService;
@@ -43,28 +41,35 @@ public class IndividualCustomerController {
         DeleteIndCustomerResponseDto responseDto = individualCustomerService.delete(deleteRequestDto);
         return ResponseEntity.ok(responseDto);
     }
-    @GetMapping("/{customerId}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer customerId) {
-        Customer customer = individualCustomerService.getCustomerById(customerId);
-        return ResponseEntity.ok(customer);
+
+    @GetMapping("/{customerId}") // For OpenFeign
+    public ResponseEntity<IndividualCustomer> getCustomerById(@PathVariable Integer customerId) {
+        IndividualCustomer individualCustomer = individualCustomerService.getCustomerById(customerId);
+        return ResponseEntity.ok(individualCustomer);
     }
-//TODO: IndividualCustomerController getCustomerById geri dönüş tipini düzelt.
-//    @GetMapping("/{customerId}")
-//    public ResponseEntity<ListIndCustomerResponseDto> getCustomerById(@PathVariable Integer customerId) {
-//        Optional<ListIndCustomerResponseDto> customer = individualCustomerService.getCustomerById(customerId);
-//        return customer.map(ResponseEntity::ok)
-//                .orElseGet(() -> ResponseEntity.notFound().build());
-//    }
+
+    @PostMapping("/getById")
+    public ResponseEntity<CustomerResponseDto> getById(@RequestBody @Valid ListIndCustomerRequestDto listIndCustomerRequestDto) {
+        CustomerResponseDto responseDto = individualCustomerService.getById(listIndCustomerRequestDto);
+        return ResponseEntity.ok(responseDto);
+    }
 
     @GetMapping
     public ResponseEntity<List<ListIndCustomerResponseDto>> getAllCustomers() {
         List<ListIndCustomerResponseDto> customers = individualCustomerService.getAll();
         return ResponseEntity.ok(customers);
     }
+
+    @GetMapping("/active")
+    public ResponseEntity<List<ListIndCustomerResponseDto>> getAllActiveCustomers() {
+        List<ListIndCustomerResponseDto> activeCustomers = individualCustomerService.findAllByDeletedDateIsNull();
+        return ResponseEntity.ok(activeCustomers);
+    }
+
     @GetMapping("/search")
     public List<IndividualCustomer> getByFirstNameOrLastNameOrMiddleNameOrderById
-            (@RequestParam String firstName ,@RequestParam String lastName){
-        return individualCustomerService.findByFirstNameAndLastName(firstName , lastName);
+            (@RequestParam String firstName, @RequestParam String lastName) {
+        return individualCustomerService.findByFirstNameAndLastName(firstName, lastName);
     }
 
 }
