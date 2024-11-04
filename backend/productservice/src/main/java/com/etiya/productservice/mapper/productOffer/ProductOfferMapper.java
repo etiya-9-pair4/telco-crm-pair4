@@ -1,4 +1,4 @@
-package com.etiya.productservice.mapper.productoffer;
+package com.etiya.productservice.mapper.productOffer;
 
 import com.etiya.productservice.dto.productoffer.request.CreateProductOfferRequestDto;
 import com.etiya.productservice.dto.productoffer.request.DeleteProductOfferRequestDto;
@@ -6,7 +6,6 @@ import com.etiya.productservice.dto.productoffer.request.UpdateProductOfferReque
 import com.etiya.productservice.dto.productoffer.response.*;
 import com.etiya.productservice.entity.ProductOffer;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;

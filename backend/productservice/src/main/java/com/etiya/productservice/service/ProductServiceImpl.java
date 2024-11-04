@@ -45,18 +45,21 @@ public class ProductServiceImpl implements ProductService {
         Product product = productRepository.findById(requestDto.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getId()));
 
-        productRepository.delete(product);
-        return productMapper.toDeleteProductResponseDto(product);
+        // Soft delete: deletedDate'yi güncelleyin
+        product.onDelete(); // BaseEntity'den çağırabilirsiniz
+        Product updatedProduct = productRepository.save(product); // Güncellenmiş ürünü kaydedin
+
+        return productMapper.toDeleteProductResponseDto(updatedProduct);
     }
 
     @Override
     public ListProductResponseDto getById(ListProductRequestDto requestDto) {
         Product product = productRepository.findById(requestDto.getProductId())
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getProductId()));
-
-        ListProductResponseDto responseDto = productMapper.toListProductResponseDto(product);
-        return responseDto;
+        ProductResponseDto productResponseDto = productMapper.toProductResponseDto(product);
+        return new ListProductResponseDto(productResponseDto);
     }
+
 
     @Override
     public FilterProductResponseDto filterProducts(FilterProductRequestDto requestDto) {

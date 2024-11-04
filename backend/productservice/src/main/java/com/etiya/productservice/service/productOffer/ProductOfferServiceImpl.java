@@ -1,4 +1,4 @@
-package com.etiya.productservice.service.productoffer;
+package com.etiya.productservice.service.productOffer;
 
 import com.etiya.productservice.dto.productoffer.request.CreateProductOfferRequestDto;
 import com.etiya.productservice.dto.productoffer.request.UpdateProductOfferRequestDto;
@@ -7,8 +7,8 @@ import com.etiya.productservice.dto.productoffer.response.DeleteProductOfferResp
 import com.etiya.productservice.dto.productoffer.response.ProductOfferResponseDto;
 import com.etiya.productservice.dto.productoffer.response.ListProductOffersResponseDto;
 import com.etiya.productservice.entity.ProductOffer;
-import com.etiya.productservice.mapper.productoffer.ProductOfferMapper;
-import com.etiya.productservice.repository.productoffer.ProductOfferRepository;
+import com.etiya.productservice.mapper.productOffer.ProductOfferMapper;
+import com.etiya.productservice.repository.productOffer.ProductOfferRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

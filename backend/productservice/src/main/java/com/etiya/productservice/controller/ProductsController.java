@@ -45,8 +45,13 @@ public class ProductsController {
     @GetMapping("/getById")
     public ResponseEntity<ListProductResponseDto> getById(@RequestBody @Valid ListProductRequestDto requestDto) {
         ListProductResponseDto responseDto = productService.getById(requestDto);
-        return ResponseEntity.ok(responseDto);
+        if (responseDto != null) {
+            return ResponseEntity.ok(responseDto);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     @GetMapping
     public ResponseEntity<List<ListProductResponseDto>> getAll() {

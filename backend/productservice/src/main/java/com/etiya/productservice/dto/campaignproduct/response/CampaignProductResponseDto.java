@@ -1,4 +1,4 @@
-package com.etiya.productservice.dto.campaignproduct.response;
+package com.etiya.productservice.dto.campaignProduct.response;
 
 import com.etiya.productservice.entity.Campaign;
 import com.etiya.productservice.entity.Product;

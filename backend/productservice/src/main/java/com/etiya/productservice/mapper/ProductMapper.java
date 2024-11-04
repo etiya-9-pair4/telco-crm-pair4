@@ -4,15 +4,14 @@ import com.etiya.productservice.dto.product.request.*;
 import com.etiya.productservice.dto.product.response.*;
 import com.etiya.productservice.entity.*;
 import org.mapstruct.*;
-
 import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface ProductMapper {
-
     // Create
     @Mapping(target = "catalog.id", source = "catalogId")
     @Mapping(target = "productCharacteristicValues", expression = "java(mapCharacteristicValues(createProductRequestDto.getCharacteristicValueIds(), product))")
+    @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(createProductRequestDto.getCampaignIds(), product))") // Güncellendi
     Product toEntity(CreateProductRequestDto createProductRequestDto);
 
     @Mapping(target = "catalogId", source = "catalog.id")
@@ -20,12 +19,12 @@ public interface ProductMapper {
 
     // Delete
     Product toEntity(DeleteProductRequestDto deleteProductRequestDto);
-
     DeleteProductResponseDto toDeleteProductResponseDto(Product product);
 
     // Update
     @Mapping(target = "catalog.id", source = "catalogId")
     @Mapping(target = "productCharacteristicValues", expression = "java(mapCharacteristicValues(updateProductRequestDto.getCharacteristicValueIds(), product))")
+    @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(updateProductRequestDto.getCampaignIds(), product))") // Güncellendi
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     Product toEntity(UpdateProductRequestDto updateProductRequestDto);
 
@@ -35,24 +34,20 @@ public interface ProductMapper {
     // Filter Product
     @Mapping(target = "catalog.id", source = "catalogId")
     @Mapping(target = "productCharacteristicValues", expression = "java(mapCharacteristicValues(filterProductRequestDto.getCharacteristicValueIds(), product))")
-    @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(filterProductRequestDto.getCampaignIds(), product))")
+    @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(filterProductRequestDto.getCampaignIds(), product))") // Güncellendi
     Product toEntity(FilterProductRequestDto filterProductRequestDto);
 
     // List Product
     @Mapping(target = "id", source = "productId")
     Product toEntity(ListProductRequestDto listProductRequestDto);
-
     @Mapping(target = "catalogId", source = "catalog.id")
     @Mapping(target = "characteristicValueIds", expression = "java(mapCharacteristicValueIds(product))")
     @Mapping(target = "campaignIds", expression = "java(mapCampaignIds(product))")
     ProductResponseDto toProductResponseDto(Product product);
-
     List<ProductResponseDto> toProductResponseDtoList(List<Product> products);
-
-
     ListProductResponseDto toListProductResponseDto(Product product);
-
     List<ListProductResponseDto> toListProductResponseDtoList(List<Product> products);
+    ListProductResponseDto toListProductResponseDto(ProductResponseDto productResponseDto);
 
 
     // Default methods for transforming characteristics and campaigns

@@ -1,4 +1,4 @@
-package com.etiya.productservice.dto.campaignproduct.response;
+package com.etiya.productservice.dto.campaignProduct.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

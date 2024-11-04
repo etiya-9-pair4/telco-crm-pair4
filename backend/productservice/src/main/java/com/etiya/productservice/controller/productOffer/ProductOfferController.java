@@ -1,4 +1,4 @@
-package com.etiya.productservice.controller.productoffer;
+package com.etiya.productservice.controller.productOffer;
 
 import com.etiya.productservice.dto.productoffer.request.CreateProductOfferRequestDto;
 import com.etiya.productservice.dto.productoffer.request.UpdateProductOfferRequestDto;
@@ -6,7 +6,7 @@ import com.etiya.productservice.dto.productoffer.response.CreateProductOfferResp
 import com.etiya.productservice.dto.productoffer.response.DeleteProductOfferResponseDto;
 import com.etiya.productservice.dto.productoffer.response.ListProductOffersResponseDto;
 import com.etiya.productservice.dto.productoffer.response.ProductOfferResponseDto;
-import com.etiya.productservice.service.productoffer.ProductOfferService;
+import com.etiya.productservice.service.productOffer.ProductOfferService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

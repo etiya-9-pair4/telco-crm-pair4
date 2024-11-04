@@ -1,4 +1,4 @@
-package com.etiya.productservice.controller.characteristicvalue;
+package com.etiya.productservice.controller.characteristicValue;
 
 
 import com.etiya.productservice.dto.characteristicValue.request.CreateCharacteristicValueRequestDto;
@@ -9,7 +9,7 @@ import com.etiya.productservice.dto.characteristicValue.response.CreateCharacter
 import com.etiya.productservice.dto.characteristicValue.response.DeleteCharacteristicValueResponseDto;
 import com.etiya.productservice.dto.characteristicValue.response.ListCharacteristicValueResponseDto;
 import com.etiya.productservice.dto.characteristicValue.response.UpdateCharacteristicValueResponseDto;
-import com.etiya.productservice.service.characteristicvalue.CharacteristicValueService;
+import com.etiya.productservice.service.characteristicValue.CharacteristicValueService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

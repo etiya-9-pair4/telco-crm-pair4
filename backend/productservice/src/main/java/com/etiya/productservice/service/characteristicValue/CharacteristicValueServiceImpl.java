@@ -1,4 +1,4 @@
-package com.etiya.productservice.service.characteristicvalue;
+package com.etiya.productservice.service.characteristicValue;
 
 import com.etiya.productservice.dto.characteristicValue.request.CreateCharacteristicValueRequestDto;
 import com.etiya.productservice.dto.characteristicValue.request.DeleteCharacteristicValueRequestDto;
@@ -8,10 +8,9 @@ import com.etiya.productservice.dto.characteristicValue.response.CreateCharacter
 import com.etiya.productservice.dto.characteristicValue.response.DeleteCharacteristicValueResponseDto;
 import com.etiya.productservice.dto.characteristicValue.response.ListCharacteristicValueResponseDto;
 import com.etiya.productservice.dto.characteristicValue.response.UpdateCharacteristicValueResponseDto;
-import com.etiya.productservice.entity.Characteristic;
 import com.etiya.productservice.entity.CharacteristicValue;
-import com.etiya.productservice.mapper.characteristicvalue.CharacteristicValueMapper;
-import com.etiya.productservice.repository.characteristicvalue.CharacteristicValueRepository;
+import com.etiya.productservice.mapper.characteristicValue.CharacteristicValueMapper;
+import com.etiya.productservice.repository.characteristicValue.CharacteristicValueRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

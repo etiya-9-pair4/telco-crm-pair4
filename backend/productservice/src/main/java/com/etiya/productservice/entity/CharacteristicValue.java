@@ -29,7 +29,7 @@ public class CharacteristicValue {
     private String value;
 
     @OneToMany(mappedBy = "characteristicValue")
-    private List<ProductCharacteristicValue> characteristicValues;
+    private List<ProductCharacteristicValue> productCharacteristicValues;
 
     @ManyToOne
     @JoinColumn(name = "characteristic_id", nullable = false)

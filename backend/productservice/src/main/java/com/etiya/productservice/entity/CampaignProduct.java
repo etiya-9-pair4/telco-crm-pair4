@@ -28,7 +28,7 @@ public class CampaignProduct {
 
     @ManyToOne
     @JoinColumn(name = "product_id",nullable = false)
-    @JsonBackReference // Çocuk tarafı
+//    @JsonBackReference("product-reference") // Unique reference name
     private Product product;
 
 }

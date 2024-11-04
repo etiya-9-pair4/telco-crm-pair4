@@ -1,4 +1,4 @@
-package com.etiya.productservice.dto.campaignproduct.request;
+package com.etiya.productservice.dto.campaignProduct.request;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;

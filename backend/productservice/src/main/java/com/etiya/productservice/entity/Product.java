@@ -30,11 +30,11 @@ public class Product extends BaseEntity {
     @JoinColumn(name = "catalog_id", nullable = false)
     private Catalog catalog;
 
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductCharacteristicValue> productCharacteristicValues;
 
-    @OneToMany(mappedBy = "product")
-    @JsonManagedReference // Ebeveyn tarafı
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    @JsonManagedReference("product-reference") // Matching reference name
     private List<CampaignProduct> campaignProducts;
 
     @OneToMany(mappedBy = "product")

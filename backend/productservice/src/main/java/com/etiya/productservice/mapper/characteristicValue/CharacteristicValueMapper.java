@@ -1,4 +1,4 @@
-package com.etiya.productservice.mapper.characteristicvalue;
+package com.etiya.productservice.mapper.characteristicValue;
 
 import com.etiya.productservice.dto.characteristicValue.request.CreateCharacteristicValueRequestDto;
 import com.etiya.productservice.dto.characteristicValue.request.DeleteCharacteristicValueRequestDto;

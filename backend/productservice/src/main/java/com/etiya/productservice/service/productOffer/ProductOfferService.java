@@ -1,4 +1,4 @@
-package com.etiya.productservice.service.productoffer;
+package com.etiya.productservice.service.productOffer;
 
 import com.etiya.productservice.dto.productoffer.request.CreateProductOfferRequestDto;
 import com.etiya.productservice.dto.productoffer.request.UpdateProductOfferRequestDto;
@@ -6,8 +6,6 @@ import com.etiya.productservice.dto.productoffer.response.CreateProductOfferResp
 import com.etiya.productservice.dto.productoffer.response.DeleteProductOfferResponseDto;
 import com.etiya.productservice.dto.productoffer.response.ListProductOffersResponseDto;
 import com.etiya.productservice.dto.productoffer.response.ProductOfferResponseDto;
-
-import java.util.List;
 
 public interface ProductOfferService {
     CreateProductOfferResponseDto createProductOffer(CreateProductOfferRequestDto createDto);

@@ -37,5 +37,6 @@ public class CreateProductRequestDto {
     @NotNull(message = "Characteristic Value IDs cannot be null.")
     @Size(min = 1, message = "At least one Characteristic Value ID must be provided.")
     private List<Integer> characteristicValueIds; // Product ile CharacteristicValue ilişkisi için
+    private List<Integer> campaignIds; // Product ile CharacteristicValue ilişkisi için
 
 }

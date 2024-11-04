@@ -1,16 +1,15 @@
-package com.etiya.productservice.service.campaignproduct;
+package com.etiya.productservice.service.campaignProduct;
 
 
-import com.etiya.productservice.dto.campaignproduct.request.CreateCampaignProductRequestDto;
-import com.etiya.productservice.dto.campaignproduct.request.DeleteCampaignProductRequestDto;
-import com.etiya.productservice.dto.campaignproduct.request.UpdateCampaignProductRequestDto;
-import com.etiya.productservice.dto.campaignproduct.response.CampaignProductResponseDto;
-import com.etiya.productservice.dto.campaignproduct.response.CreateCampaignProductResponseDto;
-import com.etiya.productservice.dto.campaignproduct.response.UpdateCampaignProductResponseDto;
-import com.etiya.productservice.entity.Campaign;
+import com.etiya.productservice.dto.campaignProduct.request.CreateCampaignProductRequestDto;
+import com.etiya.productservice.dto.campaignProduct.request.DeleteCampaignProductRequestDto;
+import com.etiya.productservice.dto.campaignProduct.request.UpdateCampaignProductRequestDto;
+import com.etiya.productservice.dto.campaignProduct.response.CampaignProductResponseDto;
+import com.etiya.productservice.dto.campaignProduct.response.CreateCampaignProductResponseDto;
+import com.etiya.productservice.dto.campaignProduct.response.UpdateCampaignProductResponseDto;
 import com.etiya.productservice.entity.CampaignProduct;
-import com.etiya.productservice.mapper.campaignproduct.CampaignProductMapper;
-import com.etiya.productservice.repository.campaignproduct.CampaignProductRepository;
+import com.etiya.productservice.mapper.campaignProduct.CampaignProductMapper;
+import com.etiya.productservice.repository.campaignProduct.CampaignProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

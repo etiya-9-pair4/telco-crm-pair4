@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @Getter
@@ -21,4 +22,5 @@ public class CreateProductResponseDto {
     private Integer stock;
     private Integer catalogId;
     private LocalDateTime createdDate;
+//    private List<Integer> characteristicValueIds;
 }

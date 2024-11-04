@@ -26,4 +26,5 @@ public class UpdateProductRequestDto {
     @NotNull(message = "Catalog ID cannot be null.")
     private Integer catalogId;
     private List<Integer> characteristicValueIds;
+    private List<Integer> campaignIds;
 }

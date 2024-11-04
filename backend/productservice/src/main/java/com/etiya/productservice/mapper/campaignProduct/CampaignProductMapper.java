@@ -1,8 +1,8 @@
-package com.etiya.productservice.mapper.campaignproduct;
+package com.etiya.productservice.mapper.campaignProduct;
 
-import com.etiya.productservice.dto.campaignproduct.request.CreateCampaignProductRequestDto;
-import com.etiya.productservice.dto.campaignproduct.request.UpdateCampaignProductRequestDto;
-import com.etiya.productservice.dto.campaignproduct.response.*;
+import com.etiya.productservice.dto.campaignProduct.request.CreateCampaignProductRequestDto;
+import com.etiya.productservice.dto.campaignProduct.request.UpdateCampaignProductRequestDto;
+import com.etiya.productservice.dto.campaignProduct.response.*;
 import com.etiya.productservice.entity.CampaignProduct;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
