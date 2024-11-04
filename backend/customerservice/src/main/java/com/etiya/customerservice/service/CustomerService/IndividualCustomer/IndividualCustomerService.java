@@ -1,9 +1,6 @@
 package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
-import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.*;
 import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.IndividualCustomer;
 
@@ -27,6 +24,8 @@ public interface IndividualCustomerService {
 
 
     //List<ListIndCustomerResponseDto> getByName(String name);
+
+    List<SearchIndividualCustomerResponseDto> searchCustomers(SearchIndividualCustomerRequestDto searchDto);
 
 
 }

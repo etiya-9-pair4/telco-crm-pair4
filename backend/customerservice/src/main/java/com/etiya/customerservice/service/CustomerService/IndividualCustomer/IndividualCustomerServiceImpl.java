@@ -1,15 +1,14 @@
 package com.etiya.customerservice.service.CustomerService.IndividualCustomer;
 
-import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.*;
 import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.IndividualCustomer;
 import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
 import com.etiya.customerservice.rule.CustomerBusinessRules;
+import com.etiya.customerservice.spec.CustomerSpecifications;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,6 +22,15 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     private final IndividualCustomerRepository individualCustomerRepository;
     private final IndividualCustomerMapper individualCustomerMapper;
     private final CustomerBusinessRules customerBusinessRules;
+
+    @Override
+    public List<SearchIndividualCustomerResponseDto> searchCustomers(SearchIndividualCustomerRequestDto searchDto) {
+        Specification<IndividualCustomer> spec = CustomerSpecifications.createSpecification(searchDto);
+        List<IndividualCustomer> customers = individualCustomerRepository.findAll(spec);
+        return customers.stream()
+                .map(individualCustomerMapper::toSearchResponseDto)
+                .collect(Collectors.toList());
+    }
 
     @Transactional
     @Override

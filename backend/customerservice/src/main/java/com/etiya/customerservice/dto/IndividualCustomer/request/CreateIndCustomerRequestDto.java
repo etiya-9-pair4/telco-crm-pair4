@@ -15,7 +15,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CreateIndCustomerRequestDto {
     @NotNull
-    @Size(min = 11, max = 11)
     private long nationalityId;
     @NotBlank
     @NotNull
