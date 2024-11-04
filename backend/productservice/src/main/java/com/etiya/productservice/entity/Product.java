@@ -1,6 +1,7 @@
 package com.etiya.productservice.entity;
 
 import com.etiya.productservice.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,14 +27,15 @@ public class Product extends BaseEntity {
     private Integer stock;
 
     @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    @JoinColumn(name = "catalog_id", nullable = false)
     private Catalog catalog;
 
-    @OneToMany(mappedBy = "product")
-    private List<CampaignProduct> campaignProducts;
-
-    @OneToMany(mappedBy = "product")
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
     private List<ProductCharacteristicValue> productCharacteristicValues;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+//    @JsonManagedReference("product-reference") // Matching reference name
+    private List<CampaignProduct> campaignProducts;
 
     @OneToMany(mappedBy = "product")
     private List<ProductOffer> productOffers;

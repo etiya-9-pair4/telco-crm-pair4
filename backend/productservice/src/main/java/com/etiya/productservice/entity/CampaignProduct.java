@@ -1,5 +1,7 @@
 package com.etiya.productservice.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,10 +23,12 @@ public class CampaignProduct {
 
     @ManyToOne
     @JoinColumn(name = "campaign_id",nullable = false)
+    @JsonBackReference // Çocuk tarafı
     private Campaign campaign;
 
     @ManyToOne
     @JoinColumn(name = "product_id",nullable = false)
+//    @JsonBackReference("product-reference") // Unique reference name
     private Product product;
 
 }

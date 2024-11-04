@@ -1,9 +1,7 @@
 package com.etiya.productservice.core.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 
 import java.time.LocalDateTime;
@@ -12,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @MappedSuperclass
 public abstract class BaseEntity {
     @Id
@@ -27,4 +26,19 @@ public abstract class BaseEntity {
 
     @Column(name = "deleted_date")
     private LocalDateTime deletedDate;
+
+    @PrePersist
+    protected void onCreate() {
+        createdDate = LocalDateTime.now();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        updatedDate = LocalDateTime.now();
+    }
+
+    @PreRemove
+    public void onDelete() {
+        deletedDate = LocalDateTime.now();
+    }
 }

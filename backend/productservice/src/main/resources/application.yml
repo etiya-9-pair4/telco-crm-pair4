@@ -8,3 +8,7 @@ spring:
       uri: http://localhost:8001
       profile: dev
       label: main
+  security:
+    user:
+      name: admin
+      password: admin

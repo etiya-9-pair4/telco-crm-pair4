@@ -3,15 +3,13 @@ package com.etiya.productservice.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
-
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Product_Charecteristic_Values")
+@Table(name = "Product_Characteristic_Values")
 public class ProductCharacteristicValue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,6 +23,4 @@ public class ProductCharacteristicValue {
     @ManyToOne
     @JoinColumn(name = "characteristic_id", nullable = false)
     private CharacteristicValue characteristicValue;
-
-
 }

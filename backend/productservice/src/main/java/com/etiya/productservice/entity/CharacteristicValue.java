@@ -14,8 +14,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Charecteristic_Values")
+@Table(name = "Characteristic_Values")
 public class CharacteristicValue {
+    public CharacteristicValue(Integer id) { // For ProductMapper.
+        this.id = id;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +29,10 @@ public class CharacteristicValue {
     private String value;
 
     @OneToMany(mappedBy = "characteristicValue")
-    private List<ProductCharacteristicValue> characteristicValues;
+    private List<ProductCharacteristicValue> productCharacteristicValues;
 
     @ManyToOne
     @JoinColumn(name = "characteristic_id", nullable = false)
     private Characteristic characteristic;
+
 }

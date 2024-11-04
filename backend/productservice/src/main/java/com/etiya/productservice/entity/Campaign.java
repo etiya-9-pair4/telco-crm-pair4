@@ -1,6 +1,7 @@
 package com.etiya.productservice.entity;
 
 import com.etiya.productservice.core.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,6 +15,10 @@ import java.util.List;
 @Entity
 @Table(name = "Campaigns")
 public class Campaign extends BaseEntity {
+    public Campaign(Integer id) {
+        super.setId(id); // For ProductMapper.
+    }
+
     @Column(name = "name")
     private String name;
 
@@ -33,5 +38,6 @@ public class Campaign extends BaseEntity {
     private short discountRate;
 
     @OneToMany(mappedBy = "campaign")
+    @JsonManagedReference // Ebeveyn tarafı
     private List<CampaignProduct> campaignProducts;
 }
