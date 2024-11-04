@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpdateIndCustomerResponseDto {
-    private int nationalityId;
+    private long nationalityId;
     private String firstName;
     private String middleName;
     private String lastName;
@@ -23,4 +23,5 @@ public class UpdateIndCustomerResponseDto {
     private String motherName;
     private String fatherName;
     private Integer genderId;
+    private LocalDateTime updatedDate;
 }

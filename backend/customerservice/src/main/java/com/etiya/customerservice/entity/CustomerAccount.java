@@ -4,6 +4,7 @@ import com.etiya.customerservice.core.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
@@ -28,8 +29,7 @@ public class CustomerAccount extends BaseEntity {
     @OneToMany(mappedBy = "customerAccount")
     private List<Address> addresses;
 
-    @ManyToOne
-    @JoinColumn(name = "type_id", nullable = false)
-    private Type type;
+    private Integer typeId;
+
 
 }

@@ -24,7 +24,7 @@ public class ListIndCustomerResponseDto {
     private String firstName;
     private String middleName;
     private String lastName;
-    private int nationalityId;
+    private long nationalityId;
     private List<ListContactResponseDto> contacts;
     private List<ListAddressResponseDto> addresses;
     private List<ListCustomerAccountResponseDto> customerAccounts;

@@ -31,20 +31,19 @@ public class CorporateCustomerController {
 
     @PutMapping("/{customerId}")
     public ResponseEntity<UpdateIndCustomerResponseDto> updateCustomer(@RequestBody @Valid UpdateIndCustomerRequestDto updateIndCustomerRequestDto) {
-        updateIndCustomerRequestDto.setCustomerId(updateIndCustomerRequestDto.getCustomerId()); // ID'yi ayarlayın
+        updateIndCustomerRequestDto.setCustomerId(updateIndCustomerRequestDto.getCustomerId());
         UpdateIndCustomerResponseDto responseDto = customerService.update(updateIndCustomerRequestDto);
         return ResponseEntity.ok(responseDto);
     }
 
     @DeleteMapping
     public ResponseEntity<DeleteIndCustomerResponseDto> deleteCustomer(@RequestBody @Valid DeleteIndCustomerRequestDto deleteRequestDto) {
-        // Silme işlemini gerçekleştir
         DeleteIndCustomerResponseDto responseDto = customerService.delete(deleteRequestDto);
         return ResponseEntity.ok(responseDto);
     }
     @GetMapping("/{customerId}")
-    public ResponseEntity<Optional<Customer>> getCustomerById(@PathVariable Integer customerId) {
-        Optional<Customer> customer = customerService.getCustomerById(customerId);
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Integer customerId) {
+        Customer customer = customerService.getCustomerById(customerId);
         return ResponseEntity.ok(customer);
     }
 
