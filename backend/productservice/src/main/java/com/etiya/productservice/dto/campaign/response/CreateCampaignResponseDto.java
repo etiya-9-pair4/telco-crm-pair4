@@ -12,7 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateCampaignResponseDto {
-    private Integer id;
     private String name;
     private boolean status;
     private LocalDateTime startDate;

@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Campaigns")
+@Table(name = "campaigns")
 public class Campaign extends BaseEntity {
     public Campaign(Integer id) {
         super.setId(id); // For ProductMapper.

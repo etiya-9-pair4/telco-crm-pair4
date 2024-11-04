@@ -42,7 +42,7 @@ public class CharacteristicValuesController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @PostMapping("/getById")
+    @GetMapping("/getById")
     public ResponseEntity<ListCharacteristicValueResponseDto> getById(@RequestBody @Valid ListCharacteristicValueRequestDto requestDto) {
         ListCharacteristicValueResponseDto responseDto = characteristicValueService.getById(requestDto);
         return ResponseEntity.ok(responseDto);
