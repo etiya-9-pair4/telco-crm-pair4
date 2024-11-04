@@ -16,7 +16,7 @@ public interface ContactService {
 
     DeleteContactResponseDto delete(DeleteContactRequestDto deleteContactRequestDto);
 
-    Optional<ListContactResponseDto> getById(Integer id);
+    ListContactResponseDto getById(Integer id);
 
     List<ListContactByCustomerIdResponseDto> getAllContactsByCustomerId(Integer customerId);
 

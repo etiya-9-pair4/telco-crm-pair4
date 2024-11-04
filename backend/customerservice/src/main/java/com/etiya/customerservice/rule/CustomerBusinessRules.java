@@ -13,7 +13,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Component
 public class CustomerBusinessRules {
-
     private final IndividualCustomerRepository individualCustomerRepository;
 
     public void customerWithSameNationalityId(long nationalityId) {
@@ -24,9 +23,8 @@ public class CustomerBusinessRules {
     }
 
     public void checkIfCustomerIsActive(Integer customerId) {
-        Optional<IndividualCustomer> individualCustomer = individualCustomerRepository.getCustomerById(customerId);
-
-        if (individualCustomer.isPresent() && individualCustomer.get().getDeletedDate() != null) {
+        IndividualCustomer individualCustomer = individualCustomerRepository.getCustomerById(customerId);
+        if (individualCustomer.getDeletedDate() != null) {
             throw new BusinessException("Customer is already inactive.");
         }
     }

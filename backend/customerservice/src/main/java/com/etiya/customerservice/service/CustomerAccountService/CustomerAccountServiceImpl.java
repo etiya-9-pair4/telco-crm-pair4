@@ -6,6 +6,7 @@ import com.etiya.customerservice.entity.CustomerAccount;
 import com.etiya.customerservice.entity.Type;
 import com.etiya.customerservice.mapper.CustomerAccountMapper;
 import com.etiya.customerservice.repository.CustomerAccountRepository.CustomerAccountRepository;
+import com.etiya.customerservice.rule.CustomerBusinessRules;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
