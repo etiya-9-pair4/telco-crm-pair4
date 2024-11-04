@@ -7,10 +7,7 @@ import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustome
 import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
 import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.CreateIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.DeleteIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.ListIndCustomerResponseDto;
-import com.etiya.customerservice.dto.IndividualCustomer.response.UpdateIndCustomerResponseDto;
+import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.*;
 import org.mapstruct.*;
 
@@ -21,22 +18,28 @@ import java.util.stream.Collectors;
 public interface IndividualCustomerMapper {
     // create
     IndividualCustomer IndCustomerFromCreateRequest(CreateIndCustomerRequestDto createIndCustomerRequestDto);
+
     CreateIndCustomerResponseDto IndCustomerCreateResponseFromCustomer(IndividualCustomer individualCustomer);
 
     // update
     IndividualCustomer IndCustomerFromUpdateRequest(UpdateIndCustomerRequestDto updateIndCustomerRequestDto,
-                                      @MappingTarget IndividualCustomer individualCustomer);
+                                                    @MappingTarget IndividualCustomer individualCustomer);
+
     UpdateIndCustomerResponseDto IndCustomerUpdateResponseFromCustomer(IndividualCustomer individualCustomer);
 
     // delete
     @Mapping(target = "id", source = "customerId")
     IndividualCustomer IndCustomerFromDeleteRequest(DeleteIndCustomerRequestDto deleteIndCustomerRequestDto);
+
     @Mapping(target = "customerId", source = "id")
     DeleteIndCustomerResponseDto IndCustomerDeleteResponseFromCustomer(IndividualCustomer individualCustomer);
 
     // GetById
     @Mapping(target = "id", source = "customerId")
     IndividualCustomer IndCustomerFromListRequest(ListIndCustomerRequestDto listIndCustomerRequestDto);
+
+    @Mapping(target = "customerId", source = "id")
+    CustomerResponseDto IndCustomerResponseFromCustomerId(IndividualCustomer individualCustomer);
 
     // Main mapping
     @Mapping(target = "customerId", source = "id")
@@ -57,15 +60,14 @@ public interface IndividualCustomerMapper {
 
 
     @Mapping(target = "addressIds", source = "addresses", qualifiedByName = "mapAddressIds")
-    @Mapping(target = "typeId", source = "type.id")
     ListCustomerAccountResponseDto mapCustomerAccount(CustomerAccount customerAccount);
 
     // Get(List)
     @Mapping(target = "id", source = "customerId")
     List<IndividualCustomer> IndCustomerFromListRequest(List<ListIndCustomerRequestDto> listIndCustomerRequestDto);
+
     List<ListIndCustomerResponseDto> IndCustomerResponseFromListCustomer(List<IndividualCustomer> individualCustomer);
 
-    // Adres ID'lerini liste olarak döndürür.
     @Named("mapAddressIds")
     static List<Integer> mapAddressIds(List<Address> addresses) {
         return addresses.stream().map(Address::getId).collect(Collectors.toList());

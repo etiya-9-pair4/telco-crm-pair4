@@ -1,9 +1,7 @@
 package com.etiya.customerservice.dto.IndividualCustomer.request;
 
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,15 +15,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class CreateIndCustomerRequestDto {
     @NotNull
-    private int nationalityId;
+    @Size(min = 11, max = 11)
+    private long nationalityId;
     @NotBlank
     @NotNull
     private String firstName;
+    @NotBlank
     private String middleName;
     @NotBlank
     @NotNull
     private String lastName;
     @NotNull
+    @Past
     private LocalDateTime dateOfBirth;
     @NotBlank
     @NotNull
@@ -35,6 +36,5 @@ public class CreateIndCustomerRequestDto {
     private String fatherName;
     @Positive
     private Integer genderId;
-    // FR'a göre!
 
 }

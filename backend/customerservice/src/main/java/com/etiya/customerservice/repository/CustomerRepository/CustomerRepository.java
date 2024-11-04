@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomerRepository<T extends Customer> extends JpaRepository<T, Integer> {
-    Optional<T> getCustomerById(Integer customerId);
+    T getCustomerById(Integer customerId);
 
-    List<Customer> findAllByDeletedDateIsNull();
+    List<T> findAllByDeletedDateIsNull();
 }
 
 
