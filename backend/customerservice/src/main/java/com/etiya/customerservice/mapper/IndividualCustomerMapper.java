@@ -16,6 +16,26 @@ import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface IndividualCustomerMapper {
+
+    @Mapping(target = "customerId", source = "id")
+    @Mapping(target = "nationalityId", source = "nationalityId")
+    @Mapping(target = "accountNumber", source = "customerAccounts", qualifiedByName = "mapFirstAccountNumber")
+    @Mapping(target = "firstName", source = "firstName")
+    @Mapping(target = "middleName", source = "middleName")
+    @Mapping(target = "lastName", source = "lastName")
+    @Mapping(target = "mobilePhone", source = "contacts", qualifiedByName = "mapFirstMobilePhone")
+    SearchIndividualCustomerResponseDto toSearchResponseDto(IndividualCustomer individualCustomer);
+
+    @Named("mapFirstAccountNumber")
+    static String mapFirstAccountNumber(List<CustomerAccount> customerAccounts) {
+        return customerAccounts != null && !customerAccounts.isEmpty() ? customerAccounts.get(0).getAccountNumber() : null;
+    }
+
+    @Named("mapFirstMobilePhone")
+    static String mapFirstMobilePhone(List<Contact> contacts) {
+        return contacts != null && !contacts.isEmpty() ? contacts.get(0).getMobilePhone() : null;
+    }
+
     // create
     IndividualCustomer IndCustomerFromCreateRequest(CreateIndCustomerRequestDto createIndCustomerRequestDto);
 
@@ -72,4 +92,6 @@ public interface IndividualCustomerMapper {
     static List<Integer> mapAddressIds(List<Address> addresses) {
         return addresses.stream().map(Address::getId).collect(Collectors.toList());
     }
+
+
 }

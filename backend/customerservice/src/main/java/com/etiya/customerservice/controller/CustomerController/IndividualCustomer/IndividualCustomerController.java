@@ -1,9 +1,6 @@
 package com.etiya.customerservice.controller.CustomerController.IndividualCustomer;
 
-import com.etiya.customerservice.dto.IndividualCustomer.request.CreateIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.DeleteIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.ListIndCustomerRequestDto;
-import com.etiya.customerservice.dto.IndividualCustomer.request.UpdateIndCustomerRequestDto;
+import com.etiya.customerservice.dto.IndividualCustomer.request.*;
 import com.etiya.customerservice.dto.IndividualCustomer.response.*;
 import com.etiya.customerservice.entity.Customer;
 import com.etiya.customerservice.entity.IndividualCustomer;
@@ -21,6 +18,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class IndividualCustomerController {
     private final IndividualCustomerService individualCustomerService;
+
+    @PostMapping("/search")
+    public ResponseEntity<List<SearchIndividualCustomerResponseDto>> searchCustomers(
+            @RequestBody SearchIndividualCustomerRequestDto searchDto) {
+        List<SearchIndividualCustomerResponseDto> results = individualCustomerService.searchCustomers(searchDto);
+        return ResponseEntity.ok(results);
+    }
 
     @PostMapping
     public ResponseEntity<CreateIndCustomerResponseDto> addCustomer(@RequestBody @Valid CreateIndCustomerRequestDto createIndCustomerRequestDto) {
