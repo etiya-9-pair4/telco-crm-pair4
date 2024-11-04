@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "products")
+@Table(name = "Products")
 //TODO: characteristic_value relations
 public class Product extends BaseEntity {
 

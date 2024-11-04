@@ -5,7 +5,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
 
 
 @Getter
@@ -13,5 +12,5 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ListProductResponseDto {
-    private List<CreateProductResponseDto> products;
+    private ProductResponseDto product;
 }

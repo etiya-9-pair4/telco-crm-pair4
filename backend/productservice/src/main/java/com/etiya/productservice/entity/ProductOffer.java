@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "productoffer")
+@Table(name = "ProductOffers")
 public class ProductOffer extends BaseEntity {
 
     @Column(name = "name")
@@ -40,10 +40,7 @@ public class ProductOffer extends BaseEntity {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-
     @OneToMany(mappedBy = "productOffer")
     private List<CatalogProductOffer> catalogProductOffers;
 
-//    @OneToMany(mappedBy = "")
-//    private List<CustomerProductOffer> customerProductOffers;
 }
