@@ -2,7 +2,6 @@ package com.etiya.productservice.dto.campaignProduct.response;
 
 import com.etiya.productservice.entity.Campaign;
 import com.etiya.productservice.entity.Product;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
