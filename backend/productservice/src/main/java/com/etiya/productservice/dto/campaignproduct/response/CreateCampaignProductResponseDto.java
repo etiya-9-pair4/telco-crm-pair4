@@ -1,12 +1,10 @@
-package com.etiya.productservice.dto.campaignproduct.response;
+package com.etiya.productservice.dto.campaignProduct.response;
 
-import com.etiya.productservice.entity.Campaign;
-import com.etiya.productservice.entity.Product;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 
 @Getter
 @Setter
@@ -14,6 +12,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class CreateCampaignProductResponseDto {
     private Integer id;
-    private Campaign campaign;
-    private Product product;
+    private Long campaignId;
+    private Long productId;
 }
