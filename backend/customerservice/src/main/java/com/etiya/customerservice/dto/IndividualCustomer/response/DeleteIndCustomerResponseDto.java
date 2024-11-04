@@ -15,8 +15,10 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class DeleteIndCustomerResponseDto {
     private Integer customerId;
-
     private String firstName;
     private String middleName;
     private String lastName;
+    private LocalDateTime createdDate;
+    private LocalDateTime deletedDate;
+
 }

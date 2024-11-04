@@ -41,8 +41,8 @@ public class ContactController {
     }
 
     @GetMapping("/{contactId}")
-    public ResponseEntity<Optional<ListContactResponseDto>> getById(@PathVariable Integer contactId) {
-        Optional<ListContactResponseDto> contact = contactService.getById(contactId);
+    public ResponseEntity<ListContactResponseDto> getById(@PathVariable Integer contactId) {
+        ListContactResponseDto contact = contactService.getById(contactId);
         return ResponseEntity.ok(contact);
     }
 

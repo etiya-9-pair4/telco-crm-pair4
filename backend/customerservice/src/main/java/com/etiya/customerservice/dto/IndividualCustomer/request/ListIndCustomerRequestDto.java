@@ -17,8 +17,5 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ListIndCustomerRequestDto {
     private Integer customerId;
-//    private int nationalityId;
-//    private String firstName;
-//    private String middleName;
-//    private String lastName;
+
 }

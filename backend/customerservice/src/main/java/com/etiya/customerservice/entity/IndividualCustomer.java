@@ -13,12 +13,9 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "individual_customers")
 public class IndividualCustomer extends Customer {
-    @OneToOne
-    @JoinColumn(name = "id")
-    private Customer customer;
 
     @Column(name = "NAT_id", unique = true)
-    private int nationalityId;
+    private long nationalityId;
     @Column(name = "first_name")
     private String firstName;
     @Column(name = "middle_name")
