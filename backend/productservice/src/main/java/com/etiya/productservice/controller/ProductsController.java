@@ -5,10 +5,7 @@ import com.etiya.productservice.dto.product.request.CreateProductRequestDto;
 import com.etiya.productservice.dto.product.request.DeleteProductRequestDto;
 import com.etiya.productservice.dto.product.request.ListProductRequestDto;
 import com.etiya.productservice.dto.product.request.UpdateProductRequestDto;
-import com.etiya.productservice.dto.product.response.CreateProductResponseDto;
-import com.etiya.productservice.dto.product.response.DeleteProductResponseDto;
-import com.etiya.productservice.dto.product.response.ListProductResponseDto;
-import com.etiya.productservice.dto.product.response.UpdateProductResponseDto;
+import com.etiya.productservice.dto.product.response.*;
 import com.etiya.productservice.entity.Product;
 import com.etiya.productservice.service.ProductService;
 import jakarta.validation.Valid;
@@ -42,16 +39,11 @@ public class ProductsController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/getById")
-    public ResponseEntity<ListProductResponseDto> getById(@RequestBody @Valid ListProductRequestDto requestDto) {
-        ListProductResponseDto responseDto = productService.getById(requestDto);
-        if (responseDto != null) {
-            return ResponseEntity.ok(responseDto);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+    @GetMapping("/{productId}")
+    public ResponseEntity<ProductResponseDto> getById(@PathVariable Integer productId) {
+        ProductResponseDto responseDto = productService.getById(productId);
+        return ResponseEntity.ok(responseDto);
     }
-
 
     @GetMapping
     public ResponseEntity<List<ListProductResponseDto>> getAll() {

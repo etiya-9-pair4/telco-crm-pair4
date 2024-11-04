@@ -17,7 +17,7 @@ public interface ProductService {
 
     DeleteProductResponseDto delete(DeleteProductRequestDto requestDto);
 
-    ListProductResponseDto getById(ListProductRequestDto requestDto);
+    ProductResponseDto getById(Integer productId);
 
     FilterProductResponseDto filterProducts(FilterProductRequestDto requestDto);
 

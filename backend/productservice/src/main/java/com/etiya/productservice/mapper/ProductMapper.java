@@ -13,7 +13,6 @@ public interface ProductMapper {
     @Mapping(target = "productCharacteristicValues", expression = "java(mapCharacteristicValues(createProductRequestDto.getCharacteristicValueIds(), product))")
     @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(createProductRequestDto.getCampaignIds(), product))") // Güncellendi
     Product toEntity(CreateProductRequestDto createProductRequestDto);
-
     @Mapping(target = "catalogId", source = "catalog.id")
     CreateProductResponseDto toCreateProductResponseDto(Product product);
 
@@ -26,7 +25,7 @@ public interface ProductMapper {
     @Mapping(target = "productCharacteristicValues", expression = "java(mapCharacteristicValues(updateProductRequestDto.getCharacteristicValueIds(), product))")
     @Mapping(target = "campaignProducts", expression = "java(mapCampaigns(updateProductRequestDto.getCampaignIds(), product))") // Güncellendi
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    Product toEntity(UpdateProductRequestDto updateProductRequestDto);
+    Product updateEntityFromDto(UpdateProductRequestDto updateProductRequestDto);
 
     @Mapping(target = "catalogId", source = "catalog.id")
     UpdateProductResponseDto toUpdateProductResponseDto(Product product);
@@ -48,7 +47,6 @@ public interface ProductMapper {
     ListProductResponseDto toListProductResponseDto(Product product);
     List<ListProductResponseDto> toListProductResponseDtoList(List<Product> products);
     ListProductResponseDto toListProductResponseDto(ProductResponseDto productResponseDto);
-
 
     // Default methods for transforming characteristics and campaigns
     default List<Integer> mapCharacteristicValueIds(Product product) {

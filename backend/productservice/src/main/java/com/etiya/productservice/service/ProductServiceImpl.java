@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
         Product isExist = productRepository.findById(requestDto.getId())
                 .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getId()));
 
-        Product product = productMapper.toEntity(requestDto);
+        Product product = productMapper.updateEntityFromDto(requestDto);
         Product updatedProduct = productRepository.save(product);
         return productMapper.toUpdateProductResponseDto(updatedProduct);
     }
@@ -53,11 +53,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ListProductResponseDto getById(ListProductRequestDto requestDto) {
-        Product product = productRepository.findById(requestDto.getProductId())
-                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + requestDto.getProductId()));
-        ProductResponseDto productResponseDto = productMapper.toProductResponseDto(product);
-        return new ListProductResponseDto(productResponseDto);
+    public ProductResponseDto getById(Integer productId) {
+        Product product = productRepository.findById(productId)
+                .orElseThrow(() -> new EntityNotFoundException("Product not found with id: " + productId));
+        return productMapper.toProductResponseDto(product);
     }
 
 
