@@ -18,16 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 public class CreateOrderRequestDto {
 
-    @NotNull
-    @NotBlank
-    private LocalDate createdDate;
-    @NotNull
-    @NotBlank
-    private float totalPrice;
-    @NotNull
-    @NotBlank
+    private Integer customerId;
     private List<ProductDto> products;
-    @NotNull
-    @NotBlank
-    private List<Address> address;
+
 }

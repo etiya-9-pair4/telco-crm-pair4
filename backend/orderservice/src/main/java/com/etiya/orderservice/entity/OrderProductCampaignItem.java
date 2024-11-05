@@ -16,8 +16,6 @@ public class OrderProductCampaignItem {
 
     @Id
     private String id;
-
     private Integer offerId;
-
     private Order order;
 }

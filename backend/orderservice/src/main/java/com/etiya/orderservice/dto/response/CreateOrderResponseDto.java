@@ -17,20 +17,10 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOrderResponseDto {
-
-    @NotNull
-    @NotBlank
+    
     private String id;
-    @NotNull
-    @NotBlank
-    private LocalDate createdDate;
-    @NotNull
-    @NotBlank
-    private float totalPrice;
-    @NotNull
-    @NotBlank
     private List<ProductDto> products;
-    @NotNull
-    @NotBlank
-    private List<Address> address;
+    private float totalPrice;
+    private LocalDate createdDate;
+
 }
