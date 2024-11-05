@@ -1,6 +1,7 @@
 package com.etiya.orderservice.dto.request;
 
-import com.etiya.orderservice.dto.product.ProductDto;
+import com.etiya.orderservice.dto.customer.*;
+import com.etiya.orderservice.dto.product.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Getter
@@ -15,9 +17,17 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateOrderRequestDto {
+
     @NotNull
-    private Integer customerId;
     @NotBlank
+    private LocalDate createdDate;
     @NotNull
+    @NotBlank
+    private float totalPrice;
+    @NotNull
+    @NotBlank
     private List<ProductDto> products;
+    @NotNull
+    @NotBlank
+    private List<Address> address;
 }
