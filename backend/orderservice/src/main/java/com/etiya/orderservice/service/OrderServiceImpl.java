@@ -10,19 +10,21 @@ import com.etiya.orderservice.mapper.OrderMapper;
 import com.etiya.orderservice.repository.OrderRepository;
 import io.github.macidko.event.OrderCreatedEvent;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cloud.stream.function.StreamBridge;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class  OrderServiceImpl implements OrderService {
+public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final ProductServiceClient productServiceClient;
-    private final KafkaTemplate<String, Object> kafkaTemplate;
+    private final StreamBridge streamBridge;
     private final OrderMapper orderMapper;
 
     @Override
@@ -35,7 +37,7 @@ public class  OrderServiceImpl implements OrderService {
     public CreateOrderResponseDto add(CreateOrderRequestDto createOrderRequestDto) {
 
         // Customer bilgileri
-        Order order =  orderMapper.orderCreateRequestFromDto(createOrderRequestDto);
+        Order order = orderMapper.orderCreateRequestFromDto(createOrderRequestDto);
 
 
         List<ProductDto> response = productServiceClient.findAllByIds(
@@ -53,7 +55,9 @@ public class  OrderServiceImpl implements OrderService {
         order.setCreatedDate(LocalDate.now());
         orderRepository.save(order);
 
-        kafkaTemplate.send("orderTopic", new OrderCreatedEvent(order.getId()));
+        OrderCreatedEvent orderCreatedEvent = new OrderCreatedEvent();
+        orderCreatedEvent.setId(order.getId());
+        streamBridge.send("orderCreatedEvent-out-0", orderCreatedEvent);
         return orderMapper.orderCreateResponseFromOrder(order);
 
     }
