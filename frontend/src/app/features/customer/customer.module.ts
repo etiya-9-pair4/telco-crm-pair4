@@ -3,15 +3,10 @@ import { CommonModule } from '@angular/common';
 
 import { CustomerRoutingModule } from './customer-routing.module';
 import { CreateCustomerComponent } from './pages/create-customer/create-customer.component';
-
+import { SearchCustomerComponent } from './pages/search-customer/search-customer.component';
 
 @NgModule({
-  declarations: [
-    CreateCustomerComponent
-  ],
-  imports: [
-    CommonModule,
-    CustomerRoutingModule
-  ]
+  declarations: [CreateCustomerComponent, SearchCustomerComponent],
+  imports: [CommonModule, CustomerRoutingModule],
 })
-export class CustomerModule { }
+export class CustomerModule {}

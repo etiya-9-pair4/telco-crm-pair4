@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('../app/shared/shared.module').then((m) => m.SharedModule),
+      import('./shared/shared.module').then((m) => m.SharedModule),
   },
   {
     path: '',
@@ -19,6 +19,3 @@ export const routes: Routes = [
       ),
   },
 ];
-// localhost:4200/customer -> CustomerModule
-// localhost:4200/product -> ProductModule
-// localhost:4200/homepage -> SharedModule
