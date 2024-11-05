@@ -6,6 +6,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { LoginpageComponent } from './pages/loginpage/loginpage.component';
 
 @NgModule({
   declarations: [
@@ -13,8 +14,15 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
     FooterComponent,
     MainLayoutComponent,
     HomepageComponent,
-  ], // Bu modül altındaki (bu modülün sahip olduğu) schemaricler (NavbarComponent)
-  imports: [CommonModule, SharedRoutingModule], //Bu modülün dışarıdan aldığı modül ya da standalone componentlar
-  exports: [], //Bu mobil import edildiğinde dışarıdan hangi schematiclerine erişim açılacak?
+    LoginpageComponent,
+  ],
+  imports: [CommonModule, SharedRoutingModule],
+  exports: [
+    NavbarComponent,
+    FooterComponent,
+    MainLayoutComponent,
+    HomepageComponent,
+    LoginpageComponent,
+  ],
 })
 export class SharedModule {}
