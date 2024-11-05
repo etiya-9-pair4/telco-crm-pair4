@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="53e628cd-7d39-4b1b-a1ce-b039c72dcb1c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="53e628cd-7d39-4b1b-a1ce-b039c72dcb1c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,7 +37,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "enes",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/enes.yavuz",
     "node.js.detected.package.eslint": "true",
@@ -69,7 +65,7 @@
       <updated>1729582024323</updated>
       <workItem from="1729582027288" duration="20000" />
       <workItem from="1730306396597" duration="537000" />
-      <workItem from="1730784792727" duration="13001000" />
+      <workItem from="1730784792727" duration="13338000" />
     </task>
     <servers />
   </component>
