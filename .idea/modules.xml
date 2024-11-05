@@ -2,6 +2,14 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/backend/configserver/configserver.iml" filepath="$PROJECT_DIR$/backend/configserver/configserver.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/core/core.iml" filepath="$PROJECT_DIR$/backend/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/customerservice/customerservice.iml" filepath="$PROJECT_DIR$/backend/customerservice/customerservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/eureka/eureka.iml" filepath="$PROJECT_DIR$/backend/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/gateway/gateway.iml" filepath="$PROJECT_DIR$/backend/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/identityservice/identityservice.iml" filepath="$PROJECT_DIR$/backend/identityservice/identityservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/orderservice/orderservice.iml" filepath="$PROJECT_DIR$/backend/orderservice/orderservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/backend/productservice/productservice.iml" filepath="$PROJECT_DIR$/backend/productservice/productservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/telco-crm-pair4.iml" filepath="$PROJECT_DIR$/.idea/telco-crm-pair4.iml" />
     </modules>
   </component>
