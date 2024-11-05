@@ -1,4 +1,4 @@
-package com.etiya.productservice.mapper;
+package com.etiya.productservice.mapper.product;
 
 import com.etiya.productservice.dto.product.request.*;
 import com.etiya.productservice.dto.product.response.*;

@@ -1,4 +1,4 @@
-package com.etiya.productservice.repository;
+package com.etiya.productservice.repository.product;
 
 import com.etiya.productservice.entity.Product;
 import org.springframework.data.jpa.repository.JpaRepository;

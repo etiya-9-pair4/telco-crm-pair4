@@ -1,17 +1,16 @@
-package com.etiya.productservice.service;
+package com.etiya.productservice.service.product;
 
 import com.etiya.productservice.client.CustomerServiceClient;
 import com.etiya.productservice.dto.customer.CustomerResponseDto;
 import com.etiya.productservice.dto.product.request.*;
 import com.etiya.productservice.dto.product.response.*;
 import com.etiya.productservice.entity.Product;
-import com.etiya.productservice.mapper.ProductMapper;
-import com.etiya.productservice.repository.ProductRepository;
+import com.etiya.productservice.mapper.product.ProductMapper;
+import com.etiya.productservice.repository.product.ProductRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

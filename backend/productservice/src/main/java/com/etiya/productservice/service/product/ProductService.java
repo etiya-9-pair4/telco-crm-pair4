@@ -1,4 +1,4 @@
-package com.etiya.productservice.service;
+package com.etiya.productservice.service.product;
 
 import com.etiya.productservice.dto.customer.CustomerResponseDto;
 import com.etiya.productservice.dto.product.request.*;

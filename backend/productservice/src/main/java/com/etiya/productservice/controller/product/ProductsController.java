@@ -1,13 +1,12 @@
-package com.etiya.productservice.controller;
+package com.etiya.productservice.controller.product;
 
 import com.etiya.productservice.dto.customer.CustomerResponseDto;
 import com.etiya.productservice.dto.product.request.CreateProductRequestDto;
 import com.etiya.productservice.dto.product.request.DeleteProductRequestDto;
-import com.etiya.productservice.dto.product.request.ListProductRequestDto;
 import com.etiya.productservice.dto.product.request.UpdateProductRequestDto;
 import com.etiya.productservice.dto.product.response.*;
 import com.etiya.productservice.entity.Product;
-import com.etiya.productservice.service.ProductService;
+import com.etiya.productservice.service.product.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
