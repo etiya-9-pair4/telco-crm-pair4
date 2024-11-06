@@ -59,6 +59,9 @@ public interface IndividualCustomerMapper {
     IndividualCustomer IndCustomerFromListRequest(ListIndCustomerRequestDto listIndCustomerRequestDto);
 
     @Mapping(target = "customerId", source = "id")
+    @Mapping(target = "contacts", source = "contacts")
+    @Mapping(target = "addresses", source = "addresses")
+    @Mapping(target = "customerAccounts", source = "customerAccounts")
     CustomerResponseDto IndCustomerResponseFromCustomerId(IndividualCustomer individualCustomer);
 
     // Main mapping
