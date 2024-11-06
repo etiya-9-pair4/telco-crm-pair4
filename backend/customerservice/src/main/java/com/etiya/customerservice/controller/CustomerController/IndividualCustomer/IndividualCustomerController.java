@@ -47,11 +47,11 @@ public class IndividualCustomerController {
         return ResponseEntity.ok(responseDto);
     }
 
-    @GetMapping("/{customerId}") // For OpenFeign
-    public ResponseEntity<IndividualCustomer> getCustomerById(@PathVariable Integer customerId) {
-        IndividualCustomer individualCustomer = individualCustomerService.getCustomerById(customerId);
-        return ResponseEntity.ok(individualCustomer);
-    }
+//    @GetMapping("/{customerId}") // For OpenFeign
+//    public ResponseEntity<IndividualCustomer> getCustomerById(@PathVariable Integer customerId) {
+//        IndividualCustomer individualCustomer = individualCustomerService.getCustomerById(customerId);
+//        return ResponseEntity.ok(individualCustomer);
+//    }
 
     @PostMapping("/getById")
     public ResponseEntity<CustomerResponseDto> getById(@RequestBody @Valid ListIndCustomerRequestDto listIndCustomerRequestDto) {
