@@ -19,6 +19,7 @@ import { SearchIndividualCustomerRequestDto } from '../../models/request';
 export class SearchCustomerComponent implements OnInit {
   searchForm!: FormGroup;
   customers: SearchIndividualCustomerResponseDto[] = [];
+  searched: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -54,12 +55,18 @@ export class SearchCustomerComponent implements OnInit {
         this.customers = response;
         console.log('Search results:', this.customers);
       },
-      error: (err) => console.error('Error during search:', err),
+      error: (err) => {
+        console.error('Error during search:', err);
+        this.customers = [];
+        this.searched = true;
+      },
     });
   }
 
   clearAll(): void {
     this.searchForm.reset();
+    this.customers = [];
+    this.searched = false;
   }
 
   isFormEmpty(): boolean {
