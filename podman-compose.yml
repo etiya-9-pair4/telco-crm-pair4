@@ -246,6 +246,13 @@ services:
       RABBITMQ_DEFAULT_USER: guest
       RABBITMQ_DEFAULT_PASS: guest
 
+  frontend:
+    build: ./frontend
+    ports:
+      - "4200:80"
+    networks:
+      - common
+
 volumes:
   mysql_data:
   productservice_data:

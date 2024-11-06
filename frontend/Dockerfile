@@ -11,5 +11,7 @@ RUN npm install -g @angular/cli \
 
 FROM nginx:alpine
 
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
 COPY --from=build /app/dist/telco.crm.front/browser /usr/share/nginx/html
 EXPOSE 80
