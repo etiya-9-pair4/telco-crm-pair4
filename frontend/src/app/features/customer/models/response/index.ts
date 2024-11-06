@@ -4,3 +4,4 @@ export * from './GetByIdResponse';
 export * from './SearchResponse';
 export * from './UpdateResponse';
 export * from './DeleteResponse';
+export * from './SearchIndividualCustomerResponseDto';

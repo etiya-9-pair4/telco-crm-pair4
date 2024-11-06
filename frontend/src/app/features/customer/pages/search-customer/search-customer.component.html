@@ -4,106 +4,213 @@
     class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
   >
     <h1 class="text-center">Search Filter</h1>
+    <!-- Form alanları -->
+    <form [formGroup]="searchForm" (ngSubmit)="search()">
+      <!-- Customer ID -->
+      <div class="mb-6">
+        <label
+          for="customer-id"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Customer ID</label
+        >
+        <input
+          type="number"
+          id="customer-id"
+          formControlName="customerId"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('customerId')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small *ngIf="searchForm.get('customerId')?.errors?.['min']">
+            Customer ID must be at least 1.
+          </small>
+          <small *ngIf="searchForm.get('customerId')?.errors?.['digitLength']">
+            Customer ID must be exactly 10 digits.
+          </small>
+        </div>
+      </div>
 
-    <div class="mb-6">
-      <label
-        for="customer-id"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Customer ID</label
-      >
-      <input
-        type="text"
-        id="customer-id"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="nat-id"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >NAT ID</label
-      >
-      <input
-        type="text"
-        id="gsm-number"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="gsm-number"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >GSM Number</label
-      >
-      <input
-        type="text"
-        id="account-number"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="account-number"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Account Number</label
-      >
-      <input
-        type="text"
-        id="first-name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="first-name"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >First Name</label
-      >
-      <input
-        type="text"
-        id="middle-name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="middle-name"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Middle Name</label
-      >
-      <input
-        type="text"
-        id="last-name"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="mb-6">
-      <label
-        for="last-name"
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-        >Last Name</label
-      >
-      <input
-        type="text"
-        id="default-input"
-        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      />
-    </div>
-    <div class="inline-flex space-x-2">
-      <button
-        type="button"
-        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap me-2 mb-2 dark:focus:ring-yellow-900"
-      >
-        CLEAR ALL
-      </button>
+      <!-- NAT ID -->
+      <div class="mb-6">
+        <label
+          for="nat-id"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >NAT ID</label
+        >
+        <input
+          type="text"
+          id="nat-id"
+          formControlName="nationalityId"
+          maxlength="11"
+          pattern="\\d*"
+          inputmode="numeric"
+          (input)="onNatIdInput($event)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('nationalityId')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small
+            *ngIf="searchForm.get('nationalityId')?.errors?.['exactDigitLength']"
+          >
+            NAT ID must be exactly 11 characters.
+          </small>
+        </div>
+      </div>
 
-      <button
-        type="button"
-        class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap me-2 mb-2 dark:focus:ring-yellow-900"
-      >
-        SEARCH
-      </button>
-    </div>
+      <!-- GSM Number -->
+      <div class="mb-6">
+        <label
+          for="gsm-number"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >GSM Number</label
+        >
+        <input
+          type="text"
+          id="gsm-number"
+          formControlName="mobilePhone"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('mobilePhone')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small
+            *ngIf="searchForm.get('mobilePhone')?.errors?.['exactDigitLength']"
+          >
+            GSM Number must be exactly 10 digits.
+          </small>
+          <small
+            *ngIf="searchForm.get('mobilePhone')?.errors?.['gsmNumberError']"
+          >
+            GSM Number should contain only digits.
+          </small>
+        </div>
+      </div>
+
+      <!-- Account Number -->
+      <div class="mb-6">
+        <label
+          for="account-number"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Account Number</label
+        >
+        <input
+          type="text"
+          id="account-number"
+          formControlName="accountNumber"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('accountNumber')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small
+            *ngIf="searchForm.get('accountNumber')?.errors?.['exactDigitLength']"
+          >
+            Account Number must be exactly 10 characters.
+          </small>
+        </div>
+      </div>
+
+      <!-- First Name -->
+      <div class="mb-6">
+        <label
+          for="first-name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >First Name</label
+        >
+        <input
+          type="text"
+          id="first-name"
+          formControlName="firstName"
+          maxlength="20"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('firstName')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small *ngIf="searchForm.get('firstName')?.errors?.['nameError']">
+            First Name must be 2-20 alphabetic characters long.
+          </small>
+        </div>
+      </div>
+
+      <!-- Middle Name -->
+      <div class="mb-6">
+        <label
+          for="middle-name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Middle Name</label
+        >
+        <input
+          type="text"
+          id="middle-name"
+          formControlName="middleName"
+          maxlength="20"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('middleName')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small *ngIf="searchForm.get('middleName')?.errors?.['nameError']">
+            Middle Name must be 2-20 alphabetic characters long.
+          </small>
+        </div>
+      </div>
+
+      <!-- Last Name -->
+      <div class="mb-6">
+        <label
+          for="last-name"
+          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >Last Name</label
+        >
+        <input
+          type="text"
+          id="last-name"
+          formControlName="lastName"
+          maxlength="20"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        />
+        <div
+          *ngIf="searchForm.get('lastName')?.errors"
+          class="text-red-500 text-sm"
+        >
+          <small *ngIf="searchForm.get('lastName')?.errors?.['nameError']">
+            Last Name must be 2-20 alphabetic characters long.
+          </small>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="inline-flex space-x-2">
+        <!-- Clear All Button -->
+        <button
+          type="button"
+          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap mb-2 dark:focus:ring-yellow-900"
+          [disabled]="isFormEmpty()"
+          [ngClass]="{ 'opacity-50 cursor-not-allowed': isFormEmpty() }"
+          (click)="clearAll()"
+        >
+          CLEAR ALL
+        </button>
+        <!-- Search Button (Disable Styling) -->
+        <button
+          type="submit"
+          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap mb-2 dark:focus:ring-yellow-900"
+          [disabled]="isFormEmpty()"
+          [ngClass]="{ 'opacity-50 cursor-not-allowed': isFormEmpty() }"
+        >
+          SEARCH
+        </button>
+      </div>
+    </form>
   </div>
   <!-- Result tab -->
   <div
@@ -128,7 +235,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr
+          <!-- <tr
             *ngFor="let customer of customers"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
           >
@@ -147,7 +254,7 @@
             <td class="px-6 py-4">{{ customer.firstName }}</td>
             <td class="px-6 py-4">{{ customer.middleName }}</td>
             <td class="px-6 py-4">{{ customer.lastName }}</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
     </div>
