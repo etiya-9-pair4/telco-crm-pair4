@@ -9,6 +9,7 @@ import {
   GetByIdRequest,
   DeleteRequest,
   SearchIndividualCustomerRequestDto,
+  AddIndividualCustomerRequestDto,
 } from '../models/request';
 import {
   AddResponse,
@@ -17,6 +18,7 @@ import {
   GetAllResponse,
   DeleteResponse,
   SearchIndividualCustomerResponseDto,
+  AddIndividualCustomerResponseDto,
 } from '../models/response';
 import { environment } from '../../../../environments/environment.development';
 
@@ -27,18 +29,17 @@ export class IndividualCustomerService extends BaseService<
   GetAllResponse,
   GetByIdRequest,
   GetByIdResponse,
-  AddRequest,
-  AddResponse,
+  AddIndividualCustomerRequestDto,
+  AddIndividualCustomerResponseDto,
   UpdateRequest,
   UpdateResponse,
   DeleteRequest,
   DeleteResponse
 > {
   constructor(http: HttpClient) {
-    super(http, `${environment.apiBaseUrl}/individualcustomers`); // environment kullanılarak dinamik URL
+    super(http, `${environment.apiBaseUrl}/individualcustomers`);
   }
 
-  // Search customers (Ek özel metot)
   searchCustomers(
     searchDto: SearchIndividualCustomerRequestDto
   ): Observable<SearchIndividualCustomerResponseDto[]> {

@@ -5,3 +5,6 @@ export * from './SearchResponse';
 export * from './UpdateResponse';
 export * from './DeleteResponse';
 export * from './SearchIndividualCustomerResponseDto';
+export * from './AddResponse';
+export * from './ContactResponse';
+export * from './AddIndividualCustomerResponseDto';

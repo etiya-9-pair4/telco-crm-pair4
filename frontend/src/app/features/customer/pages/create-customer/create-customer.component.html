@@ -16,7 +16,6 @@
         <button
           class="inline-block p-4 rounded-t-lg border-b-2 border-transparent"
           [ngClass]="{ 'border-white': currentTab === i }"
-          (click)="showTab(i)"
         >
           {{ tab }}
         </button>
@@ -61,7 +60,7 @@
           <input
             formControlName="natId"
             id="nat_id"
-            type="number"
+            type="text"
             class="input-field"
             placeholder="12345678901"
           />
@@ -78,7 +77,7 @@
               Nat ID is required.
             </div>
             <div
-              *ngIf="mainForm.get('customerInfo.natId')?.errors?.['minlength']"
+              *ngIf="mainForm.get('customerInfo.natId')?.errors?.['pattern']"
             >
               Nat ID must be at least 11 characters long.
             </div>
@@ -157,10 +156,13 @@
         <div class="form-group">
           <label for="gender">Gender (*)</label>
           <select formControlName="gender" id="gender" class="input-field">
-            <option value="" disabled selected>Select option</option>
-            <option value="Female">Female</option>
-            <option value="Male">Male</option>
-            <option value="Prefer not to say">Prefer not to say</option>
+            <option value="" disabled selected>Select</option>
+            <option
+              *ngFor="let gender of genders; let i = index"
+              [value]="i + 1"
+            >
+              {{ gender }}
+            </option>
           </select>
           <div
             *ngIf="
@@ -218,9 +220,12 @@
           <label for="district">District (*)</label>
           <select formControlName="district" id="district" class="input-field">
             <option value="" disabled selected>Select</option>
-            <option value="Kadıköy">Kadıköy</option>
-            <option value="Beşiktaş">Beşiktaş</option>
-            <option value="Çankaya">Çankaya</option>
+            <option
+              *ngFor="let district of districts; let i = index"
+              [value]="i + 1"
+            >
+              {{ district }}
+            </option>
           </select>
           <div
             *ngIf="
