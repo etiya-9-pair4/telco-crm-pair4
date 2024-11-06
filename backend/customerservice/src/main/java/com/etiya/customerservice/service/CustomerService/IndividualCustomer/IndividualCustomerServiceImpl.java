@@ -7,6 +7,7 @@ import com.etiya.customerservice.mapper.IndividualCustomerMapper;
 import com.etiya.customerservice.repository.CustomerRepository.IndividualCustomerRepository;
 import com.etiya.customerservice.rule.CustomerBusinessRules;
 import com.etiya.customerservice.spec.CustomerSpecifications;
+import io.github.anilaygun.exception.type.BusinessException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class IndividualCustomerServiceImpl implements IndividualCustomerService 
     public List<SearchIndividualCustomerResponseDto> searchCustomers(SearchIndividualCustomerRequestDto searchDto) {
         Specification<IndividualCustomer> spec = CustomerSpecifications.createSpecification(searchDto);
         List<IndividualCustomer> customers = individualCustomerRepository.findAll(spec);
+
+        if(customers.isEmpty())throw new BusinessException("No customer found! Would you like to create the customer?");
+
         return customers.stream()
                 .map(individualCustomerMapper::toSearchResponseDto)
                 .collect(Collectors.toList());
