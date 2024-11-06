@@ -33,6 +33,7 @@ public class ContactServiceImpl implements ContactService {
         contactBusinessRules.checkIfMobilePhoneIsUnique(createContactRequestDto.getMobilePhone());
         contactBusinessRules.checkIfHomePhoneIsUnique(createContactRequestDto.getHomePhone());
         contactBusinessRules.checkIfCustomerHasReachedMaxContacts(createContactRequestDto.getCustomerId());
+        contactBusinessRules.checkIfEmailIsUnique(createContactRequestDto.getEmail());
 
         contactRepository.save(contact);
         return contactMapper.contactCreateResponseFromContact(contact);

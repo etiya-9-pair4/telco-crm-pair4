@@ -16,5 +16,8 @@ public interface ContactRepository extends JpaRepository<Contact, Integer> {
 
     Optional<Contact> findByHomePhone(String homePhone);
 
+    Optional<Contact> findByEmailIgnoreCase(String email);
+
+
     short countByCustomerId(Integer customerId);
 }
