@@ -69,3 +69,13 @@ export function gsmNumberValidator(): ValidatorFn {
         };
   };
 }
+
+export function maxDigitLengthValidator(maxLength: number): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const value = control.value?.toString() || '';
+    // Eğer değer tam olarak `maxLength` uzunluğundaysa hata döndür
+    return value.length === maxLength
+      ? { maxDigitLength: { requiredLength: maxLength } }
+      : null;
+  };
+}

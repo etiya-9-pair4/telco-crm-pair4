@@ -1,42 +1,46 @@
-<div class="w-full p-4 flex space-x-4">
+<div class="w-full h-auto p-2 flex space-x-2">
   <!-- Search tab -->
   <div
-    class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
+    class="max-w-xs p-4 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700"
   >
-    <h1 class="text-center">Search Filter</h1>
+    <h1 class="text-center text-base font-semibold">Search Filter</h1>
     <!-- Form alanları -->
     <form [formGroup]="searchForm" (ngSubmit)="search()">
       <!-- Customer ID -->
-      <div class="mb-6">
+      <div class="mb-4">
         <label
           for="customer-id"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          class="block mb-1 text-xs font-medium text-gray-900 dark:text-white"
           >Customer ID</label
         >
         <input
           type="number"
           id="customer-id"
           formControlName="customerId"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          min="1"
+          max="9999999999"
+          (input)="onInputRestriction($event, 10)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <div
           *ngIf="searchForm.get('customerId')?.errors"
-          class="text-red-500 text-sm"
+          class="text-red-500 text-xs"
         >
           <small *ngIf="searchForm.get('customerId')?.errors?.['min']">
             Customer ID must be at least 1.
           </small>
-          <small *ngIf="searchForm.get('customerId')?.errors?.['digitLength']">
-            Customer ID must be exactly 10 digits.
+          <small
+            *ngIf="searchForm.get('customerId')?.errors?.['maxDigitLength']"
+          >
+            Customer ID can have a maximum of 10 digits.
           </small>
         </div>
       </div>
-
       <!-- NAT ID -->
-      <div class="mb-6">
+      <div class="mb-4">
         <label
           for="nat-id"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          class="block mb-1 text-xs font-medium text-gray-900 dark:text-white"
           >NAT ID</label
         >
         <input
@@ -45,13 +49,12 @@
           formControlName="nationalityId"
           maxlength="11"
           pattern="\\d*"
-          inputmode="numeric"
-          (input)="onNatIdInput($event)"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          (input)="onInputRestriction($event, 11)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <div
           *ngIf="searchForm.get('nationalityId')?.errors"
-          class="text-red-500 text-sm"
+          class="text-red-500 text-xs"
         >
           <small
             *ngIf="searchForm.get('nationalityId')?.errors?.['exactDigitLength']"
@@ -60,53 +63,52 @@
           </small>
         </div>
       </div>
-
       <!-- GSM Number -->
-      <div class="mb-6">
+      <div class="mb-4">
         <label
           for="gsm-number"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          class="block mb-1 text-xs font-medium text-gray-900 dark:text-white"
           >GSM Number</label
         >
         <input
           type="text"
           id="gsm-number"
           formControlName="mobilePhone"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          maxlength="10"
+          pattern="\\d*"
+          (input)="onInputRestriction($event, 10)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <div
           *ngIf="searchForm.get('mobilePhone')?.errors"
-          class="text-red-500 text-sm"
+          class="text-red-500 text-xs"
         >
           <small
             *ngIf="searchForm.get('mobilePhone')?.errors?.['exactDigitLength']"
           >
-            GSM Number must be exactly 10 digits.
-          </small>
-          <small
-            *ngIf="searchForm.get('mobilePhone')?.errors?.['gsmNumberError']"
-          >
-            GSM Number should contain only digits.
+            GSM Number must be exactly 10 characters.
           </small>
         </div>
       </div>
-
       <!-- Account Number -->
-      <div class="mb-6">
+      <div class="mb-4">
         <label
           for="account-number"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          class="block mb-1 text-xs font-medium text-gray-900 dark:text-white"
           >Account Number</label
         >
         <input
           type="text"
           id="account-number"
           formControlName="accountNumber"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          maxlength="10"
+          pattern="\\d*"
+          (input)="onInputRestriction($event, 10)"
+          class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         />
         <div
           *ngIf="searchForm.get('accountNumber')?.errors"
-          class="text-red-500 text-sm"
+          class="text-red-500 text-xs"
         >
           <small
             *ngIf="searchForm.get('accountNumber')?.errors?.['exactDigitLength']"
@@ -115,95 +117,49 @@
           </small>
         </div>
       </div>
-
-      <!-- First Name -->
-      <div class="mb-6">
-        <label
-          for="first-name"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >First Name</label
-        >
-        <input
-          type="text"
-          id="first-name"
-          formControlName="firstName"
-          maxlength="20"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
-        <div
-          *ngIf="searchForm.get('firstName')?.errors"
-          class="text-red-500 text-sm"
-        >
-          <small *ngIf="searchForm.get('firstName')?.errors?.['nameError']">
-            First Name must be 2-20 alphabetic characters long.
-          </small>
+      <!-- Name Fields -->
+      <ng-container
+        *ngFor="let field of ['firstName', 'middleName', 'lastName']"
+      >
+        <div class="mb-4">
+          <label
+            [for]="field"
+            class="block mb-1 text-xs font-medium text-gray-900 dark:text-white"
+            >{{ field | titlecase }}</label
+          >
+          <input
+            type="text"
+            [id]="field"
+            [formControlName]="field"
+            maxlength="20"
+            pattern="^[a-zA-Z\s]*$"
+            (input)="onInputRestriction($event, 20, true)"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          />
+          <div
+            *ngIf="searchForm.get(field)?.errors"
+            class="text-red-500 text-xs"
+          >
+            <small *ngIf="searchForm.get(field)?.errors?.['nameError']">
+              {{ field | titlecase }} must be 2-20 alphabetic characters long.
+            </small>
+          </div>
         </div>
-      </div>
-
-      <!-- Middle Name -->
-      <div class="mb-6">
-        <label
-          for="middle-name"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Middle Name</label
-        >
-        <input
-          type="text"
-          id="middle-name"
-          formControlName="middleName"
-          maxlength="20"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
-        <div
-          *ngIf="searchForm.get('middleName')?.errors"
-          class="text-red-500 text-sm"
-        >
-          <small *ngIf="searchForm.get('middleName')?.errors?.['nameError']">
-            Middle Name must be 2-20 alphabetic characters long.
-          </small>
-        </div>
-      </div>
-
-      <!-- Last Name -->
-      <div class="mb-6">
-        <label
-          for="last-name"
-          class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-          >Last Name</label
-        >
-        <input
-          type="text"
-          id="last-name"
-          formControlName="lastName"
-          maxlength="20"
-          class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-        />
-        <div
-          *ngIf="searchForm.get('lastName')?.errors"
-          class="text-red-500 text-sm"
-        >
-          <small *ngIf="searchForm.get('lastName')?.errors?.['nameError']">
-            Last Name must be 2-20 alphabetic characters long.
-          </small>
-        </div>
-      </div>
-
+      </ng-container>
       <!-- Buttons -->
-      <div class="inline-flex space-x-2">
-        <!-- Clear All Button -->
+      <div class="inline-flex space-x-1">
         <button
           type="button"
-          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap mb-2 dark:focus:ring-yellow-900"
+          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 font-medium rounded-full text-xs px-4 py-1.5 text-center mb-2 dark:focus:ring-yellow-900"
           [disabled]="isFormEmpty()"
           [ngClass]="{ 'opacity-50 cursor-not-allowed': isFormEmpty() }"
           (click)="clearAll()"
         >
           CLEAR ALL
         </button>
-        <!-- Search Button (Disable Styling) -->
         <button
           type="submit"
-          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-4 focus:ring-yellow-300 font-medium rounded-full text-sm px-5 py-2.5 text-center whitespace-nowrap mb-2 dark:focus:ring-yellow-900"
+          class="text-white bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 font-medium rounded-full text-xs px-4 py-1.5 text-center mb-2 dark:focus:ring-yellow-900"
           [disabled]="isFormEmpty()"
           [ngClass]="{ 'opacity-50 cursor-not-allowed': isFormEmpty() }"
         >
@@ -212,7 +168,6 @@
       </div>
     </form>
   </div>
-  <!-- Result tab -->
   <div
     class="w-full h-fit p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700"
   >
@@ -235,26 +190,22 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr
+          <tr
             *ngFor="let customer of customers"
             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700"
           >
             <td
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
-              {{ customer.customerId }}
+              {{ customer.customerId || "null" }}
             </td>
-            <td class="px-6 py-4">{{ customer.nationalityId }}</td>
-            <td class="px-6 py-4">
-              {{ customer.contacts?.[0]?.gsmNumber || 'N/A' }}
-            </td>
-            <td class="px-6 py-4">
-              {{ customer.customerAccounts?.[0]?.accountNumber || 'N/A' }}
-            </td>
-            <td class="px-6 py-4">{{ customer.firstName }}</td>
-            <td class="px-6 py-4">{{ customer.middleName }}</td>
-            <td class="px-6 py-4">{{ customer.lastName }}</td>
-          </tr> -->
+            <td class="px-6 py-4">{{ customer.nationalityId || "null" }}</td>
+            <td class="px-6 py-4">{{ customer.mobilePhone || "null" }}</td>
+            <td class="px-6 py-4">{{ customer.accountNumber || "null" }}</td>
+            <td class="px-6 py-4">{{ customer.firstName || "null" }}</td>
+            <td class="px-6 py-4">{{ customer.middleName || "null" }}</td>
+            <td class="px-6 py-4">{{ customer.lastName || "null" }}</td>
+          </tr>
         </tbody>
       </table>
     </div>

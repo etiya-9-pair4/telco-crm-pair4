@@ -4,6 +4,9 @@ import { IndividualCustomerService } from '../../services/individualcustomer.ser
 import {
   digitLengthValidator,
   exactDigitLengthValidator,
+  nameValidator,
+  gsmNumberValidator,
+  maxDigitLengthValidator,
 } from '../../../../core/validators/custom-validators';
 import { SearchIndividualCustomerResponseDto } from '../../models/response';
 import { SearchIndividualCustomerRequestDto } from '../../models/request';
@@ -24,59 +27,37 @@ export class SearchCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
-      customerId: ['', [Validators.min(1), digitLengthValidator(10)]],
+      customerId: ['', [Validators.min(1), maxDigitLengthValidator(10)]],
       nationalityId: ['', [exactDigitLengthValidator(11)]],
       accountNumber: ['', [exactDigitLengthValidator(10)]],
-      firstName: [
-        '',
-        [
-          Validators.minLength(2),
-          Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-z]+$/),
-        ],
-      ],
-      middleName: [
-        '',
-        [
-          Validators.minLength(2),
-          Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-z]+$/),
-        ],
-      ],
-      lastName: [
-        '',
-        [
-          Validators.minLength(2),
-          Validators.maxLength(20),
-          Validators.pattern(/^[A-Za-z]+$/),
-        ],
-      ],
-      mobilePhone: [
-        '',
-        [exactDigitLengthValidator(10), Validators.pattern(/^[0-9]+$/)],
-      ],
+      firstName: ['', nameValidator(2, 20)],
+      middleName: ['', nameValidator(2, 20)],
+      lastName: ['', nameValidator(2, 20)],
+      mobilePhone: ['', [exactDigitLengthValidator(10), gsmNumberValidator()]],
     });
   }
 
   search(): void {
-    const searchDto: SearchIndividualCustomerRequestDto = this.searchForm.value;
+    // Formdaki alanlardan doldurulanları alarak DTO'ya aktar
+    const searchDto: SearchIndividualCustomerRequestDto = {
+      customerId: this.searchForm.get('customerId')?.value || null,
+      nationalityId: this.searchForm.get('nationalityId')?.value || null,
+      accountNumber: this.searchForm.get('accountNumber')?.value || null,
+      firstName: this.searchForm.get('firstName')?.value || null,
+      middleName: this.searchForm.get('middleName')?.value || null,
+      lastName: this.searchForm.get('lastName')?.value || null,
+      mobilePhone: this.searchForm.get('mobilePhone')?.value || null,
+    };
+
     this.individualCustomerService.searchCustomers(searchDto).subscribe({
       next: (response) => {
         this.customers = response;
         console.log('Search results:', this.customers);
       },
-      error: (err) => console.error(err),
+      error: (err) => console.error('Error during search:', err),
     });
   }
-  getFilledFormValues(): Record<string, any> {
-    const formValues = this.searchForm.value;
-    return Object.keys(formValues)
-      .filter((key) => formValues[key] !== '' && formValues[key] !== null)
-      .reduce((acc: Record<string, any>, key: string) => {
-        acc[key] = formValues[key];
-        return acc;
-      }, {} as Record<string, any>);
-  }
+
   clearAll(): void {
     this.searchForm.reset();
   }
@@ -85,24 +66,20 @@ export class SearchCustomerComponent implements OnInit {
     return Object.values(this.searchForm.value).every((value) => value === '');
   }
 
-  onInputRestriction(event: Event, maxLength: number): void {
+  onInputRestriction(
+    event: Event,
+    maxLength: number,
+    isAlphabetOnly: boolean = false
+  ): void {
     const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/[^0-9]/g, '').slice(0, maxLength);
+    if (isAlphabetOnly) {
+      input.value = input.value.replace(/[^a-zA-Z\s]/g, '').slice(0, maxLength); // Yalnızca harf ve boşluk
+    } else {
+      input.value = input.value.replace(/[^0-9]/g, '').slice(0, maxLength); // Yalnızca rakam
+    }
     const controlName = input.getAttribute('formControlName');
     if (controlName) {
       this.searchForm.get(controlName)?.setValue(input.value);
     }
-  }
-
-  onNatIdInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/[^0-9]/g, '');
-    this.searchForm.get('natId')?.setValue(input.value);
-  }
-
-  onGsmNumberInput(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    input.value = input.value.replace(/[^0-9]/g, '');
-    this.searchForm.get('gsmNumber')?.setValue(input.value);
   }
 }
