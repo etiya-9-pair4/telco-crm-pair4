@@ -50,4 +50,10 @@ public class ContactBusinessRules {
         }
     }
 
+    public void checkIfEmailIsUnique(String email) {
+        if (contactRepository.findByEmailIgnoreCase(email).isPresent()) {
+            throw new BusinessException("A contact with the same Email already exists.");
+        }
+    }
+
 }
