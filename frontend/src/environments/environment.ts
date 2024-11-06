@@ -1,4 +1,3 @@
 export const environment = {
-  BASE_API_URL: 'abc',
-  MS_V1_API_URL: 'http://localhost:8083/api/',
+  apiBaseUrl: 'http://localhost:8081/api',
 };
